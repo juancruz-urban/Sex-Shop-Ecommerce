@@ -18,10 +18,10 @@ export async function POST(req){
        
 
         back_urls:{
-          success:'https://vercel.com/urbanjuancruz-gmailcoms-projects/sex-shop-ecommerce-oyax/app/success',
-          failure:'https://vercel.com/urbanjuancruz-gmailcoms-projects/sex-shop-ecommerce-oyax/app/failure',
-          pending:'https://vercel.com/urbanjuancruz-gmailcoms-projects/sex-shop-ecommerce-oyax/app/pending'
-        },
+  success:"https://sex-shop-ecommerce-oyax.vercel.app/success",
+  failure:"https://sex-shop-ecommerce-oyax.vercel.app/failure",
+  pending:"https://sex-shop-ecommerce-oyax.vercel.app/pending"
+},
 
         auto_return:"approved",
          // 🔹 evita pagos duplicados
