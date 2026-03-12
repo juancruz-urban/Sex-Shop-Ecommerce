@@ -1,0 +1,4 @@
+{
+  "/api/create-preference/route": "app/api/create-preference/route.js",
+  "/page": "app/page.js"
+}

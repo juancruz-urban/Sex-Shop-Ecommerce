@@ -1,0 +1,7 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/api/create-preference/route": "/api/create-preference",
+  "/api/mercadopago/webhook/route": "/api/mercadopago/webhook",
+  "/page": "/"
+}

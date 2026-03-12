@@ -1,0 +1,61 @@
+/* [project]/components/Checkout.css [app-client] (css) */
+.checkout-loading {
+  text-align: center;
+  color: #666;
+  padding: 20px;
+  font-weight: 500;
+}
+
+.checkout-modal {
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.checkout-overlay {
+  background: #0009;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.checkout-container {
+  z-index: 10000;
+  background: #fff;
+  border-radius: 12px;
+  width: 480px;
+  max-height: 90vh;
+  padding: 25px;
+  position: relative;
+  overflow: auto;
+}
+
+.payment-success {
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 40px 20px;
+  display: flex;
+}
+
+.success-icon {
+  color: #22c55e;
+}
+
+.success-close {
+  color: #fff;
+  cursor: pointer;
+  background: #111;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 18px;
+}
+
+/*# sourceMappingURL=components_Checkout_css_bad6b30c._.single.css.map*/

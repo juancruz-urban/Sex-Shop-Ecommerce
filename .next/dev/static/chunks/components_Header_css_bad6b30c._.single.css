@@ -1,0 +1,157 @@
+/* [project]/components/Header.css [app-client] (css) */
+.header {
+  z-index: 100;
+  background-color: #fff;
+  border-bottom: 1px solid #e5e5e5;
+  position: sticky;
+  top: 0;
+}
+
+.header-container {
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+}
+
+.header-left {
+  align-items: center;
+  gap: 1rem;
+  display: flex;
+}
+
+.mobile-menu-btn {
+  cursor: pointer;
+  color: #1a1a1a;
+  background: none;
+  border: none;
+  padding: .5rem;
+  display: none;
+}
+
+.logo {
+  color: #1a1a1a;
+  letter-spacing: -.02em;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.nav-links {
+  gap: 2rem;
+  display: flex;
+}
+
+.nav-link {
+  color: #666;
+  font-size: .9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: #1a1a1a;
+}
+
+.header-right {
+  align-items: center;
+  gap: 1rem;
+  display: flex;
+}
+
+.search-container {
+  align-items: center;
+  display: flex;
+  position: relative;
+}
+
+.search-icon {
+  color: #999;
+  pointer-events: none;
+  position: absolute;
+  left: .75rem;
+}
+
+.search-input {
+  background-color: #f8f8f8;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  width: 280px;
+  padding: .6rem .75rem .6rem 2.5rem;
+  font-size: .9rem;
+  transition: all .2s;
+}
+
+.search-input:focus {
+  background-color: #fff;
+  border-color: #1a1a1a;
+  outline: none;
+}
+
+.cart-btn {
+  cursor: pointer;
+  color: #1a1a1a;
+  background: none;
+  border: none;
+  padding: .5rem;
+  transition: transform .2s;
+  position: relative;
+}
+
+.cart-btn:hover {
+  transform: scale(1.1);
+}
+
+.cart-badge {
+  color: #fff;
+  background-color: #c44d3b;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 18px;
+  height: 18px;
+  font-size: .7rem;
+  font-weight: 600;
+  display: flex;
+  position: absolute;
+  top: -4px;
+  right: -4px;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: flex;
+  }
+
+  .nav-links {
+    background: #fff;
+    border-bottom: 1px solid #e5e5e5;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+  }
+
+  .nav-links.nav-open {
+    display: flex;
+  }
+
+  .search-input {
+    width: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-container {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=components_Header_css_bad6b30c._.single.css.map*/

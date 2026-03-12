@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/components/Checkout.css"],"sourcesContent":[".checkout-loading{\ntext-align:center;\npadding:20px;\nfont-weight:500;\ncolor:#666;\n}\n.checkout-modal{\nposition:fixed;\ntop:0;\nleft:0;\nwidth:100vw;\nheight:100vh;\ndisplay:flex;\nalign-items:center;\njustify-content:center;\nz-index:9999;\n}\n.checkout-overlay{\nposition:absolute;\nwidth:100%;\nheight:100%;\nbackground:rgba(0,0,0,0.6);\n}\n.checkout-container{\nposition:relative;\nbackground:white;\nwidth:480px;\nmax-height:90vh;\noverflow:auto;\nborder-radius:12px;\npadding:25px;\nz-index:10000;\n}\n\n.payment-success{\ndisplay:flex;\nflex-direction:column;\nalign-items:center;\ngap:15px;\npadding:40px 20px;\ntext-align:center;\n}\n\n.success-icon{\ncolor:#22c55e;\n}\n\n.success-close{\npadding:10px 18px;\nborder:none;\nborder-radius:6px;\nbackground:#111;\ncolor:white;\ncursor:pointer;\n}"],"names":[],"mappings":"AAAA;;;;;;;AAMA;;;;;;;;;;;;AAWA;;;;;;;AAMA;;;;;;;;;;;AAWA;;;;;;;;;AASA;;;;AAIA"}}]
+}

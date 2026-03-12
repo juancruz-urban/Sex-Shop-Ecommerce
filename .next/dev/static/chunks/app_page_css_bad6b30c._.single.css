@@ -1,0 +1,56 @@
+/* [project]/app/page.css [app-client] (css) */
+.products-section {
+  background-color: #f8f5f2;
+  min-height: 100vh;
+  padding: 3rem 1.5rem 4rem;
+}
+
+.products-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.products-header {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  display: flex;
+}
+
+.products-title {
+  color: #1a1a1a;
+  letter-spacing: -.02em;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.products-count {
+  color: #666;
+  font-size: .95rem;
+}
+
+.products-layout {
+  align-items: flex-start;
+  gap: 2rem;
+  display: flex;
+}
+
+@media (max-width: 900px) {
+  .products-section {
+    padding: 2rem 1rem 3rem;
+  }
+
+  .products-layout {
+    flex-direction: column;
+  }
+
+  .products-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .5rem;
+  }
+}
+
+/*# sourceMappingURL=app_page_css_bad6b30c._.single.css.map*/

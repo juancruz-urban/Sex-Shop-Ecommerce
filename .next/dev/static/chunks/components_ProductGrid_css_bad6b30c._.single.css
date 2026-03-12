@@ -1,0 +1,51 @@
+/* [project]/components/ProductGrid.css [app-client] (css) */
+.product-grid {
+  flex: 1;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  display: grid;
+}
+
+.no-products {
+  text-align: center;
+  background: #fff;
+  border-radius: 12px;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 2rem;
+  display: flex;
+}
+
+.no-products-icon {
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+
+.no-products h3 {
+  color: #1a1a1a;
+  margin-bottom: .5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.no-products p {
+  color: #666;
+  font-size: .95rem;
+}
+
+@media (max-width: 640px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*# sourceMappingURL=components_ProductGrid_css_bad6b30c._.single.css.map*/

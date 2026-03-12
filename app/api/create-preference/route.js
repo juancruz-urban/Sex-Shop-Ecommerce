@@ -18,9 +18,9 @@ export async function POST(req){
        
 
         back_urls:{
-          success:'http://localhost:3000/',
-          failure:'https://www.google.com/',
-          pending:'https://www.google.com/'
+          success:'https://vercel.com/urbanjuancruz-gmailcoms-projects/sex-shop-ecommerce-oyax/app/success',
+          failure:'https://vercel.com/urbanjuancruz-gmailcoms-projects/sex-shop-ecommerce-oyax/app/failure',
+          pending:'https://vercel.com/urbanjuancruz-gmailcoms-projects/sex-shop-ecommerce-oyax/app/pending'
         },
 
         auto_return:"approved",
