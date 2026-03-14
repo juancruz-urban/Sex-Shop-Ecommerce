@@ -782,6 +782,7 @@
   top: 0;
   bottom: 0;
   right: 0;
+  overflow-y: auto;
   transform: translateX(100%);
   box-shadow: -4px 0 24px #0000001a;
 }
@@ -856,7 +857,6 @@
 .cart-items {
   flex: 1;
   padding: 1rem 1.5rem;
-  overflow-y: auto;
 }
 
 .cart-item {

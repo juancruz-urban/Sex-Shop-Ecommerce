@@ -2,6 +2,7 @@
 
 import { X, Minus, Plus, Trash2, ShoppingBag } from "lucide-react"
 import { useCart } from "@/context/CartContext"
+import CardCheckout from "./CardCheckout"
 import "./Cart.css"
 
 export default function Cart({ onCheckout }) {
@@ -102,6 +103,11 @@ export default function Cart({ onCheckout }) {
                 <span>Total</span>
                 <span>{formatPrice(totalPrice)}</span>
               </div>
+
+              <div>
+                <CardCheckout amount={totalPrice}></CardCheckout>
+              </div>
+
               <button 
                 className="checkout-btn"
                 onClick={onCheckout}

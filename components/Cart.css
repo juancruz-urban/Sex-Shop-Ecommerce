@@ -12,6 +12,7 @@
   transform: translateX(100%);
   transition: transform 0.3s ease;
   box-shadow: -4px 0 24px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
 }
 
 .cart-drawer.cart-open {
@@ -83,7 +84,7 @@
 
 .cart-items {
   flex: 1;
-  overflow-y: auto;
+  
   padding: 1rem 1.5rem;
 }
 
