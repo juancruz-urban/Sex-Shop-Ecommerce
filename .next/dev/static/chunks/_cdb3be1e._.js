@@ -1530,53 +1530,201 @@ var _s = __turbopack_context__.k.signature();
 ;
 function CardCheckout({ amount }) {
     _s();
+    const [submitError, setSubmitError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [processing, setProcessing] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [brickReady, setBrickReady] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    // Usamos useRef para evitar re-renders
+    const brickInitialized = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(false);
+    const errorRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null) // Guardamos errores sin causar re-render
+    ;
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "CardCheckout.useEffect": ()=>{
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mercadopago$2f$sdk$2d$react$2f$esm$2f$mercadoPago$2f$initMercadoPago$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__initMercadoPago$3e$__["initMercadoPago"])(("TURBOPACK compile-time value", "APP_USR-bd6cd812-002a-4229-86f7-4313b4b52c57"));
+            // SOLO inicializamos una vez
+            if (!brickInitialized.current) {
+                console.log("🎯 Inicializando MercadoPago");
+                (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mercadopago$2f$sdk$2d$react$2f$esm$2f$mercadoPago$2f$initMercadoPago$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__initMercadoPago$3e$__["initMercadoPago"])(("TURBOPACK compile-time value", "APP_USR-bd6cd812-002a-4229-86f7-4313b4b52c57"));
+                brickInitialized.current = true;
+            }
         }
-    }["CardCheckout.useEffect"], []);
+    }["CardCheckout.useEffect"], []); // Array vacío = solo una vez
     const initialization = {
         amount: amount
     };
     const customization = {
         paymentMethods: {
             creditCard: "all",
-            debitCard: "all"
-        }
-    };
-    const onSubmit = async ({ selectedPaymentMethod, formData })=>{
-        const res = await fetch("/api/process-payment", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
+            debitCard: "all",
+            prepaidCard: "all",
+            ticket: false,
+            bankTransfer: false,
+            atm: false
+        },
+        visual: {
+            style: {
+                theme: "default"
             },
-            body: JSON.stringify(formData)
-        });
-        const data = await res.json();
-        if (data.status === "approved") {
-            window.location.href = "/success";
+            hideFormTitle: false,
+            showExternalReference: false
         }
     };
+    // useCallback para evitar que la función cambie en cada render
+    const onSubmit = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
+        "CardCheckout.useCallback[onSubmit]": async ({ selectedPaymentMethod, formData })=>{
+            setSubmitError(null);
+            setProcessing(true);
+            try {
+                console.log("📤 Enviando pago...", formData);
+                const res = await fetch("/api/process-payment", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        ...formData,
+                        transaction_amount: Number(amount)
+                    })
+                });
+                const data = await res.json();
+                if (!res.ok) {
+                    throw new Error(data.message || "Error en el pago");
+                }
+                if (data.status === "approved") {
+                    window.location.href = "/success";
+                } else if ([
+                    "pending",
+                    "in_process"
+                ].includes(data.status)) {
+                    window.location.href = "/pending";
+                } else {
+                    setSubmitError(`Estado: ${data.status}`);
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                setSubmitError(error.message);
+            } finally{
+                setProcessing(false);
+            }
+        }
+    }["CardCheckout.useCallback[onSubmit]"], [
+        amount
+    ]) // Solo depende de amount
+    ;
+    // ⚠️ IMPORTANTE: Este onError NO debe modificar el estado
+    // Solo logueamos, sin setState para evitar re-renders
+    const onError = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
+        "CardCheckout.useCallback[onError]": (error)=>{
+            // Guardamos en ref sin causar re-render
+            errorRef.current = error;
+            // Solo logueamos en consola, NO actualizamos estado
+            console.log("ℹ️ Brick event:", {
+                type: error.type,
+                cause: error.cause,
+                message: error.message
+            });
+        // 👇 NO HACEMOS setBrickError ni nada que cause re-render
+        }
+    }["CardCheckout.useCallback[onError]"], []) // Array vacío = función estable
+    ;
+    const onReady = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
+        "CardCheckout.useCallback[onReady]": ()=>{
+            console.log("✅ Brick listo");
+            setBrickReady(true);
+        }
+    }["CardCheckout.useCallback[onReady]"], []);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         style: {
-            marginTop: "20px"
+            maxWidth: "600px",
+            margin: "0 auto",
+            padding: "20px"
         },
-        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mercadopago$2f$sdk$2d$react$2f$esm$2f$bricks$2f$payment$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Payment$3e$__["Payment"], {
-            initialization: initialization,
-            customization: customization,
-            onSubmit: onSubmit
-        }, void 0, false, {
-            fileName: "[project]/components/CardCheckout.jsx",
-            lineNumber: 43,
-            columnNumber: 7
-        }, this)
-    }, void 0, false, {
+        children: [
+            submitError && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                style: {
+                    backgroundColor: "#fee",
+                    border: "1px solid #faa",
+                    borderRadius: "8px",
+                    color: "#c00",
+                    padding: "16px",
+                    marginBottom: "20px"
+                },
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                        children: "Error:"
+                    }, void 0, false, {
+                        fileName: "[project]/components/CardCheckout.jsx",
+                        lineNumber: 123,
+                        columnNumber: 11
+                    }, this),
+                    " ",
+                    submitError
+                ]
+            }, void 0, true, {
+                fileName: "[project]/components/CardCheckout.jsx",
+                lineNumber: 115,
+                columnNumber: 9
+            }, this),
+            processing && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                style: {
+                    position: "fixed",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    backgroundColor: "rgba(255,255,255,0.9)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    zIndex: 9999
+                },
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    style: {
+                        backgroundColor: "white",
+                        padding: "24px 48px",
+                        borderRadius: "12px"
+                    },
+                    children: "⏳ Procesando pago..."
+                }, void 0, false, {
+                    fileName: "[project]/components/CardCheckout.jsx",
+                    lineNumber: 140,
+                    columnNumber: 11
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/components/CardCheckout.jsx",
+                lineNumber: 128,
+                columnNumber: 9
+            }, this),
+            !brickReady && !submitError && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                style: {
+                    textAlign: "center",
+                    padding: "40px",
+                    backgroundColor: "#f5f5f5",
+                    borderRadius: "8px"
+                },
+                children: "Cargando..."
+            }, void 0, false, {
+                fileName: "[project]/components/CardCheckout.jsx",
+                lineNumber: 151,
+                columnNumber: 9
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mercadopago$2f$sdk$2d$react$2f$esm$2f$bricks$2f$payment$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Payment$3e$__["Payment"], {
+                initialization: initialization,
+                customization: customization,
+                onSubmit: onSubmit,
+                onError: onError,
+                onReady: onReady
+            }, "payment-brick", false, {
+                fileName: "[project]/components/CardCheckout.jsx",
+                lineNumber: 162,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
         fileName: "[project]/components/CardCheckout.jsx",
-        lineNumber: 42,
+        lineNumber: 109,
         columnNumber: 5
     }, this);
 }
-_s(CardCheckout, "OD7bBpZva5O2jO+Puf00hKivP7c=");
+_s(CardCheckout, "K9VucrUpFpCAGpr3NwBW2TUmEHE=");
 _c = CardCheckout;
 var _c;
 __turbopack_context__.k.register(_c, "CardCheckout");

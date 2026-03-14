@@ -1,20 +1,765 @@
-[00:00:19.344] Server  LOG     ✓ Ready in 13.1s
-[00:00:22.430] Server  LOG     ○ Compiling / ...
-[00:00:27.933] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:28.192] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:28.192] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:00:28.192] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773514521846} /_vercel/insights/view
-[00:01:29.622] Browser WARN    MercadoPago has already been initialized in your window, please remove the duplicate import
-[00:02:19.433] Server  LOG     ✓ Compiled in 141ms
-[00:02:21.158] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
-[00:02:25.446] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
-[00:02:26.890] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
-[00:03:26.832] Server  LOG     ✓ Compiled in 122ms
-[00:03:27.535] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
-[00:05:30.798] Server  LOG     ✓ Compiled in 294ms
-[00:06:52.118] Server  LOG     ✓ Compiled in 118ms
-[00:07:44.291] Browser LOG     47705300
-[00:07:44.831] Browser ERROR   {"cause":"missing_payment_information","message":"empty_installments","type":"non_critical"}
-[00:09:28.596] Browser LOG     47705300
-[00:09:28.596] Browser ERROR   {"cause":"missing_payment_information","message":"empty_installments","type":"non_critical"}
-[00:09:57.367] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:00:01.893] Server  LOG     ✓ Ready in 1243ms
+[00:00:03.425] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:03.985] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:03.986] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:03.986] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773516197544} /_vercel/insights/view
+[00:10:13.987] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:10:14.255] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:10:14.255] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:10:14.255] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773516808088} /_vercel/insights/view
+[00:10:15.955] Browser WARN    MercadoPago has already been initialized in your window, please remove the duplicate import
+[00:10:17.426] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:10:17.724] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:10:32.035] Browser LOG     47705300
+[00:10:32.319] Browser ERROR   {"cause":"missing_payment_information","message":"empty_installments","type":"non_critical"}
+[00:29:31.775] Browser LOG     42424242
+[00:29:32.309] Browser ERROR   {"cause":"missing_payment_information","message":"payment_method_not_in_allowed_types","type":"non_critical"}
+[00:34:14.393] Server  LOG     ✓ Compiled in 827ms
+[00:34:15.994] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:34:15.994] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:34:15.994] Browser LOG     Brick listo para usar
+[00:34:20.407] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:34:20.941] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:34:20.941] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:34:20.941] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773518254772} /_vercel/insights/view
+[00:34:23.643] Browser WARN    MercadoPago has already been initialized in your window, please remove the duplicate import
+[00:34:24.893] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:34:24.893] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:34:24.893] Browser LOG     Brick listo para usar
+[00:34:25.128] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:34:25.128] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:34:25.129] Browser LOG     Brick listo para usar
+[00:34:35.891] Browser LOG     47705300
+[00:34:36.291] Browser ERROR   Error del Brick: {"cause":"missing_payment_information","message":"empty_installments","type":"non_critical"}
+[00:34:36.821] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:34:36.821] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:34:36.821] Browser LOG     Brick listo para usar
+[00:34:44.487] Browser ERROR   Error del Brick: {"cause":"fields_setup_failed_after_3_tries","message":"The integration with Secure Fields failed","type":"critical"}
+[00:34:44.974] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:34:44.974] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:34:44.974] Browser LOG     Brick listo para usar
+[00:34:48.687] Browser ERROR   Error del Brick: {"cause":"fields_setup_failed_after_3_tries","message":"The integration with Secure Fields failed","type":"critical"}
+[00:35:56.144] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:35:56.425] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:35:56.425] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:35:56.425] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773518350246} /_vercel/insights/view
+[00:35:58.731] Browser WARN    MercadoPago has already been initialized in your window, please remove the duplicate import
+[00:35:59.156] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:35:59.156] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:35:59.156] Browser LOG     Brick listo para usar
+[00:35:59.833] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:35:59.833] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:35:59.833] Browser LOG     Brick listo para usar
+[00:36:21.894] Browser LOG     47705300
+[00:36:21.894] Browser ERROR   Error del Brick: {"cause":"missing_payment_information","message":"empty_installments","type":"non_critical"}
+[00:36:22.571] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:36:22.571] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:36:22.571] Browser LOG     Brick listo para usar
+[00:36:47.465] Browser LOG     47705300
+[00:36:47.465] Browser ERROR   Error del Brick: {"cause":"missing_payment_information","message":"empty_installments","type":"non_critical"}
+[00:37:56.623] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:37:56.911] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:37:56.911] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:37:56.911] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773518470733} /_vercel/insights/view
+[00:37:57.973] Browser WARN    MercadoPago has already been initialized in your window, please remove the duplicate import
+[00:37:59.067] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:37:59.067] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:37:59.067] Browser LOG     Brick listo para usar
+[00:37:59.292] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:37:59.292] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:37:59.292] Browser LOG     Brick listo para usar
+[00:38:03.045] Browser LOG     42356477
+[00:38:03.315] Browser ERROR   Error del Brick: {"cause":"missing_payment_information","message":"payment_method_not_in_allowed_types","type":"non_critical"}
+[00:38:04.060] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:38:04.060] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:38:04.061] Browser LOG     Brick listo para usar
+[00:38:43.087] Browser ERROR   Error del Brick: {"cause":"fields_setup_failed_after_3_tries","message":"The integration with Secure Fields failed","type":"critical"}
+[00:38:43.559] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:38:43.559] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:38:43.559] Browser LOG     Brick listo para usar
+[00:39:02.020] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:39:02.656] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:39:02.656] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:39:02.656] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773518536478} /_vercel/insights/view
+[00:39:05.834] Browser WARN    MercadoPago has already been initialized in your window, please remove the duplicate import
+[00:39:06.320] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:39:06.320] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:39:06.320] Browser LOG     Brick listo para usar
+[00:39:07.071] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:39:07.071] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:39:07.071] Browser LOG     Brick listo para usar
+[00:39:15.255] Browser LOG     42356477
+[00:39:15.255] Browser ERROR   Error del Brick: {"cause":"missing_payment_information","message":"payment_method_not_in_allowed_types","type":"non_critical"}
+[00:39:15.743] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:39:15.743] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:39:15.743] Browser LOG     Brick listo para usar
+[00:40:34.197] Server  LOG     ✓ Compiled in 138ms
+[00:40:35.980] Browser WARN    Bricks Customize Texts: property 'cardholderName' is not valid.
+[00:40:35.980] Browser WARN    Bricks Customize Texts: property 'cardNumber' is not valid.
+[00:40:35.980] Browser WARN    Bricks Customize Texts: property 'expirationDate' is not valid.
+[00:40:35.980] Browser WARN    Bricks Customize Texts: property 'securityCode' is not valid.
+[00:40:35.980] Browser WARN    Bricks Customize Texts: property 'installments' is not valid.
+[00:40:35.981] Browser ERROR   Error del Brick: {"cause":"payment_brick_initialization_failed","message":"No payment type was selected","type":"critical"}
+[00:40:36.985] Browser WARN    Bricks Customize Texts: property 'cardholderName' is not valid.
+[00:40:36.985] Browser WARN    Bricks Customize Texts: property 'cardNumber' is not valid.
+[00:40:36.985] Browser WARN    Bricks Customize Texts: property 'expirationDate' is not valid.
+[00:40:36.986] Browser WARN    Bricks Customize Texts: property 'securityCode' is not valid.
+[00:40:36.986] Browser WARN    Bricks Customize Texts: property 'installments' is not valid.
+[00:40:36.986] Browser ERROR   Error del Brick: {"cause":"payment_brick_initialization_failed","message":"No payment type was selected","type":"critical"}
+[00:41:26.514] Browser WARN    Bricks Customize Texts: property 'cardholderName' is not valid.
+[00:41:26.514] Browser WARN    Bricks Customize Texts: property 'cardNumber' is not valid.
+[00:41:26.514] Browser WARN    Bricks Customize Texts: property 'expirationDate' is not valid.
+[00:41:26.514] Browser WARN    Bricks Customize Texts: property 'securityCode' is not valid.
+[00:41:26.514] Browser WARN    Bricks Customize Texts: property 'installments' is not valid.
+[00:41:26.657] Browser ERROR   Error del Brick: {"cause":"payment_brick_initialization_failed","message":"No payment type was selected","type":"critical"}
+[00:41:28.395] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:41:28.673] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:41:28.673] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:41:28.673] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773518682506} /_vercel/insights/view
+[00:41:30.675] Browser WARN    MercadoPago has already been initialized in your window, please remove the duplicate import
+[00:41:30.675] Browser WARN    Bricks Customize Texts: property 'cardholderName' is not valid.
+[00:41:30.675] Browser WARN    Bricks Customize Texts: property 'cardNumber' is not valid.
+[00:41:30.675] Browser WARN    Bricks Customize Texts: property 'expirationDate' is not valid.
+[00:41:30.675] Browser WARN    Bricks Customize Texts: property 'securityCode' is not valid.
+[00:41:30.675] Browser WARN    Bricks Customize Texts: property 'installments' is not valid.
+[00:41:30.858] Browser ERROR   Error del Brick: {"cause":"payment_brick_initialization_failed","message":"No payment type was selected","type":"critical"}
+[00:41:31.133] Browser WARN    Bricks Customize Texts: property 'cardholderName' is not valid.
+[00:41:31.133] Browser WARN    Bricks Customize Texts: property 'cardNumber' is not valid.
+[00:41:31.133] Browser WARN    Bricks Customize Texts: property 'expirationDate' is not valid.
+[00:41:31.133] Browser WARN    Bricks Customize Texts: property 'securityCode' is not valid.
+[00:41:31.133] Browser WARN    Bricks Customize Texts: property 'installments' is not valid.
+[00:41:31.393] Browser ERROR   Error del Brick: {"cause":"payment_brick_initialization_failed","message":"No payment type was selected","type":"critical"}
+[00:41:31.733] Browser WARN    Bricks Customize Texts: property 'cardholderName' is not valid.
+[00:41:31.733] Browser WARN    Bricks Customize Texts: property 'cardNumber' is not valid.
+[00:41:31.733] Browser WARN    Bricks Customize Texts: property 'expirationDate' is not valid.
+[00:41:31.733] Browser WARN    Bricks Customize Texts: property 'securityCode' is not valid.
+[00:41:31.733] Browser WARN    Bricks Customize Texts: property 'installments' is not valid.
+[00:41:32.147] Browser ERROR   Error del Brick: {"cause":"payment_brick_initialization_failed","message":"No payment type was selected","type":"critical"}
+[00:43:42.289] Server  LOG     ✓ Compiled in 1029ms
+[00:43:42.985] Browser ERROR   ./components/Cart.jsx:5:1
+Export default doesn't exist in target module
+  3 | import { X, Minus, Plus, Trash2, ShoppingBag } from "lucide-react"
+  4 | import { useCart } from "@/context/CartContext"
+> 5 | import CardCheckout from "./CardCheckout"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import "./Cart.css"
+  7 |
+  8 | export default function Cart({ onCheckout }) {
+
+The export default was not found in module [project]/components/CardCheckout.jsx [app-client] (ecmascript).
+Did you mean to import POST?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/Cart.jsx [Client Component Browser]
+    ./app/page.jsx [Client Component Browser]
+    ./app/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./components/Cart.jsx [Client Component SSR]
+    ./app/page.jsx [Client Component SSR]
+    ./app/page.jsx [Server Component]
+[00:43:42.985] Browser ERROR   ./components/Cart.jsx:5:1
+Export default doesn't exist in target module
+  3 | import { X, Minus, Plus, Trash2, ShoppingBag } from "lucide-react"
+  4 | import { useCart } from "@/context/CartContext"
+> 5 | import CardCheckout from "./CardCheckout"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import "./Cart.css"
+  7 |
+  8 | export default function Cart({ onCheckout }) {
+
+The export default was not found in module [project]/components/CardCheckout.jsx [app-ssr] (ecmascript).
+Did you mean to import POST?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/Cart.jsx [Client Component Browser]
+    ./app/page.jsx [Client Component Browser]
+    ./app/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./components/Cart.jsx [Client Component SSR]
+    ./app/page.jsx [Client Component SSR]
+    ./app/page.jsx [Server Component]
+[00:43:46.858] Server  ERROR   ⨯ ./components/Cart.jsx:5:1
+Export default doesn't exist in target module
+  3 | import { X, Minus, Plus, Trash2, ShoppingBag } from "lucide-react"
+  4 | import { useCart } from "@/context/CartContext"
+> 5 | import CardCheckout from "./CardCheckout"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import "./Cart.css"
+  7 |
+  8 | export default function Cart({ onCheckout }) {
+
+The export default was not found in module [project]/components/CardCheckout.jsx [app-client] (ecmascript).
+Did you mean to import POST?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/Cart.jsx [Client Component Browser]
+    ./app/page.jsx [Client Component Browser]
+    ./app/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./components/Cart.jsx [Client Component SSR]
+    ./app/page.jsx [Client Component SSR]
+    ./app/page.jsx [Server Component]
+
+
+
+./components/Cart.jsx:5:1
+Export default doesn't exist in target module
+  3 | import { X, Minus, Plus, Trash2, ShoppingBag } from "lucide-react"
+  4 | import { useCart } from "@/context/CartContext"
+> 5 | import CardCheckout from "./CardCheckout"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import "./Cart.css"
+  7 |
+  8 | export default function Cart({ onCheckout }) {
+
+The export default was not found in module [project]/components/CardCheckout.jsx [app-ssr] (ecmascript).
+Did you mean to import POST?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/Cart.jsx [Client Component Browser]
+    ./app/page.jsx [Client Component Browser]
+    ./app/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./components/Cart.jsx [Client Component SSR]
+    ./app/page.jsx [Client Component SSR]
+    ./app/page.jsx [Server Component]
+
+
+[00:43:47.005] Browser ERROR   ./components/Cart.jsx:5:1
+Export default doesn't exist in target module
+  3 | import { X, Minus, Plus, Trash2, ShoppingBag } from "lucide-react"
+  4 | import { useCart } from "@/context/CartContext"
+> 5 | import CardCheckout from "./CardCheckout"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import "./Cart.css"
+  7 |
+  8 | export default function Cart({ onCheckout }) {
+
+The export default was not found in module [project]/components/CardCheckout.jsx [app-client] (ecmascript).
+Did you mean to import POST?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/Cart.jsx [Client Component Browser]
+    ./app/page.jsx [Client Component Browser]
+    ./app/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./components/Cart.jsx [Client Component SSR]
+    ./app/page.jsx [Client Component SSR]
+    ./app/page.jsx [Server Component]
+[00:43:47.005] Browser ERROR   ./components/Cart.jsx:5:1
+Export default doesn't exist in target module
+  3 | import { X, Minus, Plus, Trash2, ShoppingBag } from "lucide-react"
+  4 | import { useCart } from "@/context/CartContext"
+> 5 | import CardCheckout from "./CardCheckout"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import "./Cart.css"
+  7 |
+  8 | export default function Cart({ onCheckout }) {
+
+The export default was not found in module [project]/components/CardCheckout.jsx [app-ssr] (ecmascript).
+Did you mean to import POST?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/Cart.jsx [Client Component Browser]
+    ./app/page.jsx [Client Component Browser]
+    ./app/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./components/Cart.jsx [Client Component SSR]
+    ./app/page.jsx [Client Component SSR]
+    ./app/page.jsx [Server Component]
+[00:43:48.765] Browser ERROR   ./components/Cart.jsx:5:1
+Export default doesn't exist in target module
+  3 | import { X, Minus, Plus, Trash2, ShoppingBag } from "lucide-react"
+  4 | import { useCart } from "@/context/CartContext"
+> 5 | import CardCheckout from "./CardCheckout"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import "./Cart.css"
+  7 |
+  8 | export default function Cart({ onCheckout }) {
+
+The export default was not found in module [project]/components/CardCheckout.jsx [app-client] (ecmascript).
+Did you mean to import POST?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/Cart.jsx [Client Component Browser]
+    ./app/page.jsx [Client Component Browser]
+    ./app/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./components/Cart.jsx [Client Component SSR]
+    ./app/page.jsx [Client Component SSR]
+    ./app/page.jsx [Server Component]
+[00:43:48.765] Browser ERROR   ./components/Cart.jsx:5:1
+Export default doesn't exist in target module
+  3 | import { X, Minus, Plus, Trash2, ShoppingBag } from "lucide-react"
+  4 | import { useCart } from "@/context/CartContext"
+> 5 | import CardCheckout from "./CardCheckout"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import "./Cart.css"
+  7 |
+  8 | export default function Cart({ onCheckout }) {
+
+The export default was not found in module [project]/components/CardCheckout.jsx [app-ssr] (ecmascript).
+Did you mean to import POST?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/Cart.jsx [Client Component Browser]
+    ./app/page.jsx [Client Component Browser]
+    ./app/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./components/Cart.jsx [Client Component SSR]
+    ./app/page.jsx [Client Component SSR]
+    ./app/page.jsx [Server Component]
+[00:43:48.915] Browser ERROR   ./components/Cart.jsx:5:1
+Export default doesn't exist in target module
+  3 | import { X, Minus, Plus, Trash2, ShoppingBag } from "lucide-react"
+  4 | import { useCart } from "@/context/CartContext"
+> 5 | import CardCheckout from "./CardCheckout"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import "./Cart.css"
+  7 |
+  8 | export default function Cart({ onCheckout }) {
+
+The export default was not found in module [project]/components/CardCheckout.jsx [app-client] (ecmascript).
+Did you mean to import POST?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/Cart.jsx [Client Component Browser]
+    ./app/page.jsx [Client Component Browser]
+    ./app/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./components/Cart.jsx [Client Component SSR]
+    ./app/page.jsx [Client Component SSR]
+    ./app/page.jsx [Server Component]
+[00:43:48.915] Browser ERROR   ./components/Cart.jsx:5:1
+Export default doesn't exist in target module
+  3 | import { X, Minus, Plus, Trash2, ShoppingBag } from "lucide-react"
+  4 | import { useCart } from "@/context/CartContext"
+> 5 | import CardCheckout from "./CardCheckout"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import "./Cart.css"
+  7 |
+  8 | export default function Cart({ onCheckout }) {
+
+The export default was not found in module [project]/components/CardCheckout.jsx [app-ssr] (ecmascript).
+Did you mean to import POST?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/Cart.jsx [Client Component Browser]
+    ./app/page.jsx [Client Component Browser]
+    ./app/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./components/Cart.jsx [Client Component SSR]
+    ./app/page.jsx [Client Component SSR]
+    ./app/page.jsx [Server Component]
+[00:43:50.353] Browser ERROR   ./components/Cart.jsx:5:1
+Export default doesn't exist in target module
+  3 | import { X, Minus, Plus, Trash2, ShoppingBag } from "lucide-react"
+  4 | import { useCart } from "@/context/CartContext"
+> 5 | import CardCheckout from "./CardCheckout"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import "./Cart.css"
+  7 |
+  8 | export default function Cart({ onCheckout }) {
+
+The export default was not found in module [project]/components/CardCheckout.jsx [app-client] (ecmascript).
+Did you mean to import POST?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/Cart.jsx [Client Component Browser]
+    ./app/page.jsx [Client Component Browser]
+    ./app/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./components/Cart.jsx [Client Component SSR]
+    ./app/page.jsx [Client Component SSR]
+    ./app/page.jsx [Server Component]
+[00:43:50.353] Browser ERROR   ./components/Cart.jsx:5:1
+Export default doesn't exist in target module
+  3 | import { X, Minus, Plus, Trash2, ShoppingBag } from "lucide-react"
+  4 | import { useCart } from "@/context/CartContext"
+> 5 | import CardCheckout from "./CardCheckout"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import "./Cart.css"
+  7 |
+  8 | export default function Cart({ onCheckout }) {
+
+The export default was not found in module [project]/components/CardCheckout.jsx [app-ssr] (ecmascript).
+Did you mean to import POST?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/Cart.jsx [Client Component Browser]
+    ./app/page.jsx [Client Component Browser]
+    ./app/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./components/Cart.jsx [Client Component SSR]
+    ./app/page.jsx [Client Component SSR]
+    ./app/page.jsx [Server Component]
+[00:43:50.753] Browser ERROR   uncaughtError: Error: ./components/Cart.jsx:5:1
+Export default doesn't exist in target module
+  3 | import { X, Minus, Plus, Trash2, ShoppingBag } from "lucide-react"
+  4 | import { useCart } from "@/context/CartContext"
+> 5 | import CardCheckout from "./CardCheckout"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import "./Cart.css"
+  7 |
+  8 | export default function Cart({ onCheckout }) {
+
+The export default was not found in module [project]/components/CardCheckout.jsx [app-client] (ecmascript).
+Did you mean to import POST?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/Cart.jsx [Client Component Browser]
+    ./app/page.jsx [Client Component Browser]
+    ./app/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./components/Cart.jsx [Client Component SSR]
+    ./app/page.jsx [Client Component SSR]
+    ./app/page.jsx [Server Component]
+
+
+[00:43:50.997] Browser ERROR   ./components/Cart.jsx:5:1
+Export default doesn't exist in target module
+  3 | import { X, Minus, Plus, Trash2, ShoppingBag } from "lucide-react"
+  4 | import { useCart } from "@/context/CartContext"
+> 5 | import CardCheckout from "./CardCheckout"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import "./Cart.css"
+  7 |
+  8 | export default function Cart({ onCheckout }) {
+
+The export default was not found in module [project]/components/CardCheckout.jsx [app-client] (ecmascript).
+Did you mean to import POST?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/Cart.jsx [Client Component Browser]
+    ./app/page.jsx [Client Component Browser]
+    ./app/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./components/Cart.jsx [Client Component SSR]
+    ./app/page.jsx [Client Component SSR]
+    ./app/page.jsx [Server Component]
+[00:43:50.997] Browser ERROR   ./components/Cart.jsx:5:1
+Export default doesn't exist in target module
+  3 | import { X, Minus, Plus, Trash2, ShoppingBag } from "lucide-react"
+  4 | import { useCart } from "@/context/CartContext"
+> 5 | import CardCheckout from "./CardCheckout"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import "./Cart.css"
+  7 |
+  8 | export default function Cart({ onCheckout }) {
+
+The export default was not found in module [project]/components/CardCheckout.jsx [app-ssr] (ecmascript).
+Did you mean to import POST?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/Cart.jsx [Client Component Browser]
+    ./app/page.jsx [Client Component Browser]
+    ./app/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./components/Cart.jsx [Client Component SSR]
+    ./app/page.jsx [Client Component SSR]
+    ./app/page.jsx [Server Component]
+[00:43:50.997] Browser ERROR   ./components/Cart.jsx:5:1
+Export default doesn't exist in target module
+  3 | import { X, Minus, Plus, Trash2, ShoppingBag } from "lucide-react"
+  4 | import { useCart } from "@/context/CartContext"
+> 5 | import CardCheckout from "./CardCheckout"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import "./Cart.css"
+  7 |
+  8 | export default function Cart({ onCheckout }) {
+
+The export default was not found in module [project]/components/CardCheckout.jsx [app-client] (ecmascript).
+Did you mean to import POST?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/Cart.jsx [Client Component Browser]
+    ./app/page.jsx [Client Component Browser]
+    ./app/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./components/Cart.jsx [Client Component SSR]
+    ./app/page.jsx [Client Component SSR]
+    ./app/page.jsx [Server Component]
+[00:43:50.998] Browser ERROR   ./components/Cart.jsx:5:1
+Export default doesn't exist in target module
+  3 | import { X, Minus, Plus, Trash2, ShoppingBag } from "lucide-react"
+  4 | import { useCart } from "@/context/CartContext"
+> 5 | import CardCheckout from "./CardCheckout"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import "./Cart.css"
+  7 |
+  8 | export default function Cart({ onCheckout }) {
+
+The export default was not found in module [project]/components/CardCheckout.jsx [app-ssr] (ecmascript).
+Did you mean to import POST?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/Cart.jsx [Client Component Browser]
+    ./app/page.jsx [Client Component Browser]
+    ./app/page.jsx [Server Component]
+
+  Client Component SSR:
+    ./components/Cart.jsx [Client Component SSR]
+    ./app/page.jsx [Client Component SSR]
+    ./app/page.jsx [Server Component]
+[00:44:15.871] Server  LOG     ✓ Compiled in 120ms
+[00:44:16.813] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:44:17.978] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:44:17.978] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:44:17.978] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773518850938} /_vercel/insights/view
+[00:44:44.573] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:44:44.802] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:44:44.802] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:44:44.802] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773518878629} /_vercel/insights/view
+[00:44:46.954] Browser WARN    MercadoPago has already been initialized in your window, please remove the duplicate import
+[00:44:47.561] Browser WARN    Bricks Customize Texts: property 'inputBorderColor' is not valid.
+[00:44:47.561] Browser WARN    Bricks Customize Texts: property 'buttonBackgroundColor' is not valid.
+[00:44:47.740] Browser WARN    Bricks Customize Texts: property 'inputBorderColor' is not valid.
+[00:44:47.740] Browser WARN    Bricks Customize Texts: property 'buttonBackgroundColor' is not valid.
+[00:44:48.227] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:44:48.227] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:44:48.227] Browser WARN    [BRICKS] Invalid param(s) [marketplace_credits]
+[00:44:48.227] Browser LOG     ✅ Payment Brick listo
+[00:44:48.461] Browser WARN    Bricks Customize Texts: property 'inputBorderColor' is not valid.
+[00:44:48.461] Browser WARN    Bricks Customize Texts: property 'buttonBackgroundColor' is not valid.
+[00:44:48.652] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:44:48.652] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:44:48.652] Browser WARN    [BRICKS] Invalid param(s) [marketplace_credits]
+[00:44:48.652] Browser LOG     ✅ Payment Brick listo
+[00:44:49.072] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:44:49.072] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:44:49.072] Browser WARN    [BRICKS] Invalid param(s) [marketplace_credits]
+[00:44:49.072] Browser LOG     ✅ Payment Brick listo
+[00:44:57.423] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:44:57.662] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:44:57.663] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:44:57.663] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773518891496} /_vercel/insights/view
+[00:44:58.937] Browser WARN    MercadoPago has already been initialized in your window, please remove the duplicate import
+[00:44:58.937] Browser WARN    Bricks Customize Texts: property 'inputBorderColor' is not valid.
+[00:44:58.937] Browser WARN    Bricks Customize Texts: property 'buttonBackgroundColor' is not valid.
+[00:44:59.433] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:44:59.433] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:44:59.433] Browser WARN    [BRICKS] Invalid param(s) [marketplace_credits]
+[00:44:59.433] Browser LOG     ✅ Payment Brick listo
+[00:44:59.692] Browser WARN    Bricks Customize Texts: property 'inputBorderColor' is not valid.
+[00:44:59.692] Browser WARN    Bricks Customize Texts: property 'buttonBackgroundColor' is not valid.
+[00:44:59.998] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:44:59.998] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:44:59.998] Browser WARN    [BRICKS] Invalid param(s) [marketplace_credits]
+[00:44:59.998] Browser LOG     ✅ Payment Brick listo
+[00:44:59.998] Browser WARN    Bricks Customize Texts: property 'inputBorderColor' is not valid.
+[00:44:59.998] Browser WARN    Bricks Customize Texts: property 'buttonBackgroundColor' is not valid.
+[00:45:00.237] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:45:00.237] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:45:00.237] Browser WARN    [BRICKS] Invalid param(s) [marketplace_credits]
+[00:45:00.237] Browser LOG     ✅ Payment Brick listo
+[00:45:07.798] Browser WARN    Bricks Customize Texts: property 'inputBorderColor' is not valid.
+[00:45:07.798] Browser WARN    Bricks Customize Texts: property 'buttonBackgroundColor' is not valid.
+[00:45:08.149] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:45:08.149] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:45:08.149] Browser WARN    [BRICKS] Invalid param(s) [marketplace_credits]
+[00:45:08.149] Browser LOG     ✅ Payment Brick listo
+[00:45:08.852] Browser WARN    Bricks Customize Texts: property 'inputBorderColor' is not valid.
+[00:45:08.852] Browser WARN    Bricks Customize Texts: property 'buttonBackgroundColor' is not valid.
+[00:45:09.137] Browser WARN    [BRICKS] Invalid param(s) [marketplace_credits]
+[00:45:09.137] Browser LOG     ✅ Payment Brick listo
+[00:45:09.677] Browser WARN    Bricks Customize Texts: property 'inputBorderColor' is not valid.
+[00:45:09.677] Browser WARN    Bricks Customize Texts: property 'buttonBackgroundColor' is not valid.
+[00:45:09.937] Browser WARN    [BRICKS] Invalid param(s) [marketplace_credits]
+[00:45:09.937] Browser LOG     ✅ Payment Brick listo
+[00:45:25.063] Browser LOG     47705300
+[00:45:52.003] Browser LOG     Selected payment method: debit_card
+[00:45:52.003] Browser LOG     Form data: {"installments":1,"issuer_id":"279","payer":{"email":"ejemplo@hotmail.com","identification":{"number":"38825433","type":"DNI"}},"payment_method_id":"debvisa","token":"47f45624bf0f6ec7aa5db5d0608d1fff","transaction_amount":89990.01}
+[00:45:52.003] Browser LOG     Enviando al backend: {"description":"Compra en tienda","installments":1,"issuer_id":"279","payer":{"email":"ejemplo@hotmail.com","identification":{"number":"38825433","type":"DNI"}},"payment_method_id":"debvisa","token":"47f45624bf0f6ec7aa5db5d0608d1fff","transaction_amount":89990.01}
+[00:45:52.241] Browser WARN    Bricks Customize Texts: property 'inputBorderColor' is not valid.
+[00:45:52.241] Browser WARN    Bricks Customize Texts: property 'buttonBackgroundColor' is not valid.
+[00:45:52.710] Server  LOG     📦 Datos recibidos: "{\n  \"token\": \"47f45624bf0f6ec7aa5db5d0608d1fff\",\n  \"issuer_id\": \"279\",\n  \"payment_method_id\": \"debvisa\",\n  \"transaction_amount\": 89990.01,\n  \"installments\": 1,\n  \"payer\": {\n    \"email\": \"ejemplo@hotmail.com\",\n    \"identification\": {\n      \"type\": \"DNI\",\n      \"number\": \"38825433\"\n    }\n  },\n  \"description\": \"Compra en tienda\"\n}"
+[00:45:52.715] Server  LOG     🚀 Enviando a MercadoPago: "{\n  \"transaction_amount\": 89990.01,\n  \"token\": \"47f45624bf0f6ec7aa5db5d0608d1fff\",\n  \"description\": \"Compra en tienda\",\n  \"installments\": 1,\n  \"payment_method_id\": \"debvisa\",\n  \"issuer_id\": \"279\",\n  \"payer\": {\n    \"email\": \"ejemplo@hotmail.com\",\n    \"identification\": {\n      \"type\": \"DNI\",\n      \"number\": \"38825433\"\n    },\n    \"first_name\": \"Comprador\",\n    \"last_name\": \"\"\n  },\n  \"additional_info\": {\n    \"items\": [\n      {\n        \"id\": \"item-1\",\n        \"title\": \"Producto\",\n        \"quantity\": 1,\n        \"unit_price\": 89990.01\n      }\n    ]\n  }\n}"
+[00:45:52.735] Browser WARN    [BRICKS] Invalid param(s) [marketplace_credits]
+[00:45:52.736] Browser LOG     ✅ Payment Brick listo
+[00:45:57.166] Server  LOG     ✅ Respuesta MP: {}
+[00:45:57.498] Browser WARN    Bricks Customize Texts: property 'inputBorderColor' is not valid.
+[00:45:57.498] Browser WARN    Bricks Customize Texts: property 'buttonBackgroundColor' is not valid.
+[00:45:57.747] Browser WARN    [BRICKS] Invalid param(s) [marketplace_credits]
+[00:45:57.747] Browser LOG     ✅ Payment Brick listo
+[00:46:13.538] Browser WARN    Bricks Customize Texts: property 'inputBorderColor' is not valid.
+[00:46:13.538] Browser WARN    Bricks Customize Texts: property 'buttonBackgroundColor' is not valid.
+[00:46:13.822] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:46:13.822] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:46:13.822] Browser WARN    [BRICKS] Invalid param(s) [marketplace_credits]
+[00:46:13.822] Browser LOG     ✅ Payment Brick listo
+[00:46:24.834] Browser LOG     47705300
+[00:46:24.834] Browser ERROR   Error del Brick: {"cause":"missing_payment_information","message":"empty_installments","type":"non_critical"}
+[00:46:25.101] Browser WARN    Bricks Customize Texts: property 'inputBorderColor' is not valid.
+[00:46:25.101] Browser WARN    Bricks Customize Texts: property 'buttonBackgroundColor' is not valid.
+[00:46:25.335] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:46:25.335] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:46:25.335] Browser WARN    [BRICKS] Invalid param(s) [marketplace_credits]
+[00:46:25.335] Browser LOG     ✅ Payment Brick listo
+[00:46:55.106] Browser LOG     47705300
+[00:46:55.106] Browser ERROR   Error del Brick: {"cause":"missing_payment_information","message":"empty_installments","type":"non_critical"}
+[00:47:10.243] Browser WARN    Bricks Customize Texts: property 'inputBorderColor' is not valid.
+[00:47:10.243] Browser WARN    Bricks Customize Texts: property 'buttonBackgroundColor' is not valid.
+[00:47:10.661] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:47:10.661] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:47:10.661] Browser WARN    [BRICKS] Invalid param(s) [marketplace_credits]
+[00:47:10.661] Browser LOG     ✅ Payment Brick listo
+[00:47:15.075] Browser WARN    Bricks Customize Texts: property 'inputBorderColor' is not valid.
+[00:47:15.075] Browser WARN    Bricks Customize Texts: property 'buttonBackgroundColor' is not valid.
+[00:47:15.397] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:47:15.397] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:47:15.397] Browser WARN    [BRICKS] Invalid param(s) [marketplace_credits]
+[00:47:15.397] Browser LOG     ✅ Payment Brick listo
+[00:47:30.237] Browser LOG     47705300
+[00:47:30.237] Browser ERROR   Error del Brick: {"cause":"missing_payment_information","message":"empty_installments","type":"non_critical"}
+[00:47:41.653] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:47:41.929] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:47:41.930] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:47:41.930] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773519055762} /_vercel/insights/view
+[00:47:43.259] Browser WARN    MercadoPago has already been initialized in your window, please remove the duplicate import
+[00:47:43.260] Browser WARN    Bricks Customize Texts: property 'inputBorderColor' is not valid.
+[00:47:43.260] Browser WARN    Bricks Customize Texts: property 'buttonBackgroundColor' is not valid.
+[00:47:43.802] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:47:43.802] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:47:43.802] Browser WARN    [BRICKS] Invalid param(s) [marketplace_credits]
+[00:47:43.802] Browser LOG     ✅ Payment Brick listo
+[00:47:44.130] Browser WARN    Bricks Customize Texts: property 'inputBorderColor' is not valid.
+[00:47:44.130] Browser WARN    Bricks Customize Texts: property 'buttonBackgroundColor' is not valid.
+[00:47:44.413] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:47:44.413] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:47:44.414] Browser WARN    [BRICKS] Invalid param(s) [marketplace_credits]
+[00:47:44.414] Browser LOG     ✅ Payment Brick listo
+[00:48:14.351] Browser LOG     47705300
+[00:48:14.351] Browser ERROR   Error del Brick: {"cause":"missing_payment_information","message":"empty_installments","type":"non_critical"}
+[00:48:14.617] Browser WARN    Bricks Customize Texts: property 'inputBorderColor' is not valid.
+[00:48:14.617] Browser WARN    Bricks Customize Texts: property 'buttonBackgroundColor' is not valid.
+[00:48:14.905] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:48:14.905] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:48:14.905] Browser WARN    [BRICKS] Invalid param(s) [marketplace_credits]
+[00:48:14.905] Browser LOG     ✅ Payment Brick listo
+[00:48:58.442] Browser WARN    Bricks Customize Texts: property 'inputBorderColor' is not valid.
+[00:48:58.442] Browser WARN    Bricks Customize Texts: property 'buttonBackgroundColor' is not valid.
+[00:48:58.690] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:48:58.690] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:48:58.690] Browser WARN    [BRICKS] Invalid param(s) [marketplace_credits]
+[00:48:58.690] Browser LOG     ✅ Payment Brick listo
+[00:49:10.062] Browser WARN    Bricks Customize Texts: property 'inputBorderColor' is not valid.
+[00:49:10.062] Browser WARN    Bricks Customize Texts: property 'buttonBackgroundColor' is not valid.
+[00:49:10.466] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:49:10.466] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:49:10.466] Browser WARN    [BRICKS] Invalid param(s) [marketplace_credits]
+[00:49:10.466] Browser LOG     ✅ Payment Brick listo
+[00:51:07.209] Server  LOG     ✓ Compiled in 161ms
+[00:51:09.986] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:51:09.986] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:51:09.986] Browser LOG     ✅ Payment Brick listo
+[00:51:10.985] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:51:10.985] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:51:10.985] Browser LOG     ✅ Payment Brick listo
+[00:51:14.262] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:51:14.536] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:51:14.536] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:51:14.536] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773519268362} /_vercel/insights/view
+[00:51:17.143] Browser WARN    MercadoPago has already been initialized in your window, please remove the duplicate import
+[00:51:17.677] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:51:17.677] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:51:17.677] Browser LOG     ✅ Payment Brick listo
+[00:51:18.477] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:51:18.477] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:51:18.478] Browser LOG     ✅ Payment Brick listo
+[00:51:41.113] Browser LOG     47705300
+[00:51:41.376] Browser LOG     🔧 Brick internal event (ignored): {"cause":"missing_payment_information","message":"empty_installments","type":"non_critical"}
+[00:51:41.927] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:51:41.927] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:51:41.927] Browser LOG     ✅ Payment Brick listo
+[00:51:53.654] Browser LOG     47705300
+[00:51:53.654] Browser LOG     🔧 Brick internal event (ignored): {"cause":"missing_payment_information","message":"empty_installments","type":"non_critical"}
+[00:51:54.493] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:51:54.493] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:51:54.493] Browser LOG     ✅ Payment Brick listo
+[00:52:07.937] Browser LOG     47705300
+[00:52:07.937] Browser LOG     🔧 Brick internal event (ignored): {"cause":"missing_payment_information","message":"empty_installments","type":"non_critical"}
+[00:52:08.410] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:52:08.410] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:52:08.410] Browser LOG     ✅ Payment Brick listo
+[00:55:17.684] Server  LOG     ✓ Compiled in 169ms
+[00:55:17.980] Browser LOG     🎯 Inicializando MercadoPago
+[00:55:17.980] Browser LOG     🎯 Inicializando MercadoPago
+[00:55:18.981] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:55:18.981] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:55:18.982] Browser LOG     ✅ Brick listo
+[00:55:19.731] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:55:19.731] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:55:19.732] Browser LOG     ✅ Brick listo
+[00:55:19.978] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:55:19.978] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:55:19.978] Browser LOG     ✅ Brick listo
+[00:55:20.112] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:55:20.112] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:55:20.112] Browser LOG     ✅ Brick listo
+[00:55:23.362] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:55:23.362] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:55:23.362] Browser LOG     ✅ Brick listo
+[00:55:24.995] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:55:25.334] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:55:25.334] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:55:25.334] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773519519166} /_vercel/insights/view
+[00:55:26.175] Browser LOG     🎯 Inicializando MercadoPago
+[00:55:26.396] Browser WARN    MercadoPago has already been initialized in your window, please remove the duplicate import
+[00:55:26.845] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:55:26.845] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:55:26.845] Browser LOG     ✅ Brick listo
+[00:55:27.644] Browser WARN    [BRICKS] Payment Type(s) "prepaid_card" was removed because it requires a higher amount
+[00:55:27.644] Browser WARN    [BRICKS] Payment Method(s) "amex, argencard, cabal, debcabal, debmaster, diners, maestro, master, naranja, sucredito" was removed because it requires a higher amount
+[00:55:27.644] Browser LOG     ✅ Brick listo
+[00:55:40.878] Browser LOG     47705300
+[00:55:41.139] Browser LOG     ℹ️ Brick event: {"cause":"missing_payment_information","message":"empty_installments","type":"non_critical"}
