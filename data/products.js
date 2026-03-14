@@ -3,7 +3,7 @@ export const products = [
     id: 1,
     name: "Camiseta Premium",
     category: "Ropa",
-    price: 29990,
+    price: 0.01,
     originalPrice: 39990,
     image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop",
     rating: 4.5,
