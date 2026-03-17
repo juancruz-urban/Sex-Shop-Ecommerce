@@ -8,18 +8,14 @@ export default function CardCheckout({ amount }) {
   const [processing, setProcessing] = useState(false)
   const [brickReady, setBrickReady] = useState(false)
   
-  // Usamos useRef para evitar re-renders
   const brickInitialized = useRef(false)
-  const errorRef = useRef(null) // Guardamos errores sin causar re-render
 
   useEffect(() => {
-    // SOLO inicializamos una vez
     if (!brickInitialized.current) {
-      console.log("🎯 Inicializando MercadoPago")
       initMercadoPago(process.env.NEXT_PUBLIC_MP_PUBLIC_KEY)
       brickInitialized.current = true
     }
-  }, []) // Array vacío = solo una vez
+  }, [])
 
   const initialization = {
     amount: amount
@@ -29,27 +25,32 @@ export default function CardCheckout({ amount }) {
     paymentMethods: {
       creditCard: "all",
       debitCard: "all",
-      prepaidCard: "all",
-      ticket: false,
-      bankTransfer: false,
-      atm: false
+      prepaidCard: "all"
     },
     visual: {
       style: {
         theme: "default"
-      },
-      hideFormTitle: false,
-      showExternalReference: false
+      }
     }
   }
 
-  // useCallback para evitar que la función cambie en cada render
   const onSubmit = useCallback(async ({ selectedPaymentMethod, formData }) => {
+    // Limpiamos errores anteriores
     setSubmitError(null)
     setProcessing(true)
 
     try {
-      console.log("📤 Enviando pago...", formData)
+      console.log("📤 Enviando pago...", {
+        metodo: selectedPaymentMethod,
+        monto: amount,
+        email: formData.payer?.email,
+        payment_method_id: formData.payment_method_id
+      })
+
+      // Verificamos que tenemos token
+      if (!formData.token) {
+        throw new Error("Error al procesar la tarjeta. Intentá de nuevo.")
+      }
 
       const res = await fetch("/api/process-payment", {
         method: "POST",
@@ -58,47 +59,42 @@ export default function CardCheckout({ amount }) {
         },
         body: JSON.stringify({
           ...formData,
-          transaction_amount: Number(amount)
+          transaction_amount: Number(amount),
+          description: "Compra en tienda"
         })
       })
 
       const data = await res.json()
+      console.log("📥 Respuesta:", data)
 
       if (!res.ok) {
-        throw new Error(data.message || "Error en el pago")
+        throw new Error(data.message || "Error al procesar el pago")
       }
 
+      // Redirigir según el estado del pago
       if (data.status === "approved") {
         window.location.href = "/success"
       } else if (["pending", "in_process"].includes(data.status)) {
         window.location.href = "/pending"
       } else {
-        setSubmitError(`Estado: ${data.status}`)
+        setSubmitError(`El pago quedó en estado: ${data.status}`)
       }
 
     } catch (error) {
-      console.error("Error:", error)
+      console.error("❌ Error en submit:", error)
       setSubmitError(error.message)
     } finally {
       setProcessing(false)
     }
-  }, [amount]) // Solo depende de amount
+  }, [amount])
 
-  // ⚠️ IMPORTANTE: Este onError NO debe modificar el estado
-  // Solo logueamos, sin setState para evitar re-renders
-  const onError = useCallback((error) => {
-    // Guardamos en ref sin causar re-render
-    errorRef.current = error
-    
-    // Solo logueamos en consola, NO actualizamos estado
-    console.log("ℹ️ Brick event:", {
-      type: error.type,
-      cause: error.cause,
-      message: error.message
-    })
-    
-    // 👇 NO HACEMOS setBrickError ni nada que cause re-render
-  }, []) // Array vacío = función estable
+  // ⚠️ CRÍTICO: Este onError NO hace NADA
+  // Solo ignoramos todos los errores del Brick
+  const onError = useCallback(() => {
+    // ABSOLUTAMENTE NADA
+    // No console.log, no setState, no ref, nada
+    return null
+  }, [])
 
   const onReady = useCallback(() => {
     console.log("✅ Brick listo")
@@ -111,6 +107,7 @@ export default function CardCheckout({ amount }) {
       margin: "0 auto",
       padding: "20px"
     }}>
+      {/* SOLO mostramos errores del SUBMIT */}
       {submitError && (
         <div style={{
           backgroundColor: "#fee",
@@ -118,12 +115,14 @@ export default function CardCheckout({ amount }) {
           borderRadius: "8px",
           color: "#c00",
           padding: "16px",
-          marginBottom: "20px"
+          marginBottom: "20px",
+          fontSize: "14px"
         }}>
-          <strong>Error:</strong> {submitError}
+          <strong>Error al procesar el pago:</strong> {submitError}
         </div>
       )}
 
+      {/* Loading overlay */}
       {processing && (
         <div style={{
           position: "fixed",
@@ -140,13 +139,15 @@ export default function CardCheckout({ amount }) {
           <div style={{
             backgroundColor: "white",
             padding: "24px 48px",
-            borderRadius: "12px"
+            borderRadius: "12px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.1)"
           }}>
             ⏳ Procesando pago...
           </div>
         </div>
       )}
 
+      {/* Loading del Brick */}
       {!brickReady && !submitError && (
         <div style={{
           textAlign: "center",
@@ -154,13 +155,13 @@ export default function CardCheckout({ amount }) {
           backgroundColor: "#f5f5f5",
           borderRadius: "8px"
         }}>
-          Cargando...
+          Cargando formulario de pago...
         </div>
       )}
 
-      {/* El Payment brick NO debe tener keys que cambien */}
+      {/* Componente de pago */}
       <Payment
-        key="payment-brick" // Key fija para evitar recreación
+        key="payment-brick"
         initialization={initialization}
         customization={customization}
         onSubmit={onSubmit}

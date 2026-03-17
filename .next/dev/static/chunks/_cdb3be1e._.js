@@ -596,7 +596,7 @@ const products = [
         id: 1,
         name: "Camiseta Premium",
         category: "Ropa",
-        price: 0.01,
+        price: 5.0,
         originalPrice: 39990,
         image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop",
         rating: 4.5,
@@ -1533,20 +1533,15 @@ function CardCheckout({ amount }) {
     const [submitError, setSubmitError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [processing, setProcessing] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [brickReady, setBrickReady] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    // Usamos useRef para evitar re-renders
     const brickInitialized = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(false);
-    const errorRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null) // Guardamos errores sin causar re-render
-    ;
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "CardCheckout.useEffect": ()=>{
-            // SOLO inicializamos una vez
             if (!brickInitialized.current) {
-                console.log("🎯 Inicializando MercadoPago");
-                (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mercadopago$2f$sdk$2d$react$2f$esm$2f$mercadoPago$2f$initMercadoPago$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__initMercadoPago$3e$__["initMercadoPago"])(("TURBOPACK compile-time value", "APP_USR-bd6cd812-002a-4229-86f7-4313b4b52c57"));
+                (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mercadopago$2f$sdk$2d$react$2f$esm$2f$mercadoPago$2f$initMercadoPago$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__initMercadoPago$3e$__["initMercadoPago"])(("TURBOPACK compile-time value", "APP_USR-53ea4197-c7f4-4842-9411-b0fd8982de49"));
                 brickInitialized.current = true;
             }
         }
-    }["CardCheckout.useEffect"], []); // Array vacío = solo una vez
+    }["CardCheckout.useEffect"], []);
     const initialization = {
         amount: amount
     };
@@ -1554,26 +1549,30 @@ function CardCheckout({ amount }) {
         paymentMethods: {
             creditCard: "all",
             debitCard: "all",
-            prepaidCard: "all",
-            ticket: false,
-            bankTransfer: false,
-            atm: false
+            prepaidCard: "all"
         },
         visual: {
             style: {
                 theme: "default"
-            },
-            hideFormTitle: false,
-            showExternalReference: false
+            }
         }
     };
-    // useCallback para evitar que la función cambie en cada render
     const onSubmit = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
         "CardCheckout.useCallback[onSubmit]": async ({ selectedPaymentMethod, formData })=>{
+            // Limpiamos errores anteriores
             setSubmitError(null);
             setProcessing(true);
             try {
-                console.log("📤 Enviando pago...", formData);
+                console.log("📤 Enviando pago...", {
+                    metodo: selectedPaymentMethod,
+                    monto: amount,
+                    email: formData.payer?.email,
+                    payment_method_id: formData.payment_method_id
+                });
+                // Verificamos que tenemos token
+                if (!formData.token) {
+                    throw new Error("Error al procesar la tarjeta. Intentá de nuevo.");
+                }
                 const res = await fetch("/api/process-payment", {
                     method: "POST",
                     headers: {
@@ -1581,13 +1580,16 @@ function CardCheckout({ amount }) {
                     },
                     body: JSON.stringify({
                         ...formData,
-                        transaction_amount: Number(amount)
+                        transaction_amount: Number(amount),
+                        description: "Compra en tienda"
                     })
                 });
                 const data = await res.json();
+                console.log("📥 Respuesta:", data);
                 if (!res.ok) {
-                    throw new Error(data.message || "Error en el pago");
+                    throw new Error(data.message || "Error al procesar el pago");
                 }
+                // Redirigir según el estado del pago
                 if (data.status === "approved") {
                     window.location.href = "/success";
                 } else if ([
@@ -1596,10 +1598,10 @@ function CardCheckout({ amount }) {
                 ].includes(data.status)) {
                     window.location.href = "/pending";
                 } else {
-                    setSubmitError(`Estado: ${data.status}`);
+                    setSubmitError(`El pago quedó en estado: ${data.status}`);
                 }
             } catch (error) {
-                console.error("Error:", error);
+                console.error("❌ Error en submit:", error);
                 setSubmitError(error.message);
             } finally{
                 setProcessing(false);
@@ -1607,24 +1609,16 @@ function CardCheckout({ amount }) {
         }
     }["CardCheckout.useCallback[onSubmit]"], [
         amount
-    ]) // Solo depende de amount
-    ;
-    // ⚠️ IMPORTANTE: Este onError NO debe modificar el estado
-    // Solo logueamos, sin setState para evitar re-renders
+    ]);
+    // ⚠️ CRÍTICO: Este onError NO hace NADA
+    // Solo ignoramos todos los errores del Brick
     const onError = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
-        "CardCheckout.useCallback[onError]": (error)=>{
-            // Guardamos en ref sin causar re-render
-            errorRef.current = error;
-            // Solo logueamos en consola, NO actualizamos estado
-            console.log("ℹ️ Brick event:", {
-                type: error.type,
-                cause: error.cause,
-                message: error.message
-            });
-        // 👇 NO HACEMOS setBrickError ni nada que cause re-render
+        "CardCheckout.useCallback[onError]": ()=>{
+            // ABSOLUTAMENTE NADA
+            // No console.log, no setState, no ref, nada
+            return null;
         }
-    }["CardCheckout.useCallback[onError]"], []) // Array vacío = función estable
-    ;
+    }["CardCheckout.useCallback[onError]"], []);
     const onReady = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
         "CardCheckout.useCallback[onReady]": ()=>{
             console.log("✅ Brick listo");
@@ -1645,14 +1639,15 @@ function CardCheckout({ amount }) {
                     borderRadius: "8px",
                     color: "#c00",
                     padding: "16px",
-                    marginBottom: "20px"
+                    marginBottom: "20px",
+                    fontSize: "14px"
                 },
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
-                        children: "Error:"
+                        children: "Error al procesar el pago:"
                     }, void 0, false, {
                         fileName: "[project]/components/CardCheckout.jsx",
-                        lineNumber: 123,
+                        lineNumber: 121,
                         columnNumber: 11
                     }, this),
                     " ",
@@ -1660,7 +1655,7 @@ function CardCheckout({ amount }) {
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/CardCheckout.jsx",
-                lineNumber: 115,
+                lineNumber: 112,
                 columnNumber: 9
             }, this),
             processing && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1680,17 +1675,18 @@ function CardCheckout({ amount }) {
                     style: {
                         backgroundColor: "white",
                         padding: "24px 48px",
-                        borderRadius: "12px"
+                        borderRadius: "12px",
+                        boxShadow: "0 4px 12px rgba(0,0,0,0.1)"
                     },
                     children: "⏳ Procesando pago..."
                 }, void 0, false, {
                     fileName: "[project]/components/CardCheckout.jsx",
-                    lineNumber: 140,
+                    lineNumber: 139,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/CardCheckout.jsx",
-                lineNumber: 128,
+                lineNumber: 127,
                 columnNumber: 9
             }, this),
             !brickReady && !submitError && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1700,10 +1696,10 @@ function CardCheckout({ amount }) {
                     backgroundColor: "#f5f5f5",
                     borderRadius: "8px"
                 },
-                children: "Cargando..."
+                children: "Cargando formulario de pago..."
             }, void 0, false, {
                 fileName: "[project]/components/CardCheckout.jsx",
-                lineNumber: 151,
+                lineNumber: 152,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mercadopago$2f$sdk$2d$react$2f$esm$2f$bricks$2f$payment$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Payment$3e$__["Payment"], {
@@ -1714,17 +1710,17 @@ function CardCheckout({ amount }) {
                 onReady: onReady
             }, "payment-brick", false, {
                 fileName: "[project]/components/CardCheckout.jsx",
-                lineNumber: 162,
+                lineNumber: 163,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/CardCheckout.jsx",
-        lineNumber: 109,
+        lineNumber: 105,
         columnNumber: 5
     }, this);
 }
-_s(CardCheckout, "K9VucrUpFpCAGpr3NwBW2TUmEHE=");
+_s(CardCheckout, "4T37qHfrjTKyvoVV3PEJQ08Tf3E=");
 _c = CardCheckout;
 var _c;
 __turbopack_context__.k.register(_c, "CardCheckout");
@@ -1747,9 +1743,11 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shopping$2d$bag$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ShoppingBag$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/shopping-bag.js [app-client] (ecmascript) <export default as ShoppingBag>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$CartContext$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/context/CartContext.jsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$CardCheckout$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/CardCheckout.jsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
+;
 ;
 ;
 ;
@@ -1764,6 +1762,12 @@ function Cart({ onCheckout }) {
             minimumFractionDigits: 0
         }).format(price);
     };
+    const [mounted, setMounted] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "Cart.useEffect": ()=>{
+            setMounted(true);
+        }
+    }["Cart.useEffect"], []);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1779,14 +1783,14 @@ function Cart({ onCheckout }) {
                                         size: 22
                                     }, void 0, false, {
                                         fileName: "[project]/components/Cart.jsx",
-                                        lineNumber: 31,
+                                        lineNumber: 41,
                                         columnNumber: 13
                                     }, this),
                                     "Tu Carrito"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/Cart.jsx",
-                                lineNumber: 30,
+                                lineNumber: 40,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1796,18 +1800,18 @@ function Cart({ onCheckout }) {
                                     size: 24
                                 }, void 0, false, {
                                     fileName: "[project]/components/Cart.jsx",
-                                    lineNumber: 38,
+                                    lineNumber: 48,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/Cart.jsx",
-                                lineNumber: 34,
+                                lineNumber: 44,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/Cart.jsx",
-                        lineNumber: 29,
+                        lineNumber: 39,
                         columnNumber: 9
                     }, this),
                     items.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1819,32 +1823,32 @@ function Cart({ onCheckout }) {
                                     size: 48
                                 }, void 0, false, {
                                     fileName: "[project]/components/Cart.jsx",
-                                    lineNumber: 45,
+                                    lineNumber: 55,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/Cart.jsx",
-                                lineNumber: 44,
+                                lineNumber: 54,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                                 children: "Tu carrito está vacío"
                             }, void 0, false, {
                                 fileName: "[project]/components/Cart.jsx",
-                                lineNumber: 47,
+                                lineNumber: 57,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 children: "Agrega productos para comenzar"
                             }, void 0, false, {
                                 fileName: "[project]/components/Cart.jsx",
-                                lineNumber: 48,
+                                lineNumber: 58,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/Cart.jsx",
-                        lineNumber: 43,
+                        lineNumber: 53,
                         columnNumber: 11
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
                         children: [
@@ -1859,7 +1863,7 @@ function Cart({ onCheckout }) {
                                                 className: "cart-item-image"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/Cart.jsx",
-                                                lineNumber: 55,
+                                                lineNumber: 65,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1870,7 +1874,7 @@ function Cart({ onCheckout }) {
                                                         children: item.name
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/Cart.jsx",
-                                                        lineNumber: 61,
+                                                        lineNumber: 71,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1878,7 +1882,7 @@ function Cart({ onCheckout }) {
                                                         children: formatPrice(item.price)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/Cart.jsx",
-                                                        lineNumber: 62,
+                                                        lineNumber: 72,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1894,12 +1898,12 @@ function Cart({ onCheckout }) {
                                                                             size: 14
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/Cart.jsx",
-                                                                            lineNumber: 71,
+                                                                            lineNumber: 81,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/Cart.jsx",
-                                                                        lineNumber: 67,
+                                                                        lineNumber: 77,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1907,7 +1911,7 @@ function Cart({ onCheckout }) {
                                                                         children: item.quantity
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/Cart.jsx",
-                                                                        lineNumber: 73,
+                                                                        lineNumber: 83,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1917,18 +1921,18 @@ function Cart({ onCheckout }) {
                                                                             size: 14
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/Cart.jsx",
-                                                                            lineNumber: 78,
+                                                                            lineNumber: 88,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/Cart.jsx",
-                                                                        lineNumber: 74,
+                                                                        lineNumber: 84,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/Cart.jsx",
-                                                                lineNumber: 66,
+                                                                lineNumber: 76,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1938,35 +1942,35 @@ function Cart({ onCheckout }) {
                                                                     size: 16
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/Cart.jsx",
-                                                                    lineNumber: 85,
+                                                                    lineNumber: 95,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/Cart.jsx",
-                                                                lineNumber: 81,
+                                                                lineNumber: 91,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/Cart.jsx",
-                                                        lineNumber: 65,
+                                                        lineNumber: 75,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/Cart.jsx",
-                                                lineNumber: 60,
+                                                lineNumber: 70,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, item.id, true, {
                                         fileName: "[project]/components/Cart.jsx",
-                                        lineNumber: 54,
+                                        lineNumber: 64,
                                         columnNumber: 17
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/components/Cart.jsx",
-                                lineNumber: 52,
+                                lineNumber: 62,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1979,20 +1983,20 @@ function Cart({ onCheckout }) {
                                                 children: "Subtotal"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/Cart.jsx",
-                                                lineNumber: 95,
+                                                lineNumber: 105,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                 children: formatPrice(totalPrice)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/Cart.jsx",
-                                                lineNumber: 96,
+                                                lineNumber: 106,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/Cart.jsx",
-                                        lineNumber: 94,
+                                        lineNumber: 104,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2002,7 +2006,7 @@ function Cart({ onCheckout }) {
                                                 children: "Envío"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/Cart.jsx",
-                                                lineNumber: 99,
+                                                lineNumber: 109,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2010,13 +2014,13 @@ function Cart({ onCheckout }) {
                                                 children: "Gratis"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/Cart.jsx",
-                                                lineNumber: 100,
+                                                lineNumber: 110,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/Cart.jsx",
-                                        lineNumber: 98,
+                                        lineNumber: 108,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2026,20 +2030,20 @@ function Cart({ onCheckout }) {
                                                 children: "Total"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/Cart.jsx",
-                                                lineNumber: 103,
+                                                lineNumber: 113,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                 children: formatPrice(totalPrice)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/Cart.jsx",
-                                                lineNumber: 104,
+                                                lineNumber: 114,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/Cart.jsx",
-                                        lineNumber: 102,
+                                        lineNumber: 112,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2047,12 +2051,12 @@ function Cart({ onCheckout }) {
                                             amount: totalPrice
                                         }, void 0, false, {
                                             fileName: "[project]/components/Cart.jsx",
-                                            lineNumber: 108,
+                                            lineNumber: 118,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/Cart.jsx",
-                                        lineNumber: 107,
+                                        lineNumber: 117,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2061,13 +2065,13 @@ function Cart({ onCheckout }) {
                                         children: "Pagar con Mercado Pago"
                                     }, void 0, false, {
                                         fileName: "[project]/components/Cart.jsx",
-                                        lineNumber: 111,
+                                        lineNumber: 125,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/Cart.jsx",
-                                lineNumber: 93,
+                                lineNumber: 103,
                                 columnNumber: 13
                             }, this)
                         ]
@@ -2075,7 +2079,7 @@ function Cart({ onCheckout }) {
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/Cart.jsx",
-                lineNumber: 28,
+                lineNumber: 38,
                 columnNumber: 7
             }, this),
             isCartOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2083,13 +2087,13 @@ function Cart({ onCheckout }) {
                 onClick: ()=>setIsCartOpen(false)
             }, void 0, false, {
                 fileName: "[project]/components/Cart.jsx",
-                lineNumber: 123,
+                lineNumber: 137,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true);
 }
-_s(Cart, "daE9UAm7Kkebu1eeMmquwZQIBVk=", false, function() {
+_s(Cart, "qKyAQ/1302KBznZ9iK19vxMu2Ao=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$context$2f$CartContext$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCart"]
     ];

@@ -87,117 +87,87 @@ __turbopack_context__.s([
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$mercadopago$2f$dist$2f$index$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/mercadopago/dist/index.js [app-route] (ecmascript)");
 ;
 const client = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$mercadopago$2f$dist$2f$index$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["MercadoPagoConfig"]({
-    accessToken: ("TURBOPACK compile-time value", "APP_USR-3049962488023946-081515-a5d58f2ef817aee3a5a9568740315e73-1946279079"),
-    options: {
-        timeout: 5000,
-        idempotencyKey: generateIdempotencyKey() // Importante para evitar pagos duplicados
-    }
+    accessToken: ("TURBOPACK compile-time value", "APP_USR-2760867598881302-081613-aae1e01ff809c8ee7d66ccd8e97cbdbd-1950265406")
 });
-function generateIdempotencyKey() {
-    return Date.now().toString() + '-' + Math.random().toString(36).substring(7);
-}
 async function POST(req) {
     try {
         const body = await req.json();
-        console.log("📦 Datos recibidos:", JSON.stringify(body, null, 2));
-        // Validaciones exhaustivas
-        if (!body.transaction_amount) {
-            return Response.json({
-                error: true,
-                message: "Monto no proporcionado"
-            }, {
-                status: 400
-            });
-        }
+        // LOG COMPLETO de lo que recibimos
+        console.log("=== BACKEND RECIBIÓ ===");
+        console.log("Monto:", body.transaction_amount);
+        console.log("Token:", body.token ? "✅ Presente" : "❌ Faltante");
+        console.log("Payment Method ID:", body.payment_method_id);
+        console.log("Installments:", body.installments);
+        console.log("Issuer ID:", body.issuer_id);
+        console.log("Email:", body.payer?.email);
+        console.log("Identificación:", body.payer?.identification);
+        console.log("========================");
+        // Validaciones
         if (!body.token) {
             return Response.json({
                 error: true,
-                message: "Token de tarjeta no proporcionado"
+                message: "No se pudo generar el token de la tarjeta"
             }, {
                 status: 400
             });
         }
-        if (!body.payment_method_id) {
-            return Response.json({
-                error: true,
-                message: "Método de pago no identificado"
-            }, {
-                status: 400
-            });
-        }
-        if (!body.payer?.email) {
-            return Response.json({
-                error: true,
-                message: "Email del pagador no proporcionado"
-            }, {
-                status: 400
-            });
-        }
-        const payment = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$mercadopago$2f$dist$2f$index$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["Payment"](client);
-        // Construcción del pago con todos los campos posibles
+        // Preparar pago
         const paymentData = {
             transaction_amount: Number(body.transaction_amount),
             token: body.token,
             description: body.description || "Compra en tienda",
             installments: Number(body.installments || 1),
             payment_method_id: body.payment_method_id,
-            issuer_id: body.issuer_id || undefined,
             payer: {
                 email: body.payer.email,
-                identification: body.payer.identification ? {
-                    type: body.payer.identification.type || "DNI",
-                    number: body.payer.identification.number
-                } : undefined,
-                first_name: body.payer.first_name || "Comprador",
-                last_name: body.payer.last_name || ""
-            },
-            additional_info: {
-                items: [
-                    {
-                        id: "item-1",
-                        title: "Producto",
-                        quantity: 1,
-                        unit_price: Number(body.transaction_amount)
-                    }
-                ]
+                identification: body.payer.identification || {
+                    type: "DNI",
+                    number: "12345678"
+                }
             }
         };
-        // Limpiar undefined
-        Object.keys(paymentData).forEach((key)=>{
-            if (paymentData[key] === undefined) {
-                delete paymentData[key];
-            }
-        });
-        console.log("🚀 Enviando a MercadoPago:", JSON.stringify(paymentData, null, 2));
+        // Agregar issuer_id si viene
+        if (body.issuer_id) {
+            paymentData.issuer_id = body.issuer_id;
+        }
+        console.log("=== ENVIANDO A MP ===");
+        console.log(JSON.stringify(paymentData, null, 2));
+        console.log("=====================");
+        const payment = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$mercadopago$2f$dist$2f$index$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["Payment"](client);
         const result = await payment.create({
             body: paymentData
         });
-        console.log("✅ Respuesta MP:", {
-            status: result.status,
-            id: result.id,
-            detail: result.status_detail
-        });
+        console.log("=== RESPUESTA MP ===");
+        console.log("Status:", result.status);
+        console.log("ID:", result.id);
+        console.log("Detail:", result.status_detail);
+        console.log("====================");
         return Response.json({
-            success: true,
             status: result.status,
             id: result.id,
             detail: result.status_detail
         });
     } catch (error) {
-        console.error("❌ Error:", {
-            message: error.message,
-            cause: error.cause,
-            status: error.status,
-            response: error.response?.data
-        });
+        console.error("=== ERROR MP ===");
+        console.error("Message:", error.message);
+        console.error("Cause:", error.cause);
+        console.error("Status:", error.status);
+        console.error("Response:", error.response?.data);
+        console.error("================");
+        // Mensajes amigables
+        let userMessage = "No pudimos procesar el pago. Intentá con otra tarjeta";
+        if (error.message?.includes("invalid")) {
+            userMessage = "Datos de tarjeta inválidos";
+        } else if (error.message?.includes("rejected")) {
+            userMessage = "La tarjeta fue rechazada";
+        } else if (error.message?.includes("insufficient")) {
+            userMessage = "Fondos insuficientes";
+        }
         return Response.json({
-            success: false,
             error: true,
-            message: error.message,
-            cause: error.cause,
-            details: error.response?.data || {}
+            message: userMessage
         }, {
-            status: error.status || 500
+            status: 400
         });
     }
 }

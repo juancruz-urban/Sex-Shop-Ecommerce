@@ -4,6 +4,7 @@ import { X, Minus, Plus, Trash2, ShoppingBag } from "lucide-react"
 import { useCart } from "@/context/CartContext"
 import CardCheckout from "./CardCheckout"
 import "./Cart.css"
+import { useEffect, useState } from "react"
 
 export default function Cart({ onCheckout }) {
   const { 
@@ -22,6 +23,15 @@ export default function Cart({ onCheckout }) {
       minimumFractionDigits: 0,
     }).format(price)
   }
+
+
+  const [mounted, setMounted] = useState(false)
+
+   useEffect(() => {
+    setMounted(true)
+  }, [])
+
+
 
   return (
     <>
@@ -107,6 +117,10 @@ export default function Cart({ onCheckout }) {
               <div>
                 <CardCheckout amount={totalPrice}></CardCheckout>
               </div>
+
+  
+            
+            
 
               <button 
                 className="checkout-btn"
