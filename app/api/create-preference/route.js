@@ -27,7 +27,7 @@ export async function POST(req){
          // 🔹 evita pagos duplicados
         external_reference: crypto.randomUUID(),
 
-       
+       notification_url:"https://sex-shop-ecommerce-oyax.vercel.app/api/mercadopago/webhook",
 
         // 🔹 descripción visible en MercadoPago
         statement_descriptor: "TIENDA ONLINE"

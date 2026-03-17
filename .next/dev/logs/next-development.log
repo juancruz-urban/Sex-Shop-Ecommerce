@@ -1,87 +1,27 @@
-[00:00:21.183] Server  LOG     ✓ Ready in 14s
-[00:01:16.496] Server  LOG     ○ Compiling / ...
-[00:01:22.144] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:23.681] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:01:23.681] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:01:23.681] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773770237591} /_vercel/insights/view
-[00:01:25.300] Browser WARN    MercadoPago has already been initialized in your window, please remove the duplicate import
-[00:01:27.980] Browser WARN    [BRICKS] Payment Method(s) "argencard, diners, naranja, sucredito" was removed because it requires a higher amount
-[00:01:28.442] Browser LOG     ✅ Brick listo
-[00:01:28.629] Browser WARN    [BRICKS] Payment Method(s) "argencard, diners, naranja, sucredito" was removed because it requires a higher amount
-[00:01:28.629] Browser LOG     ✅ Brick listo
-[00:01:29.032] Browser WARN    [BRICKS] Payment Method(s) "argencard, diners, naranja, sucredito" was removed because it requires a higher amount
-[00:01:29.032] Browser LOG     ✅ Brick listo
-[00:04:54.419] Browser LOG     40027686
-[00:05:17.313] Browser LOG     45099535
-[00:05:55.975] Browser LOG     45099535
-[00:06:13.705] Browser LOG     📤 Enviando pago... {"email":"ejemplo@hotmail.com","metodo":"credit_card","monto":5,"payment_method_id":"visa"}
-[00:06:14.571] Server  LOG     === BACKEND RECIBIÓ ===
-[00:06:14.576] Server  LOG     Monto: 5
-[00:06:14.577] Server  LOG     Token: "✅ Presente"
-[00:06:14.578] Server  LOG     Payment Method ID: "visa"
-[00:06:14.579] Server  LOG     Installments: 1
-[00:06:14.580] Server  LOG     Issuer ID: "310"
-[00:06:14.581] Server  LOG     Email: "ejemplo@hotmail.com"
-[00:06:14.584] Server  LOG     Identificación: {}
-[00:06:14.585] Server  LOG     ========================
-[00:06:14.586] Server  LOG     === ENVIANDO A MP ===
-[00:06:14.587] Server  LOG     {
-  "transaction_amount": 5,
-  "token": "543227bd7ed4de592d715f8d4011f16a",
-  "description": "Compra en tienda",
-  "installments": 1,
-  "payment_method_id": "visa",
-  "payer": {
-    "email": "ejemplo@hotmail.com",
-    "identification": {
-      "type": "DNI",
-      "number": "12345678"
-    }
-  },
-  "issuer_id": "310"
-}
-[00:06:14.588] Server  LOG     =====================
-[00:06:14.791] Browser WARN    [BRICKS] Payment Method(s) "argencard, diners, naranja, sucredito" was removed because it requires a higher amount
-[00:06:14.791] Browser LOG     ✅ Brick listo
-[00:06:16.268] Server  LOG     === RESPUESTA MP ===
-[00:06:16.269] Server  LOG     Status: "approved"
-[00:06:16.271] Server  LOG     ID: 1345586165
-[00:06:16.272] Server  LOG     Detail: "accredited"
-[00:06:16.273] Server  LOG     ====================
-[00:06:16.296] Browser LOG     📥 Respuesta: {"detail":"accredited","id":1345586165,"status":"approved"}
-[00:06:16.919] Browser WARN    [BRICKS] Payment Method(s) "argencard, diners, naranja, sucredito" was removed because it requires a higher amount
-[00:06:16.919] Browser LOG     ✅ Brick listo
-[00:06:19.843] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:06:19.993] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:06:19.993] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/success","route":"/success"}
-[00:06:19.993] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/success color: rgb(120, 120, 120) color: inherit {"dp":"/success","o":"http://localhost:3000/success","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773770533903} /_vercel/insights/view
-[00:06:24.755] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773770538504} /_vercel/insights/view
-[00:09:05.753] Server  LOG       Reload env: .env.local
-[00:09:05.858] Server  LOG     ✓ Compiled in 30ms
-[00:09:11.006] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:09:11.267] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:09:11.267] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:09:11.267] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773770705181} /_vercel/insights/view
-[00:09:19.719] Browser WARN    MercadoPago has already been initialized in your window, please remove the duplicate import
-[00:09:20.512] Browser WARN    [BRICKS] Payment Method(s) "argencard, diners, naranja, sucredito" was removed because it requires a higher amount
-[00:09:21.092] Browser WARN    [BRICKS] Payment Method(s) "argencard, diners, naranja, sucredito" was removed because it requires a higher amount
-[00:09:21.092] Browser LOG     ✅ Brick listo
-[00:09:21.576] Browser WARN    [BRICKS] Payment Method(s) "argencard, diners, naranja, sucredito" was removed because it requires a higher amount
-[00:09:21.576] Browser LOG     ✅ Brick listo
-[00:09:33.383] Browser LOG     45099535
-[00:09:48.506] Server  LOG     === BACKEND RECIBIÓ ===
-[00:09:48.510] Server  LOG     Monto: 5
-[00:09:48.510] Server  LOG     Token: "✅ Presente"
-[00:09:48.511] Server  LOG     Payment Method ID: "visa"
-[00:09:48.512] Server  LOG     Installments: 2
-[00:09:48.512] Server  LOG     Issuer ID: "310"
-[00:09:48.513] Server  LOG     Email: "ejemplo@hotmail.com"
-[00:09:48.515] Server  LOG     Identificación: {}
-[00:09:48.520] Server  LOG     ========================
-[00:09:48.521] Server  LOG     === ENVIANDO A MP ===
-[00:09:48.524] Server  LOG     {
-  "transaction_amount": 5,
-  "token": "79eb15521a781b93f7f95cf784c1e059",
+[00:00:02.120] Server  LOG     ✓ Ready in 1357ms
+[00:00:08.772] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:09.605] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:09.605] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:09.606] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773773193280} /_vercel/insights/view
+[00:00:20.381] Browser WARN    MercadoPago has already been initialized in your window, please remove the duplicate import
+[00:00:24.424] Browser LOG     ✅ Brick listo
+[00:00:26.018] Browser LOG     ✅ Brick listo
+[00:00:26.258] Browser LOG     ✅ Brick listo
+[00:00:37.940] Browser LOG     40027686
+[00:00:49.532] Browser LOG     45099535
+[00:01:02.193] Server  LOG     === BACKEND RECIBIÓ ===
+[00:01:02.196] Server  LOG     Monto: 49990
+[00:01:02.196] Server  LOG     Token: "✅ Presente"
+[00:01:02.197] Server  LOG     Payment Method ID: "visa"
+[00:01:02.197] Server  LOG     Installments: 2
+[00:01:02.198] Server  LOG     Issuer ID: "310"
+[00:01:02.198] Server  LOG     Email: "ejemplo@hotmail.com"
+[00:01:02.199] Server  LOG     Identificación: {}
+[00:01:02.200] Server  LOG     ========================
+[00:01:02.200] Server  LOG     === ENVIANDO A MP ===
+[00:01:02.201] Server  LOG     {
+  "transaction_amount": 49990,
+  "token": "180b6236eb86754c6e93dbb778dfc9c0",
   "description": "Compra en tienda",
   "installments": 2,
   "payment_method_id": "visa",
@@ -94,19 +34,112 @@
   },
   "issuer_id": "310"
 }
-[00:09:48.525] Server  LOG     =====================
-[00:09:48.538] Browser LOG     📤 Enviando pago... {"email":"ejemplo@hotmail.com","metodo":"credit_card","monto":5,"payment_method_id":"visa"}
-[00:09:49.394] Browser WARN    [BRICKS] Payment Method(s) "argencard, diners, naranja, sucredito" was removed because it requires a higher amount
-[00:09:49.394] Browser LOG     ✅ Brick listo
-[00:09:49.744] Server  ERROR   === ERROR MP ===
-[00:09:49.745] Server  ERROR   Message: "Unauthorized use of live credentials"
-[00:09:49.748] Server  ERROR   Cause: [{...}]
-[00:09:49.749] Server  ERROR   Status: 401
-[00:09:49.750] Server  ERROR   Response: undefined
-[00:09:49.751] Server  ERROR   ================
-[00:09:49.867] Browser LOG     📥 Respuesta: {"error":true,"message":"No pudimos procesar el pago. Intentá con otra tarjeta"}
-[00:09:49.867] Browser ERROR   ❌ Error en submit: {}
-[00:09:50.349] Browser WARN    [BRICKS] Payment Method(s) "argencard, diners, naranja, sucredito" was removed because it requires a higher amount
-[00:09:50.349] Browser LOG     ✅ Brick listo
-[00:10:25.882] Browser WARN    [BRICKS] Payment Method(s) "argencard, diners, naranja, sucredito" was removed because it requires a higher amount
-[00:10:25.882] Browser LOG     ✅ Brick listo
+[00:01:02.202] Server  LOG     =====================
+[00:01:02.213] Browser LOG     📤 Enviando pago... {"email":"ejemplo@hotmail.com","metodo":"credit_card","monto":49990,"payment_method_id":"visa"}
+[00:01:02.665] Browser LOG     ✅ Brick listo
+[00:01:03.444] Server  ERROR   === ERROR MP ===
+[00:01:03.445] Server  ERROR   Message: "Invalid differential pricing"
+[00:01:03.447] Server  ERROR   Cause: [{...}]
+[00:01:03.448] Server  ERROR   Status: 400
+[00:01:03.449] Server  ERROR   Response: undefined
+[00:01:03.450] Server  ERROR   ================
+[00:01:03.581] Browser LOG     📥 Respuesta: {"error":true,"message":"No pudimos procesar el pago. Intentá con otra tarjeta"}
+[00:01:03.581] Browser ERROR   ❌ Error en submit: {}
+[00:01:04.064] Browser LOG     ✅ Brick listo
+[00:08:18.664] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:08:18.937] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:08:18.937] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:08:18.937] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773773683116} /_vercel/insights/view
+[00:08:23.646] Browser WARN    MercadoPago has already been initialized in your window, please remove the duplicate import
+[00:08:24.369] Browser LOG     ✅ Brick listo
+[00:08:24.880] Browser LOG     ✅ Brick listo
+[00:08:25.323] Browser LOG     ✅ Brick listo
+[00:08:29.195] Browser LOG     52873383
+[00:09:04.188] Server  LOG     === BACKEND RECIBIÓ ===
+[00:09:04.189] Server  LOG     Monto: 49990
+[00:09:04.190] Server  LOG     Token: "✅ Presente"
+[00:09:04.190] Server  LOG     Payment Method ID: "debmaster"
+[00:09:04.191] Server  LOG     Installments: 1
+[00:09:04.191] Server  LOG     Issuer ID: "3"
+[00:09:04.192] Server  LOG     Email: "ejemplo@hotmail.com"
+[00:09:04.192] Server  LOG     Identificación: {}
+[00:09:04.193] Server  LOG     ========================
+[00:09:04.193] Server  LOG     === ENVIANDO A MP ===
+[00:09:04.194] Server  LOG     {
+  "transaction_amount": 49990,
+  "token": "7ec4e69ff9aba58e5e0105743da5f4d6",
+  "description": "Compra en tienda",
+  "installments": 1,
+  "payment_method_id": "debmaster",
+  "payer": {
+    "email": "ejemplo@hotmail.com",
+    "identification": {
+      "type": "DNI",
+      "number": "12345678"
+    }
+  },
+  "issuer_id": "3"
+}
+[00:09:04.195] Server  LOG     =====================
+[00:09:04.269] Browser LOG     📤 Enviando pago... {"email":"ejemplo@hotmail.com","metodo":"debit_card","monto":49990,"payment_method_id":"debmaster"}
+[00:09:04.755] Browser LOG     ✅ Brick listo
+[00:09:06.053] Server  LOG     === RESPUESTA MP ===
+[00:09:06.053] Server  LOG     Status: "approved"
+[00:09:06.054] Server  LOG     ID: 1345585199
+[00:09:06.055] Server  LOG     Detail: "accredited"
+[00:09:06.056] Server  LOG     ====================
+[00:09:06.063] Browser LOG     📥 Respuesta: {"detail":"accredited","id":1345585199,"status":"approved"}
+[00:09:06.603] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:09:06.752] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:09:06.752] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/success","route":"/success"}
+[00:09:06.752] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/success color: rgb(120, 120, 120) color: inherit {"dp":"/success","o":"http://localhost:3000/success","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773773730931} /_vercel/insights/view
+[00:09:10.029] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773773734057} /_vercel/insights/view
+[00:20:11.106] Browser WARN    MercadoPago has already been initialized in your window, please remove the duplicate import
+[00:20:12.493] Browser WARN    [BRICKS] Payment Method(s) "argencard, diners, naranja, sucredito" was removed because it requires a higher amount
+[00:20:12.493] Browser LOG     ✅ Brick listo
+[00:20:12.981] Browser WARN    [BRICKS] Payment Method(s) "argencard, diners, naranja, sucredito" was removed because it requires a higher amount
+[00:20:12.981] Browser LOG     ✅ Brick listo
+[00:20:14.770] Browser LOG     ✅ Brick listo
+[00:20:15.283] Browser LOG     ✅ Brick listo
+[00:20:28.557] Browser LOG     52873383
+[00:20:39.151] Server  LOG     === BACKEND RECIBIÓ ===
+[00:20:39.152] Server  LOG     Monto: 30
+[00:20:39.152] Server  LOG     Token: "✅ Presente"
+[00:20:39.153] Server  LOG     Payment Method ID: "debmaster"
+[00:20:39.153] Server  LOG     Installments: 1
+[00:20:39.153] Server  LOG     Issuer ID: "3"
+[00:20:39.156] Server  LOG     Email: "ejemplo@hotmail.com"
+[00:20:39.157] Server  LOG     Identificación: {}
+[00:20:39.158] Server  LOG     ========================
+[00:20:39.158] Server  LOG     === ENVIANDO A MP ===
+[00:20:39.160] Server  LOG     {
+  "transaction_amount": 30,
+  "token": "0c979121590318bd01a5f6119e3ae7b1",
+  "description": "Compra en tienda",
+  "installments": 1,
+  "payment_method_id": "debmaster",
+  "payer": {
+    "email": "ejemplo@hotmail.com",
+    "identification": {
+      "type": "DNI",
+      "number": "12345678"
+    }
+  },
+  "issuer_id": "3"
+}
+[00:20:39.160] Server  LOG     =====================
+[00:20:39.215] Browser LOG     📤 Enviando pago... {"email":"ejemplo@hotmail.com","metodo":"debit_card","monto":30,"payment_method_id":"debmaster"}
+[00:20:39.699] Browser LOG     ✅ Brick listo
+[00:20:40.942] Server  LOG     === RESPUESTA MP ===
+[00:20:40.943] Server  LOG     Status: "approved"
+[00:20:40.944] Server  LOG     ID: 1345585363
+[00:20:40.944] Server  LOG     Detail: "accredited"
+[00:20:40.944] Server  LOG     ====================
+[00:20:40.948] Browser LOG     📥 Respuesta: {"detail":"accredited","id":1345585363,"status":"approved"}
+[00:20:41.409] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:20:41.576] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:20:41.576] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/success","route":"/success"}
+[00:20:41.576] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/success color: rgb(120, 120, 120) color: inherit {"dp":"/success","o":"http://localhost:3000/success","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773774425764} /_vercel/insights/view
+[00:20:44.140] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773774428151} /_vercel/insights/view
+[01:06:33.608] Server  LOG       Reload env: .env.local
+[01:06:33.700] Server  LOG     ✓ Compiled in 17ms

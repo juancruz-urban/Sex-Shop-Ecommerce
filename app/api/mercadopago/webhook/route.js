@@ -1,14 +1,14 @@
 export async function POST(req) {
-
   try {
-
     const body = await req.json()
 
-    if (body.type === "payment") {
+    console.log("Webhook recibido:", body)
 
+    if (body.type === "payment") {
       const paymentId = body.data.id
 
-      const payment = await fetch(
+      // 🔑 CONSULTAR PAGO REAL
+      const paymentRes = await fetch(
         `https://api.mercadopago.com/v1/payments/${paymentId}`,
         {
           headers: {
@@ -17,29 +17,28 @@ export async function POST(req) {
         }
       )
 
-      const paymentData = await payment.json()
+      const paymentData = await paymentRes.json()
 
-      console.log("Webhook payment:", paymentData)
+      console.log("Payment data:", paymentData)
 
+      // 🔥 VALIDACIÓN IMPORTANTE
       if (paymentData.status === "approved") {
-
         const orderId = paymentData.external_reference
 
-        console.log("Pago aprobado para orden:", orderId)
+        console.log("✅ Pago aprobado:", orderId)
 
-        // aquí deberías actualizar tu base de datos
+        // 👉 ACA GUARDÁS EN DB
+        // await db.orders.update({ id: orderId, status: "paid" })
+
+      } else {
+        console.log("⚠️ Pago NO aprobado:", paymentData.status)
       }
-
     }
 
     return Response.json({ received: true })
 
   } catch (error) {
-
-    console.error("Webhook error:", error)
-
+    console.error("❌ Webhook error:", error)
     return Response.json({ error: true })
-
   }
-
 }

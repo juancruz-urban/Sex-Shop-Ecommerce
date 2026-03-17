@@ -87,7 +87,7 @@ __turbopack_context__.s([
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$mercadopago$2f$dist$2f$index$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/mercadopago/dist/index.js [app-route] (ecmascript)");
 ;
 const client = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$mercadopago$2f$dist$2f$index$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["MercadoPagoConfig"]({
-    accessToken: ("TURBOPACK compile-time value", "APP_USR-2760867598881302-081613-aae1e01ff809c8ee7d66ccd8e97cbdbd-1950265406")
+    accessToken: ("TURBOPACK compile-time value", "TEST-3049962488023946-081515-653e1c1b00810a8bb9cf075cc4008baa-1946279079")
 });
 async function POST(req) {
     try {
