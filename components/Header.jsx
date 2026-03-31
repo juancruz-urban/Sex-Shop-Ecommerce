@@ -43,7 +43,7 @@ export default function Header({ searchQuery, setSearchQuery }) {
           
           <button 
             className="cart-btn"
-            onClick={() => setIsCartOpen(true)}
+        onClick={() => setIsCartOpen(true)}
           >
             <ShoppingCart size={22} />
             {totalItems > 0 && (

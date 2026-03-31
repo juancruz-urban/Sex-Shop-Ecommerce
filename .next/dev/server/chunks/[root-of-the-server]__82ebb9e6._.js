@@ -87,26 +87,27 @@ __turbopack_context__.s([
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$mercadopago$2f$dist$2f$index$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/mercadopago/dist/index.js [app-route] (ecmascript)");
 ;
 const client = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$mercadopago$2f$dist$2f$index$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["MercadoPagoConfig"]({
-    accessToken: ("TURBOPACK compile-time value", "APP_USR-2760867598881302-081613-aae1e01ff809c8ee7d66ccd8e97cbdbd-1950265406")
+    accessToken: ("TURBOPACK compile-time value", "APP_USR-3049962488023946-081515-a5d58f2ef817aee3a5a9568740315e73-1946279079")
 });
 async function POST(req) {
     try {
         const body = await req.json();
+        const orderId = crypto.randomUUID();
         const preference = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$mercadopago$2f$dist$2f$index$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["Preference"](client);
-        console.log(preference);
         const result = await preference.create({
             body: {
                 items: body.items,
-                back_urls: {
-                    success: 'http://localhost:3000/',
-                    failure: 'https://www.google.com/',
-                    pending: 'https://www.google.com/'
+                payer: {
+                    name: body.payer.name,
+                    email: body.payer.email
                 },
-                auto_return: "approved",
-                // 🔹 evita pagos duplicados
-                external_reference: crypto.randomUUID(),
-                // 🔹 descripción visible en MercadoPago
-                statement_descriptor: "TIENDA ONLINE"
+                external_reference: orderId,
+                back_urls: {
+                    success: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
+                    failure: `${process.env.NEXT_PUBLIC_BASE_URL}/failure`,
+                    pending: `${process.env.NEXT_PUBLIC_BASE_URL}/pending`
+                },
+                auto_return: "approved"
             }
         });
         return Response.json({

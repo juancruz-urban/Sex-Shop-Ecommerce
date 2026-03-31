@@ -1,5 +1,7 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/calculate-shipping-cost/route": "app/api/calculate-shipping-cost/route.js",
+  "/api/create-order/route": "app/api/create-order/route.js",
   "/api/process-payment/route": "app/api/process-payment/route.js",
-  "/page": "app/page.js",
-  "/success/page": "app/success/page.js"
+  "/page": "app/page.js"
 }

@@ -9,6 +9,7 @@ export const products = [
     rating: 4.5,
     reviews: 128,
     inStock: true,
+    stock:20
   },
   {
     id: 2,

@@ -1,44 +1,85 @@
+// app/api/webhook/route.js
+
+import { db } from "@/lib/db"
+
 export async function POST(req) {
   try {
     const body = await req.json()
+    
+    const isSandbox = process.env.NEXT_PUBLIC_MP_PUBLIC_KEY?.startsWith('TEST-')
+    
+    console.log('🔔 Webhook recibido:', {
+      type: body.type,
+      environment: isSandbox ? 'sandbox' : 'production',
+      timestamp: new Date().toISOString()
+    })
 
-    console.log("Webhook recibido:", body)
+    // Verificar firma del webhook (seguridad)
+    const signature = req.headers.get('x-signature')
+    if (!signature && process.env.NODE_ENV === 'production') {
+      console.warn('⚠️ Webhook sin firma - posible ataque')
+      // En producción, deberías verificar la firma
+    }
 
     if (body.type === "payment") {
       const paymentId = body.data.id
 
-      // 🔑 CONSULTAR PAGO REAL
-      const paymentRes = await fetch(
+      // Obtener datos del pago
+      const mpRes = await fetch(
         `https://api.mercadopago.com/v1/payments/${paymentId}`,
         {
           headers: {
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_MP_ACCESS_TOKEN}`
+            Authorization: `Bearer ${process.env.MP_ACCESS_TOKEN}`
           }
         }
       )
 
-      const paymentData = await paymentRes.json()
+      if (!mpRes.ok) {
+        throw new Error(`Error fetching payment: ${mpRes.status}`)
+      }
 
-      console.log("Payment data:", paymentData)
+      const payment = await mpRes.json()
+      
+      console.log('💳 Pago webhook:', {
+        id: payment.id,
+        status: payment.status,
+        orderId: payment.external_reference,
+        environment: isSandbox ? 'sandbox' : 'production'
+      })
 
-      // 🔥 VALIDACIÓN IMPORTANTE
-      if (paymentData.status === "approved") {
-        const orderId = paymentData.external_reference
+      if (payment.status === "approved") {
+        const orderId = payment.external_reference
 
-        console.log("✅ Pago aprobado:", orderId)
+        // Actualizar orden
+        await db.execute({
+          sql: `
+            UPDATE orders
+            SET status = 'approved', 
+                payment_status = 'approved',
+                payment_id = ?,
+                updated_at = datetime('now')
+            WHERE id = ?
+          `,
+          args: [paymentId, orderId]
+        })
 
-        // 👉 ACA GUARDÁS EN DB
-        // await db.orders.update({ id: orderId, status: "paid" })
-
-      } else {
-        console.log("⚠️ Pago NO aprobado:", paymentData.status)
+        // En producción, podrías enviar email de confirmación
+        if (!isSandbox) {
+          await sendOrderConfirmationEmail(orderId)
+        }
       }
     }
 
-    return Response.json({ received: true })
+    return Response.json({ ok: true })
 
   } catch (error) {
-    console.error("❌ Webhook error:", error)
-    return Response.json({ error: true })
+    console.error('❌ Webhook error:', error)
+    
+    // En producción, registrar en servicio de monitoreo
+    if (process.env.NODE_ENV === 'production') {
+      // Enviar a servicio de errores
+    }
+    
+    return Response.json({ error: true }, { status: 500 })
   }
 }

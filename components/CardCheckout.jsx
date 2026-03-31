@@ -1,173 +1,187 @@
 "use client"
 
-import { initMercadoPago, Payment } from "@mercadopago/sdk-react"
-import { useEffect, useState, useCallback, useRef } from "react"
+import { useCart } from "@/context/CartContext"
+import { initMercadoPago, CardPayment } from "@mercadopago/sdk-react"
+import { useState, useRef, useEffect } from "react"
+import "./CardCheckout.css"
 
-export default function CardCheckout({ amount }) {
-  const [submitError, setSubmitError] = useState(null)
-  const [processing, setProcessing] = useState(false)
-  const [brickReady, setBrickReady] = useState(false)
-  
-  const brickInitialized = useRef(false)
+initMercadoPago(process.env.NEXT_PUBLIC_MP_PUBLIC_KEY)
+
+export default function CardCheckout({ shippingData, shippingQuote, onBack, onComplete }) {
+  const { items, totalPrice, clearCart, setIsCartOpen } = useCart()
+  const [isProcessing, setIsProcessing] = useState(false)
+  const [orderDetails, setOrderDetails] = useState(null)
+  const hasProcessed = useRef(false) // Prevenir múltiples procesamientos
+  const mounted = useRef(true)
 
   useEffect(() => {
-    if (!brickInitialized.current) {
-      initMercadoPago(process.env.NEXT_PUBLIC_MP_PUBLIC_KEY)
-      brickInitialized.current = true
+    mounted.current = true
+    return () => {
+      mounted.current = false
     }
   }, [])
 
-  const initialization = {
-    amount: amount
-  }
-
-  const customization = {
-    paymentMethods: {
-      creditCard: "all",
-      debitCard: "all",
-      prepaidCard: "all"
-    },
-    visual: {
-      style: {
-        theme: "default"
-      }
-    }
-  }
-
-  const onSubmit = useCallback(async ({ selectedPaymentMethod, formData }) => {
-    // Limpiamos errores anteriores
-    setSubmitError(null)
-    setProcessing(true)
+  const handleSubmit = async (formData) => {
+    // Prevenir múltiples envíos
+    if (isProcessing || hasProcessed.current) return
+    
+    hasProcessed.current = true
+    setIsProcessing(true)
 
     try {
-      console.log("📤 Enviando pago...", {
-        metodo: selectedPaymentMethod,
-        monto: amount,
-        email: formData.payer?.email,
-        payment_method_id: formData.payment_method_id
-      })
+      console.log('🚀 Iniciando checkout...')
 
-      // Verificamos que tenemos token
-      if (!formData.token) {
-        throw new Error("Error al procesar la tarjeta. Intentá de nuevo.")
-      }
-
-      const res = await fetch("/api/process-payment", {
+      // PASO 1: Crear la orden y cotizar envío
+      const orderRes = await fetch("/api/create-order", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          ...formData,
-          transaction_amount: Number(amount),
-          description: "Compra en tienda"
+          items: items.map(item => ({
+            id: item.id,
+            name: item.name,
+            title: item.name,
+            quantity: item.quantity,
+            price: item.price,
+            unit_price: item.price
+          })),
+          shippingData
         })
       })
 
-      const data = await res.json()
-      console.log("📥 Respuesta:", data)
-
-      if (!res.ok) {
-        throw new Error(data.message || "Error al procesar el pago")
+      if (!orderRes.ok) {
+        const error = await orderRes.json()
+        throw new Error(error.message || "Error al crear la orden")
       }
 
-      // Redirigir según el estado del pago
-      if (data.status === "approved") {
-        window.location.href = "/success"
-      } else if (["pending", "in_process"].includes(data.status)) {
-        window.location.href = "/pending"
+      const orderData = await orderRes.json()
+      
+      if (mounted.current) {
+        setOrderDetails(orderData)
+      }
+      console.log('📋 Orden creada:', orderData)
+
+      // PASO 2: Procesar el pago con MercadoPago
+      const paymentRes = await fetch("/api/process-payment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          orderId: orderData.orderId,
+          transaction_amount: orderData.total,
+          payer: {
+            email: shippingData.email
+          }
+        })
+      })
+
+      const paymentData = await paymentRes.json()
+      console.log('💳 Respuesta pago:', paymentData)
+
+      // PASO 3: Manejar la respuesta
+      if (paymentData.status === 'approved') {
+        if (mounted.current) {
+          clearCart()
+          setIsCartOpen(false)
+          alert('🎉 ¡Pago exitoso! Gracias por tu compra')
+          onComplete?.()
+        }
+      } else if (paymentData.status === 'pending') {
+        if (mounted.current) {
+          alert('⏳ Pago pendiente de confirmación. Te contactaremos pronto.')
+          setIsCartOpen(false)
+          onComplete?.()
+        }
       } else {
-        setSubmitError(`El pago quedó en estado: ${data.status}`)
+        if (mounted.current) {
+          alert(`❌ Pago rechazado: ${paymentData.message || 'Intenta con otro método'}`)
+        }
       }
 
     } catch (error) {
-      console.error("❌ Error en submit:", error)
-      setSubmitError(error.message)
+      console.error('❌ Checkout error:', error)
+      if (mounted.current) {
+        alert('Error al procesar el pago. Por favor intenta de nuevo')
+      }
     } finally {
-      setProcessing(false)
+      if (mounted.current) {
+        setIsProcessing(false)
+      }
+      // Resetear el flag después de un tiempo
+      setTimeout(() => {
+        hasProcessed.current = false
+      }, 1000)
     }
-  }, [amount])
-
-  // ⚠️ CRÍTICO: Este onError NO hace NADA
-  // Solo ignoramos todos los errores del Brick
-  const onError = useCallback(() => {
-    // ABSOLUTAMENTE NADA
-    // No console.log, no setState, no ref, nada
-    return null
-  }, [])
-
-  const onReady = useCallback(() => {
-    console.log("✅ Brick listo")
-    setBrickReady(true)
-  }, [])
+  }
 
   return (
-    <div style={{ 
-      maxWidth: "600px", 
-      margin: "0 auto",
-      padding: "20px"
-    }}>
-      {/* SOLO mostramos errores del SUBMIT */}
-      {submitError && (
-        <div style={{
-          backgroundColor: "#fee",
-          border: "1px solid #faa",
-          borderRadius: "8px",
-          color: "#c00",
-          padding: "16px",
-          marginBottom: "20px",
-          fontSize: "14px"
-        }}>
-          <strong>Error al procesar el pago:</strong> {submitError}
+    <div className="checkout-container">
+      <button onClick={onBack} className="back-btn" disabled={isProcessing}>
+        ← Volver
+      </button>
+
+      <h3>Resumen de compra</h3>
+
+      <div className="order-summary">
+        <div className="summary-item">
+          <span>Subtotal ({items.length} productos):</span>
+          <strong>${Number(totalPrice).toFixed(2)}</strong>
+        </div>
+        
+        <div className="summary-item">
+          <span>Envío:</span>
+          <strong>
+            {shippingQuote !== null 
+              ? `$${Number(shippingQuote).toFixed(2)}` 
+              : orderDetails 
+                ? `$${Number(orderDetails.shippingCost).toFixed(2)}` 
+                : "Calculando..."
+            }
+          </strong>
+        </div>
+        
+        <div className="summary-item total">
+          <span>Total a pagar:</span>
+          <strong>
+            {orderDetails 
+              ? `$${Number(orderDetails.total).toFixed(2)}` 
+              : shippingQuote !== null 
+                ? `$${(totalPrice + shippingQuote).toFixed(2)}`
+                : `$${Number(totalPrice).toFixed(2)}`
+            }
+          </strong>
+        </div>
+      </div>
+
+      <div className="shipping-info">
+        <h4>Datos de envío</h4>
+        <p><strong>{shippingData.name}</strong></p>
+        <p>{shippingData.address}, {shippingData.city}</p>
+        <p>CP: {shippingData.cp}</p>
+        <p>Tel: {shippingData.phone}</p>
+        <p>Email: {shippingData.email}</p>
+      </div>
+
+      {isProcessing && (
+        <div className="processing-message">
+          <div className="spinner"></div>
+          <p>Procesando pago, por favor espera...</p>
+          <p className="processing-note">No cierres esta ventana</p>
         </div>
       )}
 
-      {/* Loading overlay */}
-      {processing && (
-        <div style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: "rgba(255,255,255,0.9)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          zIndex: 9999
-        }}>
-          <div style={{
-            backgroundColor: "white",
-            padding: "24px 48px",
-            borderRadius: "12px",
-            boxShadow: "0 4px 12px rgba(0,0,0,0.1)"
-          }}>
-            ⏳ Procesando pago...
-          </div>
+      {!isProcessing && (
+        <div className="card-payment-wrapper">
+          <h4>Datos de la tarjeta</h4>
+          <CardPayment
+            initialization={{
+              amount: Number(orderDetails?.total || (totalPrice + (shippingQuote || 0)))
+            }}
+            onSubmit={handleSubmit}
+            onReady={() => console.log("✅ MercadoPago ready")}
+            onError={(error) => console.error("MP Error:", error)}
+          />
         </div>
       )}
-
-      {/* Loading del Brick */}
-      {!brickReady && !submitError && (
-        <div style={{
-          textAlign: "center",
-          padding: "40px",
-          backgroundColor: "#f5f5f5",
-          borderRadius: "8px"
-        }}>
-          Cargando formulario de pago...
-        </div>
-      )}
-
-      {/* Componente de pago */}
-      <Payment
-        key="payment-brick"
-        initialization={initialization}
-        customization={customization}
-        onSubmit={onSubmit}
-        onError={onError}
-        onReady={onReady}
-      />
     </div>
   )
 }

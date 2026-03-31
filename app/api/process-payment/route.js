@@ -1,94 +1,109 @@
-import { MercadoPagoConfig, Payment } from "mercadopago"
+// app/api/process-payment/route.js
 
-const client = new MercadoPagoConfig({
-  accessToken: process.env.NEXT_PUBLIC_MP_ACCESS_TOKEN
-})
+import { MercadoPagoConfig, Payment } from "mercadopago"
+import { getMercadoPagoConfig } from "@/lib/mercadopago-config"
+import { db } from "@/lib/db"
 
 export async function POST(req) {
   try {
     const body = await req.json()
     
-    // LOG COMPLETO de lo que recibimos
-    console.log("=== BACKEND RECIBIÓ ===")
-    console.log("Monto:", body.transaction_amount)
-    console.log("Token:", body.token ? "✅ Presente" : "❌ Faltante")
-    console.log("Payment Method ID:", body.payment_method_id)
-    console.log("Installments:", body.installments)
-    console.log("Issuer ID:", body.issuer_id)
-    console.log("Email:", body.payer?.email)
-    console.log("Identificación:", body.payer?.identification)
-    console.log("========================")
-
-    // Validaciones
-    if (!body.token) {
-      return Response.json({ 
-        error: true, 
-        message: "No se pudo generar el token de la tarjeta" 
-      }, { status: 400 })
+    // Obtener configuración según entorno
+    const config = getMercadoPagoConfig()
+    
+    console.log('💳 Procesando pago en:', config.isSandbox ? 'SANDBOX' : 'PRODUCCIÓN')
+    console.log('🔑 Public Key configurada:', config.publicKey?.substring(0, 10) + '...')
+    console.log('🔑 Access Token configurado:', config.accessToken ? '✅ Sí' : '❌ No')
+    
+    // Validar que el access token existe
+    if (!config.accessToken) {
+      console.error('❌ MP_ACCESS_TOKEN no está configurado')
+      return Response.json(
+        { message: "Error de configuración de MercadoPago" }, 
+        { status: 500 }
+      )
+    }
+    
+    // Validar datos de pago
+    if (!body.token || !body.transaction_amount || !body.payment_method_id) {
+      return Response.json(
+        { message: "Faltan datos de pago" }, 
+        { status: 400 }
+      )
     }
 
-    // Preparar pago
+    // Configurar cliente de MercadoPago con el token correcto
+    const client = new MercadoPagoConfig({
+      accessToken: config.accessToken
+    })
+    
+    const payment = new Payment(client)
+    
     const paymentData = {
       transaction_amount: Number(body.transaction_amount),
       token: body.token,
-      description: body.description || "Compra en tienda",
-      installments: Number(body.installments || 1),
+      description: `Compra ecommerce - Orden ${body.orderId}`,
+      installments: body.installments || 1,
       payment_method_id: body.payment_method_id,
       payer: {
-        email: body.payer.email,
-        identification: body.payer.identification || {
-          type: "DNI",
-          number: "12345678"
-        }
+        email: body.payer?.email || "cliente@email.com"
+      },
+      external_reference: body.orderId
+    }
+
+    // En producción, agregar metadata adicional
+    if (!config.isSandbox) {
+      paymentData.metadata = {
+        order_id: body.orderId,
+        platform: "nextjs-ecommerce",
+        version: "1.0.0"
       }
     }
 
-    // Agregar issuer_id si viene
-    if (body.issuer_id) {
-      paymentData.issuer_id = body.issuer_id
-    }
-
-    console.log("=== ENVIANDO A MP ===")
-    console.log(JSON.stringify(paymentData, null, 2))
-    console.log("=====================")
-
-    const payment = new Payment(client)
+    console.log('📤 Enviando pago a MercadoPago...')
     const result = await payment.create({ body: paymentData })
+    
+    console.log('📥 Respuesta MP:', result.status, result.id)
 
-    console.log("=== RESPUESTA MP ===")
-    console.log("Status:", result.status)
-    console.log("ID:", result.id)
-    console.log("Detail:", result.status_detail)
-    console.log("====================")
+    // Actualizar orden
+    const orderStatus = result.status === 'approved' ? 'approved' : 
+                        result.status === 'pending' ? 'pending' : 'rejected'
+    
+    await db.execute({
+      sql: `
+        UPDATE orders 
+        SET status = ?, 
+            payment_id = ?, 
+            payment_status = ?,
+            payment_method = ?,
+            updated_at = datetime('now')
+        WHERE id = ?
+      `,
+      args: [
+        orderStatus, 
+        result.id, 
+        result.status,
+        body.payment_method_id,
+        body.orderId
+      ]
+    })
 
     return Response.json({
       status: result.status,
-      id: result.id,
-      detail: result.status_detail
+      orderId: body.orderId,
+      paymentId: result.id,
+      environment: config.isSandbox ? 'sandbox' : 'production'
     })
 
   } catch (error) {
-    console.error("=== ERROR MP ===")
-    console.error("Message:", error.message)
-    console.error("Cause:", error.cause)
-    console.error("Status:", error.status)
-    console.error("Response:", error.response?.data)
-    console.error("================")
-
-    // Mensajes amigables
-    let userMessage = "No pudimos procesar el pago. Intentá con otra tarjeta"
+    console.error('❌ Payment error:', error)
     
-    if (error.message?.includes("invalid")) {
-      userMessage = "Datos de tarjeta inválidos"
-    } else if (error.message?.includes("rejected")) {
-      userMessage = "La tarjeta fue rechazada"
-    } else if (error.message?.includes("insufficient")) {
-      userMessage = "Fondos insuficientes"
-    }
-
-    return Response.json({ 
-      error: true, 
-      message: userMessage
-    }, { status: 400 })
+    return Response.json(
+      { 
+        message: "Error al procesar el pago", 
+        error: error.message 
+      }, 
+      { status: 500 }
+    )
   }
 }

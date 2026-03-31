@@ -4,33 +4,32 @@ const client = new MercadoPagoConfig({
   accessToken: process.env.NEXT_PUBLIC_MP_ACCESS_TOKEN
 })
 
-export async function POST(req){
-
-  try{
-
+export async function POST(req) {
+  try {
     const body = await req.json()
 
+    const orderId = crypto.randomUUID()
+
     const preference = new Preference(client)
-    console.log(preference)
+
     const result = await preference.create({
-      body:{
+      body: {
         items: body.items,
-       
 
-        back_urls:{
-  success:"https://sex-shop-ecommerce-oyax.vercel.app/success",
-  failure:"https://sex-shop-ecommerce-oyax.vercel.app/failure",
-  pending:"https://sex-shop-ecommerce-oyax.vercel.app/pending"
-},
+        payer: {
+          name: body.payer.name,
+          email: body.payer.email
+        },
 
-        auto_return:"approved",
-         // 🔹 evita pagos duplicados
-        external_reference: crypto.randomUUID(),
+        external_reference: orderId,
 
-       notification_url:"https://sex-shop-ecommerce-oyax.vercel.app/api/mercadopago/webhook",
+        back_urls: {
+          success: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
+          failure: `${process.env.NEXT_PUBLIC_BASE_URL}/failure`,
+          pending: `${process.env.NEXT_PUBLIC_BASE_URL}/pending`
+        },
 
-        // 🔹 descripción visible en MercadoPago
-        statement_descriptor: "TIENDA ONLINE"
+        auto_return: "approved"
       }
     })
 
@@ -38,12 +37,8 @@ export async function POST(req){
       id: result.id
     })
 
-  }catch(error){
-
+  } catch (error) {
     console.error("MercadoPago error:", error)
-
-    return Response.json({ error:true })
-
+    return Response.json({ error: true })
   }
-
 }

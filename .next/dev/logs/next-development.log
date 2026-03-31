@@ -1,145 +1,268 @@
-[00:00:02.120] Server  LOG     ✓ Ready in 1357ms
-[00:00:08.772] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:09.605] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:09.605] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:00:09.606] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773773193280} /_vercel/insights/view
-[00:00:20.381] Browser WARN    MercadoPago has already been initialized in your window, please remove the duplicate import
-[00:00:24.424] Browser LOG     ✅ Brick listo
-[00:00:26.018] Browser LOG     ✅ Brick listo
-[00:00:26.258] Browser LOG     ✅ Brick listo
-[00:00:37.940] Browser LOG     40027686
-[00:00:49.532] Browser LOG     45099535
-[00:01:02.193] Server  LOG     === BACKEND RECIBIÓ ===
-[00:01:02.196] Server  LOG     Monto: 49990
-[00:01:02.196] Server  LOG     Token: "✅ Presente"
-[00:01:02.197] Server  LOG     Payment Method ID: "visa"
-[00:01:02.197] Server  LOG     Installments: 2
-[00:01:02.198] Server  LOG     Issuer ID: "310"
-[00:01:02.198] Server  LOG     Email: "ejemplo@hotmail.com"
-[00:01:02.199] Server  LOG     Identificación: {}
-[00:01:02.200] Server  LOG     ========================
-[00:01:02.200] Server  LOG     === ENVIANDO A MP ===
-[00:01:02.201] Server  LOG     {
-  "transaction_amount": 49990,
-  "token": "180b6236eb86754c6e93dbb778dfc9c0",
-  "description": "Compra en tienda",
-  "installments": 2,
-  "payment_method_id": "visa",
-  "payer": {
-    "email": "ejemplo@hotmail.com",
-    "identification": {
-      "type": "DNI",
-      "number": "12345678"
-    }
-  },
-  "issuer_id": "310"
-}
-[00:01:02.202] Server  LOG     =====================
-[00:01:02.213] Browser LOG     📤 Enviando pago... {"email":"ejemplo@hotmail.com","metodo":"credit_card","monto":49990,"payment_method_id":"visa"}
-[00:01:02.665] Browser LOG     ✅ Brick listo
-[00:01:03.444] Server  ERROR   === ERROR MP ===
-[00:01:03.445] Server  ERROR   Message: "Invalid differential pricing"
-[00:01:03.447] Server  ERROR   Cause: [{...}]
-[00:01:03.448] Server  ERROR   Status: 400
-[00:01:03.449] Server  ERROR   Response: undefined
-[00:01:03.450] Server  ERROR   ================
-[00:01:03.581] Browser LOG     📥 Respuesta: {"error":true,"message":"No pudimos procesar el pago. Intentá con otra tarjeta"}
-[00:01:03.581] Browser ERROR   ❌ Error en submit: {}
-[00:01:04.064] Browser LOG     ✅ Brick listo
-[00:08:18.664] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:08:18.937] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:08:18.937] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:08:18.937] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773773683116} /_vercel/insights/view
-[00:08:23.646] Browser WARN    MercadoPago has already been initialized in your window, please remove the duplicate import
-[00:08:24.369] Browser LOG     ✅ Brick listo
-[00:08:24.880] Browser LOG     ✅ Brick listo
-[00:08:25.323] Browser LOG     ✅ Brick listo
-[00:08:29.195] Browser LOG     52873383
-[00:09:04.188] Server  LOG     === BACKEND RECIBIÓ ===
-[00:09:04.189] Server  LOG     Monto: 49990
-[00:09:04.190] Server  LOG     Token: "✅ Presente"
-[00:09:04.190] Server  LOG     Payment Method ID: "debmaster"
-[00:09:04.191] Server  LOG     Installments: 1
-[00:09:04.191] Server  LOG     Issuer ID: "3"
-[00:09:04.192] Server  LOG     Email: "ejemplo@hotmail.com"
-[00:09:04.192] Server  LOG     Identificación: {}
-[00:09:04.193] Server  LOG     ========================
-[00:09:04.193] Server  LOG     === ENVIANDO A MP ===
-[00:09:04.194] Server  LOG     {
-  "transaction_amount": 49990,
-  "token": "7ec4e69ff9aba58e5e0105743da5f4d6",
-  "description": "Compra en tienda",
-  "installments": 1,
-  "payment_method_id": "debmaster",
-  "payer": {
-    "email": "ejemplo@hotmail.com",
-    "identification": {
-      "type": "DNI",
-      "number": "12345678"
-    }
-  },
-  "issuer_id": "3"
-}
-[00:09:04.195] Server  LOG     =====================
-[00:09:04.269] Browser LOG     📤 Enviando pago... {"email":"ejemplo@hotmail.com","metodo":"debit_card","monto":49990,"payment_method_id":"debmaster"}
-[00:09:04.755] Browser LOG     ✅ Brick listo
-[00:09:06.053] Server  LOG     === RESPUESTA MP ===
-[00:09:06.053] Server  LOG     Status: "approved"
-[00:09:06.054] Server  LOG     ID: 1345585199
-[00:09:06.055] Server  LOG     Detail: "accredited"
-[00:09:06.056] Server  LOG     ====================
-[00:09:06.063] Browser LOG     📥 Respuesta: {"detail":"accredited","id":1345585199,"status":"approved"}
-[00:09:06.603] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:09:06.752] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:09:06.752] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/success","route":"/success"}
-[00:09:06.752] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/success color: rgb(120, 120, 120) color: inherit {"dp":"/success","o":"http://localhost:3000/success","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773773730931} /_vercel/insights/view
-[00:09:10.029] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773773734057} /_vercel/insights/view
-[00:20:11.106] Browser WARN    MercadoPago has already been initialized in your window, please remove the duplicate import
-[00:20:12.493] Browser WARN    [BRICKS] Payment Method(s) "argencard, diners, naranja, sucredito" was removed because it requires a higher amount
-[00:20:12.493] Browser LOG     ✅ Brick listo
-[00:20:12.981] Browser WARN    [BRICKS] Payment Method(s) "argencard, diners, naranja, sucredito" was removed because it requires a higher amount
-[00:20:12.981] Browser LOG     ✅ Brick listo
-[00:20:14.770] Browser LOG     ✅ Brick listo
-[00:20:15.283] Browser LOG     ✅ Brick listo
-[00:20:28.557] Browser LOG     52873383
-[00:20:39.151] Server  LOG     === BACKEND RECIBIÓ ===
-[00:20:39.152] Server  LOG     Monto: 30
-[00:20:39.152] Server  LOG     Token: "✅ Presente"
-[00:20:39.153] Server  LOG     Payment Method ID: "debmaster"
-[00:20:39.153] Server  LOG     Installments: 1
-[00:20:39.153] Server  LOG     Issuer ID: "3"
-[00:20:39.156] Server  LOG     Email: "ejemplo@hotmail.com"
-[00:20:39.157] Server  LOG     Identificación: {}
-[00:20:39.158] Server  LOG     ========================
-[00:20:39.158] Server  LOG     === ENVIANDO A MP ===
-[00:20:39.160] Server  LOG     {
-  "transaction_amount": 30,
-  "token": "0c979121590318bd01a5f6119e3ae7b1",
-  "description": "Compra en tienda",
-  "installments": 1,
-  "payment_method_id": "debmaster",
-  "payer": {
-    "email": "ejemplo@hotmail.com",
-    "identification": {
-      "type": "DNI",
-      "number": "12345678"
-    }
-  },
-  "issuer_id": "3"
-}
-[00:20:39.160] Server  LOG     =====================
-[00:20:39.215] Browser LOG     📤 Enviando pago... {"email":"ejemplo@hotmail.com","metodo":"debit_card","monto":30,"payment_method_id":"debmaster"}
-[00:20:39.699] Browser LOG     ✅ Brick listo
-[00:20:40.942] Server  LOG     === RESPUESTA MP ===
-[00:20:40.943] Server  LOG     Status: "approved"
-[00:20:40.944] Server  LOG     ID: 1345585363
-[00:20:40.944] Server  LOG     Detail: "accredited"
-[00:20:40.944] Server  LOG     ====================
-[00:20:40.948] Browser LOG     📥 Respuesta: {"detail":"accredited","id":1345585363,"status":"approved"}
-[00:20:41.409] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:20:41.576] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:20:41.576] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/success","route":"/success"}
-[00:20:41.576] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/success color: rgb(120, 120, 120) color: inherit {"dp":"/success","o":"http://localhost:3000/success","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773774425764} /_vercel/insights/view
-[00:20:44.140] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1773774428151} /_vercel/insights/view
-[01:06:33.608] Server  LOG       Reload env: .env.local
-[01:06:33.700] Server  LOG     ✓ Compiled in 17ms
+[00:00:02.262] Server  LOG     ✓ Ready in 1438ms
+[00:00:03.781] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:04.096] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:04.096] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:04.096] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1774915083764} /_vercel/insights/view
+[00:00:14.915] Browser WARN    MercadoPago has already been initialized in your window, please remove the duplicate import
+[00:00:16.391] Browser WARN    [BRICKS] Payment Method(s) "argencard, diners, naranja, sucredito" was removed because it requires a higher amount
+[00:00:16.968] Browser LOG     MercadoPago ready
+[00:00:25.771] Browser LOG     52873383
+[00:00:36.900] Server  ERROR   Error creating order: LibsqlError: SQLITE_UNKNOWN: SQLite error: no such table: orders
+[00:00:39.028] Browser ERROR   Checkout error: {}
+[00:10:34.133] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:10:34.475] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:10:34.475] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:10:34.475] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1774915714144} /_vercel/insights/view
+[00:10:42.446] Browser WARN    MercadoPago has already been initialized in your window, please remove the duplicate import
+[00:10:43.884] Browser WARN    [BRICKS] Payment Method(s) "argencard, diners, naranja, sucredito" was removed because it requires a higher amount
+[00:10:44.481] Browser LOG     MercadoPago ready
+[00:10:53.568] Browser LOG     52873383
+[00:11:08.201] Server  ERROR   Error creating order: LibsqlError: SQLITE_CONSTRAINT: SQLite error: FOREIGN KEY constraint failed
+[00:11:09.471] Browser ERROR   Checkout error: {}
+[00:16:00.112] Server  LOG     ✓ Compiled in 160ms
+[00:16:03.967] Browser WARN    [BRICKS] Payment Method(s) "argencard, diners, naranja, sucredito" was removed because it requires a higher amount
+[00:16:04.583] Browser LOG     MercadoPago ready
+[00:18:52.090] Browser LOG     52873383
+[00:19:03.237] Server  LOG     Processing payment for order: "f1bb8b3d-1fa6-4773-9f67-e79a4ab39c45"
+[00:19:05.074] Server  LOG     MercadoPago response: "approved"
+[00:19:38.062] Browser WARN    [BRICKS] Payment Method(s) "argencard, diners, naranja, sucredito" was removed because it requires a higher amount
+[00:19:38.346] Browser LOG     MercadoPago ready
+[00:19:41.577] Browser LOG     52873383
+[00:19:54.367] Server  LOG     Processing payment for order: "96db3564-9cc2-4fee-a1da-f8f0410d453b"
+[00:19:56.565] Server  LOG     MercadoPago response: "approved"
+[00:20:17.310] Browser WARN    [BRICKS] Payment Method(s) "argencard, diners, naranja, sucredito" was removed because it requires a higher amount
+[00:20:17.579] Browser LOG     MercadoPago ready
+[00:20:41.818] Browser LOG     MercadoPago ready
+[00:20:44.524] Browser LOG     52873383
+[00:20:55.993] Server  LOG     Processing payment for order: "404a9812-9216-4d27-83a1-300e7714d7dc"
+[00:20:57.697] Server  LOG     MercadoPago response: "approved"
+[00:24:49.956] Server  LOG     ✓ Compiled in 116ms
+[00:26:51.349] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:26:51.708] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:26:51.708] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:26:51.708] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1774916691381} /_vercel/insights/view
+[00:27:05.548] Browser LOG     Shipping data enviado: {"address":"sadasd","city":"asdasdas","cp":"1123","email":"urbanjuancruz@gmail.com","name":"Juan Cruz Urban","phone":"1123"}
+[00:27:05.767] Browser WARN    MercadoPago has already been initialized in your window, please remove the duplicate import
+[00:27:07.829] Browser LOG     MercadoPago ready
+[00:27:14.179] Browser LOG     52873383
+[00:27:24.580] Server  LOG     Shipping Data recibido: {}
+[00:27:26.356] Server  LOG     Processing payment for order: "63736a2c-e609-416f-9cc8-830cb5f04e78"
+[00:27:28.154] Server  LOG     MercadoPago response: "approved"
+[00:31:46.877] Browser LOG     MercadoPago ready
+[00:42:25.024] Server  LOG     ✓ Compiled in 135ms
+[00:43:43.760] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:43:44.047] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:43:44.047] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:43:44.047] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1774917703717} /_vercel/insights/view
+[00:44:10.547] Browser LOG     Shipping data enviado: {"address":"sadasd","city":"asdasdas","cp":"1123","email":"urbanjuancruz@gmail.com","name":"pepe","phone":"1123"}
+[00:44:10.749] Browser WARN    MercadoPago has already been initialized in your window, please remove the duplicate import
+[00:44:13.068] Browser LOG     ✅ MercadoPago ready
+[00:44:22.507] Browser LOG     52873383
+[00:44:34.133] Server  LOG     📦 Creando orden con datos: {}
+[00:44:34.135] Server  LOG     Cotizando envío: 1406 → 1123, peso: 1kg
+[00:44:34.135] Server  LOG     📊 Totales: {}
+[00:44:34.141] Browser LOG     🚀 Iniciando checkout... {"items":[{"category":"Calzado","id":8,"image":"https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=400&h=400&fit=crop","inStock":true,"name":"Botines Casual","originalPrice":139990,"price":109990,"quantity":1,"rating":4.6,"reviews":76}],"shippingData":{"address":"sadasd","city":"asdasdas","cp":"1123","email":"urbanjuancruz@gmail.com","name":"pepe","phone":"1123"}}
+[00:44:34.716] Browser LOG     ✅ MercadoPago ready
+[00:44:35.647] Server  LOG     ✅ Orden creada: "a15aab83-9c3f-465f-bf88-b5dc3aade964"
+[00:44:35.811] Server  LOG     💳 Procesando pago: {}
+[00:44:35.814] Server  LOG     📤 Enviando a MP...
+[00:44:35.824] Browser LOG     📋 Orden creada: {"orderId":"a15aab83-9c3f-465f-bf88-b5dc3aade964","orderNumber":"ORD-1774917753911","shippingCost":1500,"status":"pending","subtotal":109990,"total":111490}
+[00:44:37.499] Server  LOG     📥 Respuesta MP: "approved" 1326788604
+[00:44:37.715] Server  LOG     ✅ Orden actualizada: "a15aab83-9c3f-465f-bf88-b5dc3aade964" "Estado:" "approved"
+[00:44:42.138] Browser LOG     💳 Respuesta pago: {"message":"Pago aprobado","orderId":"a15aab83-9c3f-465f-bf88-b5dc3aade964","paymentId":1326788604,"status":"approved"}
+[00:48:21.734] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:48:22.049] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:48:22.049] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:48:22.049] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1774917981715} /_vercel/insights/view
+[00:53:01.398] Browser LOG     ✅ MercadoPago ready
+[00:53:36.092] Browser LOG     Shipping data enviado: {"address":"sadasd","city":"asdasdas","cp":"1123","email":"urbanjuancruz@gmail.com","name":"Juan Cruz Urban","phone":"+54 2284 571438"}
+[00:53:36.885] Browser LOG     ✅ MercadoPago ready
+[00:55:57.624] Server  LOG     ✓ Compiled in 130ms
+[00:56:20.871] Server  LOG     ✓ Compiled in 160ms
+[00:56:38.661] Server  LOG     ✓ Compiled in 131ms
+[00:57:00.874] Server  LOG     ✓ Compiled in 121ms
+[00:57:14.233] Server  LOG     ✓ Compiled in 115ms
+[00:57:20.618] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:57:20.905] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:57:20.905] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:57:20.906] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1774918520576} /_vercel/insights/view
+[00:58:46.277] Server  LOG     ✓ Compiled in 139ms
+[00:59:20.405] Server  LOG     ✓ Compiled in 125ms
+[01:00:11.037] Browser WARN    MercadoPago has already been initialized in your window, please remove the duplicate import
+[01:00:12.750] Browser LOG     ✅ MercadoPago ready
+[01:02:52.687] Server  ERROR   Error: TypeError: Cannot read properties of undefined (reading 'reduce')
+[01:31:09.431] Server  LOG     ✓ Compiled in 121ms
+[01:31:24.494] Server  LOG     ✓ Compiled in 145ms
+[01:32:09.308] Server  LOG     ✓ Compiled in 109ms
+[01:32:20.637] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:32:20.945] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:32:20.945] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:32:20.945] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1774920620616} /_vercel/insights/view
+[01:32:38.880] Server  LOG     Calculando envío para CP: "1123"
+[01:32:38.882] Server  LOG     Cotizando envío: 1406 → 1123, peso: 1kg
+[01:32:38.883] Server  LOG     Costo de envío calculado: 1500
+[01:32:43.125] Browser WARN    MercadoPago has already been initialized in your window, please remove the duplicate import
+[01:32:45.598] Browser LOG     ✅ MercadoPago ready
+[01:33:42.478] Server  LOG     Calculando envío para CP: "1123"
+[01:33:42.479] Server  LOG     Cotizando envío: 1406 → 1123, peso: 1kg
+[01:33:42.480] Server  LOG     Costo de envío calculado: 1500
+[01:33:44.821] Browser LOG     ✅ MercadoPago ready
+[01:34:36.013] Browser LOG     52873383
+[01:34:48.693] Server  LOG     📦 Creando orden con datos: {}
+[01:34:48.695] Server  LOG     Cotizando envío: 1406 → 1123, peso: 1kg
+[01:34:48.696] Server  LOG     📊 Totales: {}
+[01:34:48.702] Browser LOG     🚀 Iniciando checkout... {"items":[{"category":"Ropa","id":10,"image":"https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=400&h=400&fit=crop","inStock":true,"name":"Pantalón Chino","originalPrice":59990,"price":44990,"quantity":1,"rating":4.2,"reviews":34}],"shippingData":{"address":"sadasd","city":"asdasdas","cp":"1123","email":"urbanjuancruz@gmail.com","name":"Juan Cruz Urban","phone":"+54 2284 571438"}}
+[01:34:49.545] Browser LOG     ✅ MercadoPago ready
+[01:34:50.157] Server  LOG     ✅ Orden creada: "f9fef6ac-81e6-44b5-b7db-be0a7d2bfb85"
+[01:34:50.280] Server  LOG     💳 Procesando pago: {}
+[01:34:50.283] Server  LOG     📤 Enviando a MP...
+[01:34:50.293] Browser LOG     📋 Orden creada: {"orderId":"f9fef6ac-81e6-44b5-b7db-be0a7d2bfb85","orderNumber":"ORD-1774920768472","shippingCost":1500,"status":"pending","subtotal":44990,"total":46490}
+[01:34:51.099] Browser LOG     ✅ MercadoPago ready
+[01:34:51.950] Server  LOG     📥 Respuesta MP: "approved" 1345921961
+[01:34:52.173] Server  LOG     ✅ Orden actualizada: "f9fef6ac-81e6-44b5-b7db-be0a7d2bfb85" "Estado:" "approved"
+[01:34:53.753] Browser LOG     💳 Respuesta pago: {"message":"Pago aprobado","orderId":"f9fef6ac-81e6-44b5-b7db-be0a7d2bfb85","paymentId":1345921961,"status":"approved"}
+[01:37:45.752] Server  LOG     ✓ Compiled in 149ms
+[01:37:58.869] Server  LOG     ✓ Compiled in 189ms
+[01:38:22.538] Server  LOG     ✓ Compiled in 193ms
+[01:38:35.892] Server  LOG     ✓ Compiled in 117ms
+[01:38:55.334] Server  LOG     ✓ Compiled in 100ms
+[01:39:00.177] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:39:00.511] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:39:00.511] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:39:00.511] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1774921020186} /_vercel/insights/view
+[01:39:27.341] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:39:27.581] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:39:27.581] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:39:27.581] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1774921047255} /_vercel/insights/view
+[01:39:43.604] Server  LOG     Calculando envío para CP: "1123"
+[01:39:43.604] Server  LOG     Cotizando envío: 1406 → 1123, peso: 1kg
+[01:39:43.605] Server  LOG     Costo de envío calculado: 1500
+[01:39:46.788] Browser WARN    MercadoPago has already been initialized in your window, please remove the duplicate import
+[01:39:48.706] Browser LOG     ✅ MercadoPago ready
+[01:40:04.947] Browser LOG     52873383
+[01:40:14.430] Server  LOG     📦 Creando orden con datos: {}
+[01:40:14.432] Server  LOG     Cotizando envío: 1406 → 1123, peso: 1kg
+[01:40:14.435] Server  LOG     📊 Totales: {}
+[01:40:14.499] Browser LOG     🚀 Iniciando checkout...
+[01:40:16.378] Server  LOG     ✅ Orden creada: "e7b0231e-722c-496e-96e6-bfefdbddb274"
+[01:40:16.422] Server  LOG     💳 Procesando pago: {}
+[01:40:16.423] Server  LOG     📤 Enviando a MP...
+[01:40:16.495] Browser LOG     📋 Orden creada: {"orderId":"e7b0231e-722c-496e-96e6-bfefdbddb274","orderNumber":"ORD-1774921094210","shippingCost":1500,"status":"pending","subtotal":79990,"total":81490}
+[01:40:18.105] Server  LOG     📥 Respuesta MP: "approved" 1345921999
+[01:40:18.310] Server  LOG     ✅ Orden actualizada: "e7b0231e-722c-496e-96e6-bfefdbddb274" "Estado:" "approved"
+[01:40:19.623] Browser LOG     💳 Respuesta pago: {"message":"Pago aprobado","orderId":"e7b0231e-722c-496e-96e6-bfefdbddb274","paymentId":1345921999,"status":"approved"}
+[01:41:39.056] Server  LOG     ✓ Compiled in 108ms
+[01:42:05.431] Server  LOG     Calculando envío para CP: "1111"
+[01:42:05.432] Server  LOG     Cotizando envío: 1406 → 1111, peso: 1kg
+[01:42:05.433] Server  LOG     Costo de envío calculado: 1500
+[01:42:05.646] Server  LOG     Calculando envío para CP: "11111"
+[01:42:05.647] Server  LOG     Cotizando envío: 1406 → 11111, peso: 1kg
+[01:42:05.648] Server  LOG     Costo de envío calculado: 2000
+[01:42:08.629] Server  LOG     Calculando envío para CP: "1111"
+[01:42:08.631] Server  LOG     Cotizando envío: 1406 → 1111, peso: 1kg
+[01:42:08.632] Server  LOG     Costo de envío calculado: 1500
+[01:42:12.318] Browser LOG     ✅ MercadoPago ready
+[01:42:22.291] Browser LOG     52873383
+[01:42:32.488] Server  LOG     📦 Creando orden con datos: {}
+[01:42:32.491] Server  LOG     Cotizando envío: 1406 → 1111, peso: 1kg
+[01:42:32.492] Server  LOG     📊 Totales: {}
+[01:42:32.564] Browser LOG     🚀 Iniciando checkout...
+[01:42:34.193] Server  LOG     ✅ Orden creada: "2dc9df39-36d1-45c0-8d5c-c7d558957273"
+[01:42:34.237] Server  LOG     💳 Procesando pago: {}
+[01:42:34.238] Server  LOG     📤 Enviando a MP...
+[01:42:34.304] Browser LOG     📋 Orden creada: {"orderId":"2dc9df39-36d1-45c0-8d5c-c7d558957273","orderNumber":"ORD-1774921232268","shippingCost":1500,"status":"pending","subtotal":89990,"total":91490}
+[01:42:36.038] Server  LOG     📥 Respuesta MP: "approved" 1345920211
+[01:42:36.266] Server  LOG     ✅ Orden actualizada: "2dc9df39-36d1-45c0-8d5c-c7d558957273" "Estado:" "approved"
+[01:42:37.708] Browser LOG     💳 Respuesta pago: {"message":"Pago aprobado","orderId":"2dc9df39-36d1-45c0-8d5c-c7d558957273","paymentId":1345920211,"status":"approved"}
+[01:46:48.626] Server  LOG     ✓ Compiled in 146ms
+[01:46:53.219] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:46:53.546] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:46:53.546] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:46:53.546] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1774921493201} /_vercel/insights/view
+[01:48:34.658] Server  LOG     ✓ Compiled in 115ms
+[01:48:41.918] Server  LOG     ✓ Compiled in 103ms
+[01:49:35.399] Server  LOG     Calculando envío para CP: "1234"
+[01:49:35.399] Server  LOG     Cotizando envío: 1406 → 1234, peso: 1kg
+[01:49:35.400] Server  LOG     Costo de envío calculado: 1500
+[01:49:44.551] Browser WARN    MercadoPago has already been initialized in your window, please remove the duplicate import
+[01:49:46.365] Browser LOG     ✅ MercadoPago ready
+[01:50:07.928] Server  LOG     Calculando envío para CP: "1111"
+[01:50:07.928] Server  LOG     Cotizando envío: 1406 → 1111, peso: 1kg
+[01:50:07.930] Server  LOG     Costo de envío calculado: 1500
+[01:50:10.122] Server  LOG     Calculando envío para CP: "1110"
+[01:50:10.122] Server  LOG     Cotizando envío: 1406 → 1110, peso: 1kg
+[01:50:10.123] Server  LOG     Costo de envío calculado: 1500
+[01:50:13.093] Browser LOG     ✅ MercadoPago ready
+[01:53:20.433] Server  LOG     ✓ Compiled in 118ms
+[01:53:47.915] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:53:48.192] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:53:48.192] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:53:48.192] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1774921907865} /_vercel/insights/view
+[01:54:06.241] Server  LOG     Calculando envío para CP: "1234"
+[01:54:06.241] Server  LOG     Cotizando envío: 1406 → 1234, peso: 1kg
+[01:54:06.242] Server  LOG     Costo de envío calculado: 1500
+[01:54:11.856] Server  LOG     Calculando envío para CP: "8888"
+[01:54:11.857] Server  LOG     Cotizando envío: 1406 → 8888, peso: 1kg
+[01:54:11.858] Server  LOG     Costo de envío calculado: 2000
+[01:54:18.246] Server  LOG     Calculando envío para CP: "9999"
+[01:54:18.247] Server  LOG     Cotizando envío: 1406 → 9999, peso: 1kg
+[01:54:18.247] Server  LOG     Costo de envío calculado: 2000
+[01:54:21.788] Server  LOG     Calculando envío para CP: "0000"
+[01:54:21.789] Server  LOG     Cotizando envío: 1406 → 0000, peso: 1kg
+[01:54:21.790] Server  LOG     Costo de envío calculado: 1500
+[01:54:29.627] Browser WARN    MercadoPago has already been initialized in your window, please remove the duplicate import
+[01:54:30.893] Browser LOG     ✅ MercadoPago ready
+[02:00:20.146] Server  LOG     Calculando envío para CP: "1111"
+[02:00:20.147] Server  LOG     Cotizando envío: 1406 → 1111, peso: 1kg
+[02:00:20.147] Server  LOG     Costo de envío calculado: 1500
+[02:00:24.044] Browser LOG     ✅ MercadoPago ready
+[02:02:17.635] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:02:17.978] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:02:17.979] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[02:02:17.979] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1774922417647} /_vercel/insights/view
+[02:02:30.556] Server  LOG     Calculando envío para CP: "1123"
+[02:02:30.556] Server  LOG     Cotizando envío: 1406 → 1123, peso: 1kg
+[02:02:30.557] Server  LOG     Costo de envío calculado: 1500
+[02:02:32.313] Browser WARN    MercadoPago has already been initialized in your window, please remove the duplicate import
+[02:02:33.262] Browser LOG     ✅ MercadoPago ready
+[02:02:42.480] Browser LOG     52873383
+[02:02:54.202] Server  LOG     📦 Creando orden con datos: {}
+[02:02:54.203] Server  LOG     Cotizando envío: 1406 → 1123, peso: 1kg
+[02:02:54.204] Server  LOG     📊 Totales: {}
+[02:02:54.283] Browser LOG     🚀 Iniciando checkout...
+[02:02:55.679] Server  LOG     ✅ Orden creada: "becb9be2-3fdd-4144-b9dd-9eebb9d40e05"
+[02:02:55.866] Server  LOG     💳 Procesando pago en: "SANDBOX"
+[02:02:55.877] Browser LOG     📋 Orden creada: {"orderId":"becb9be2-3fdd-4144-b9dd-9eebb9d40e05","orderNumber":"ORD-1774922453980","shippingCost":1500,"status":"pending","subtotal":49990,"total":51490}
+[02:02:56.511] Server  ERROR   ❌ Payment error: {}
+[02:02:58.281] Browser LOG     💳 Respuesta pago: {"environment":"development","error":"Must provide your access_token to proceed","message":"Error al procesar el pago"}
+[02:02:59.178] Browser LOG     ✅ MercadoPago ready
+[02:06:57.753] Server  LOG       Reload env: .env.local
+[02:07:01.472] Browser LOG     ✅ MercadoPago ready
+[02:08:34.929] Browser LOG     52873383
+[02:08:47.145] Server  LOG     📦 Creando orden con datos: {}
+[02:08:47.147] Server  LOG     Cotizando envío: 1406 → 1123, peso: 1kg
+[02:08:47.148] Server  LOG     📊 Totales: {}
+[02:08:47.154] Browser LOG     🚀 Iniciando checkout...
+[02:08:49.283] Server  LOG     ✅ Orden creada: "7fec093f-198e-4663-b2cf-6e25984c848a"
+[02:08:49.393] Browser LOG     📋 Orden creada: {"orderId":"7fec093f-198e-4663-b2cf-6e25984c848a","orderNumber":"ORD-1774922806924","shippingCost":1500,"status":"pending","subtotal":49990,"total":51490}
+[02:08:49.491] Server  LOG     💳 Procesando pago en: "SANDBOX"
+[02:08:49.492] Server  LOG     🔑 Public Key configurada: "TEST-b0d80..."
+[02:08:49.495] Server  LOG     🔑 Access Token configurado: "✅ Sí"
+[02:08:49.496] Server  LOG     📤 Enviando pago a MercadoPago...
+[02:08:51.164] Server  LOG     📥 Respuesta MP: "approved" 1345920461
+[02:08:51.534] Server  ERROR   ❌ Payment error: LibsqlError: SQLITE_UNKNOWN: SQLite error: no such column: payment_method
+[02:08:52.925] Browser LOG     💳 Respuesta pago: {"error":"SQLITE_UNKNOWN: SQLite error: no such column: payment_method","message":"Error al procesar el pago"}
+[02:08:53.842] Browser LOG     ✅ MercadoPago ready
+[02:10:33.558] Browser LOG     52873383
+[02:10:45.292] Server  LOG     📦 Creando orden con datos: {}
+[02:10:45.292] Server  LOG     Cotizando envío: 1406 → 1123, peso: 1kg
+[02:10:45.293] Server  LOG     📊 Totales: {}
+[02:10:45.365] Browser LOG     🚀 Iniciando checkout...
+[02:10:47.178] Server  LOG     ✅ Orden creada: "272bc523-a9ca-48e3-8777-805178cafbaa"
+[02:10:47.223] Server  LOG     💳 Procesando pago en: "SANDBOX"
+[02:10:47.224] Server  LOG     🔑 Public Key configurada: "TEST-b0d80..."
+[02:10:47.226] Server  LOG     🔑 Access Token configurado: "✅ Sí"
+[02:10:47.227] Server  LOG     📤 Enviando pago a MercadoPago...
+[02:10:47.290] Browser LOG     📋 Orden creada: {"orderId":"272bc523-a9ca-48e3-8777-805178cafbaa","orderNumber":"ORD-1774922925069","shippingCost":1500,"status":"pending","subtotal":49990,"total":51490}
+[02:10:48.775] Server  LOG     📥 Respuesta MP: "approved" 1345920483
+[02:10:50.508] Browser LOG     💳 Respuesta pago: {"environment":"sandbox","orderId":"272bc523-a9ca-48e3-8777-805178cafbaa","paymentId":1345920483,"status":"approved"}
