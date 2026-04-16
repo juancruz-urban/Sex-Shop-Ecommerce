@@ -4,7 +4,16 @@ import ProductCard from "./ProductCard"
 import "./ProductGrid.css"
 
 export default function ProductGrid({ products }) {
-  if (products.length === 0) {
+  const generateStableKey = (product, index) => {
+    const urlId = product.producto?.["Identificador de URL"] || ""
+    const imageId = product.imagen?.id || product.imagenes[0]?.id
+    const name = product.producto?.["Nombre"] || ""
+    const price = product.producto?.["Precio"] || ""
+    const keyBase = `${urlId}-${imageId}-${name}-${price}-${index}`
+    return keyBase.replace(/\s/g, '-')
+  }
+
+  if (!products || products.length === 0) {
     return (
       <div className="no-products">
         <div className="no-products-icon">
@@ -28,8 +37,11 @@ export default function ProductGrid({ products }) {
 
   return (
     <div className="product-grid">
-      {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
+      {products.map((product, index) => (
+        <ProductCard 
+          key={generateStableKey(product, index)} 
+          product={product} 
+        />
       ))}
     </div>
   )

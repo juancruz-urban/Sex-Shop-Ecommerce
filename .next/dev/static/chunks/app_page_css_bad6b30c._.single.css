@@ -1,6 +1,36 @@
 /* [project]/app/page.css [app-client] (css) */
+:root {
+  --main-foreground: #1b1717;
+  --accent-color: #e40044;
+  --button-background: #1b1717;
+  --button-foreground: #fff;
+  --header-background: #1b1717;
+  --header-foreground: #fff;
+  --header-desktop-nav-background: #1b1717;
+  --header-desktop-nav-foreground: #fff;
+  --footer-background: #1b1717;
+  --footer-foreground: #fff;
+  --border-radius: 8px;
+  --spacing-base: 16px;
+  --body-font: "Rubik", sans-serif;
+  --heading-font: "Chakra Petch", sans-serif;
+  --main-background: #fff0f5 !important;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--body-font);
+  background: var(--main-background);
+  color: var(--main-foreground);
+}
+
 .products-section {
-  background-color: #f8f5f2;
+  background: var(--main-background);
   min-height: 100vh;
   padding: 3rem 1.5rem 4rem;
 }
@@ -20,14 +50,15 @@
 }
 
 .products-title {
-  color: #1a1a1a;
+  color: var(--main-foreground);
   letter-spacing: -.02em;
   font-size: 1.75rem;
   font-weight: 700;
+  font-family: var(--heading-font);
 }
 
 .products-count {
-  color: #666;
+  color: #1b171799;
   font-size: .95rem;
 }
 

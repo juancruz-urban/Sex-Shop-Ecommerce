@@ -1,4 +1,8 @@
 /* [project]/components/ProductGrid.css [app-client] (css) */
+:root {
+  --main-foreground: #1b1717;
+}
+
 .product-grid {
   flex: 1;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -24,7 +28,7 @@
 }
 
 .no-products h3 {
-  color: #1a1a1a;
+  color: var(--main-foreground);
   margin-bottom: .5rem;
   font-size: 1.25rem;
   font-weight: 600;

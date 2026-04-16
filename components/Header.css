@@ -1,155 +1,370 @@
+/* Header.css */
+
+/* --- Variables --- */
+:root {
+  --header-background: #1B1717;
+  --header-foreground: #FFFFFF;
+  --accent-color: #E40044;
+  --main-background: #FFF0F5;
+}
+
+/* --- Header Principal --- */
 .header {
-  background-color: #fff;
-  border-bottom: 1px solid #e5e5e5;
+  background: var(--header-background);
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
+}
+
+/* --- Header Main --- */
+.header-main {
+  background: var(--header-background);
+  padding: 0.75rem 0;
 }
 
 .header-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 1rem 1.5rem;
+  padding: 0 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
 }
 
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
+/* --- Botón menú móvil --- */
 .mobile-menu-btn {
   display: none;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0.5rem;
-  color: #1a1a1a;
+  color: var(--header-foreground);
 }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  letter-spacing: -0.02em;
+/* --- Logo --- */
+.logo-container {
+  flex-shrink: 0;
 }
 
-.nav-links {
+.logo-img {
+  height: 45px;
+  width: auto;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  display: block;
+}
+
+.logo-img:hover {
+  opacity: 0.8;
+}
+
+/* --- Búsqueda Desktop --- */
+.search-container-desktop {
+  flex: 1;
+  max-width: 400px;
   display: flex;
-  gap: 2rem;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  padding: 0.5rem 1rem;
+  gap: 0.5rem;
 }
 
-.nav-link {
-  color: #666;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 0.9rem;
-  transition: color 0.2s ease;
+.search-icon-top {
+  color: rgba(255, 255, 255, 0.6);
+  flex-shrink: 0;
 }
 
-.nav-link:hover,
-.nav-link.active {
-  color: #1a1a1a;
+.search-input-top {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 0.85rem;
+  background: transparent;
+  color: var(--header-foreground);
 }
 
-.header-right {
+.search-input-top::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* --- Acciones del header --- */
+.header-actions {
   display: flex;
   align-items: center;
   gap: 1rem;
-}
-
-.search-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.search-icon {
-  position: absolute;
-  left: 0.75rem;
-  color: #999;
-  pointer-events: none;
-}
-
-.search-input {
-  padding: 0.6rem 0.75rem 0.6rem 2.5rem;
-  border: 1px solid #e5e5e5;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  width: 280px;
-  background-color: #f8f8f8;
-  transition: all 0.2s ease;
-}
-
-.search-input:focus {
-  outline: none;
-  border-color: #1a1a1a;
-  background-color: #fff;
+  flex-shrink: 0;
 }
 
 .cart-btn {
-  position: relative;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0.5rem;
-  color: #1a1a1a;
-  transition: transform 0.2s ease;
+  color: var(--header-foreground);
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
 .cart-btn:hover {
-  transform: scale(1.1);
+  color: var(--accent-color);
 }
 
 .cart-badge {
   position: absolute;
   top: -4px;
   right: -4px;
-  background-color: #c44d3b;
+  background: var(--accent-color);
   color: white;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   font-weight: 600;
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/* --- Búsqueda Móvil --- */
+.mobile-search-container {
+  display: none;
+  padding: 0.75rem 1rem;
+  background: var(--header-background);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mobile-search-icon {
+  color: rgba(255, 255, 255, 0.6);
+  flex-shrink: 0;
+}
+
+.mobile-search-container input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  padding: 0.6rem 1rem;
+  font-size: 0.85rem;
+  color: var(--header-foreground);
+  outline: none;
+}
+
+.mobile-search-container input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* --- Barra de Navegación --- */
+.nav-bar {
+  background: var(--header-background);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  height: 48px;
+}
+
+.nav-item {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  color: var(--header-foreground);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: color 0.2s;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0 0.5rem;
+  height: 100%;
+}
+
+.nav-link:hover {
+  color: #ff4da6 !important;
+}
+
+/* Dropdown */
+.dropdown-trigger {
+  font-family: inherit;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--header-background);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  min-width: 180px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  padding: 0.5rem 0;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 0.6rem 1rem;
+  color: var(--header-foreground);
+  text-decoration: none;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255, 77, 166, 0.1);
+  color: #ff4da6 !important;
+  padding-left: 1.25rem;
+}
+
+/* --- Menú Móvil --- */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 280px;
+  background: var(--header-background);
+  z-index: 1100;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-menu.mobile-menu-open {
+  transform: translateX(0);
+}
+
+.mobile-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-menu-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--header-foreground);
+}
+
+.mobile-menu-header button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--header-foreground);
+}
+
+.mobile-menu-links {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1.5rem;
+  gap: 1rem;
+}
+
+.mobile-menu-links a {
+  color: var(--header-foreground);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+.mobile-menu-links a:hover {
+  color: #ff4da6;
+}
+
+.mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1050;
+}
+
+/* --- Responsive --- */
 @media (max-width: 768px) {
   .mobile-menu-btn {
-    display: flex;
+    display: block;
   }
 
-  .nav-links {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: #fff;
-    flex-direction: column;
-    padding: 1rem 1.5rem;
-    gap: 1rem;
-    border-bottom: 1px solid #e5e5e5;
+  .search-container-desktop {
     display: none;
   }
 
-  .nav-links.nav-open {
+  .mobile-search-container {
     display: flex;
   }
 
-  .search-input {
-    width: 180px;
+  .nav-bar {
+    display: none;
+  }
+
+  .header-container {
+    padding: 0 1rem;
+    gap: 1rem;
+  }
+
+  .logo-img {
+    height: 35px;
+  }
+
+  .header-actions {
+    gap: 0.5rem;
   }
 }
 
-@media (max-width: 480px) {
-  .search-container {
+@media (min-width: 769px) {
+  .mobile-menu,
+  .mobile-overlay {
     display: none;
   }
+}
+
+/* --- Animaciones --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-menu {
+  animation: fadeIn 0.2s ease;
+}
+
+/* Scroll suave */
+html {
+  scroll-behavior: smooth;
 }

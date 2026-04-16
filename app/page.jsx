@@ -1,19 +1,16 @@
 "use client"
 
-import { useMemo,useState } from "react"
+import { useMemo, useState } from "react"
 import { CartProvider, useCart } from "@/context/CartContext"
 import Header from "@/components/Header"
-import Hero from "@/components/Hero"
+
 import Filters from "@/components/Filters"
 import ProductGrid from "@/components/ProductGrid"
 import Cart from "@/components/Cart"
-import { products, priceRanges } from "@/data/products"
+import { products, priceRanges, cleanPrice } from "../data/products-sex.js"
 import "./page.css"
 
 function Shop() {
-  // Usar el estado del contexto para el carrito
-  const { isCartOpen, setIsCartOpen, items } = useCart()
-
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("Todos")
   const [selectedPriceRange, setSelectedPriceRange] = useState(0)
@@ -23,72 +20,74 @@ function Shop() {
   const filteredProducts = useMemo(() => {
     let result = [...products]
 
+    // Filtro por búsqueda
     if (searchQuery) {
       const query = searchQuery.toLowerCase()
-      result = result.filter(
-        (product) =>
-          product.name.toLowerCase().includes(query) ||
-          product.category.toLowerCase().includes(query)
-      )
+      result = result.filter((item) => {
+        const product = item.producto
+        return (
+          product["Nombre"]?.toLowerCase().includes(query) ||
+          product["Categorías"]?.toLowerCase().includes(query) ||
+          product["Descripción"]?.toLowerCase().includes(query)
+        )
+      })
     }
 
+    // Filtro por categoría
     if (selectedCategory !== "Todos") {
-      result = result.filter(
-        (product) => product.category === selectedCategory
-      )
+      result = result.filter((item) => {
+        const categories = item.producto["Categorías"] || ""
+        return categories.includes(selectedCategory) ||
+               categories.split(' > ').includes(selectedCategory) ||
+               categories === selectedCategory
+      })
     }
 
+    // Filtro por rango de precios
     const priceRange = priceRanges[selectedPriceRange]
-    result = result.filter(
-      (product) =>
-        product.price >= priceRange.min &&
-        product.price <= priceRange.max
-    )
-
-    if (showInStockOnly) {
-      result = result.filter((product) => product.inStock)
+    if (priceRange) {
+      result = result.filter((item) => {
+        const price = cleanPrice(item.producto["Precio"])
+        return price >= priceRange.min && price <= priceRange.max
+      })
     }
 
+    // Ordenamiento
     switch (sortBy) {
       case "price-asc":
-        result.sort((a, b) => a.price - b.price)
+        result.sort((a, b) => cleanPrice(a.producto["Precio"]) - cleanPrice(b.producto["Precio"]))
         break
       case "price-desc":
-        result.sort((a, b) => b.price - a.price)
-        break
-      case "rating":
-        result.sort((a, b) => b.rating - a.rating)
+        result.sort((a, b) => cleanPrice(b.producto["Precio"]) - cleanPrice(a.producto["Precio"]))
         break
       case "newest":
-        result.sort((a, b) => b.id - a.id)
+        result.sort((a, b) => {
+          const aId = parseInt(a.imagen?.id) || 0
+          const bId = parseInt(b.imagen?.id) || 0
+          return bId - aId
+        })
         break
       default:
         break
     }
 
     return result
-  }, [
-    searchQuery,
-    selectedCategory,
-    selectedPriceRange,
-    sortBy,
-    showInStockOnly
-  ])
+  }, [searchQuery, selectedCategory, selectedPriceRange, sortBy, showInStockOnly])
 
   return (
     <>
       <Header 
         searchQuery={searchQuery} 
         setSearchQuery={setSearchQuery}
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
       />
       <main>
-        <Hero />
+       
         <section id="productos" className="products-section">
           <div className="products-container">
             <div className="products-header">
-              <h2 className="products-title">
-                Nuestros Productos
-              </h2>
+              <h2 className="products-title">Nuestros Productos</h2>
               <p className="products-count">
                 {filteredProducts.length} productos encontrados
               </p>
@@ -103,13 +102,13 @@ function Shop() {
                 setSortBy={setSortBy}
                 showInStockOnly={showInStockOnly}
                 setShowInStockOnly={setShowInStockOnly}
+                products={products}
               />
               <ProductGrid products={filteredProducts} />
             </div>
           </div>
         </section>
       </main>
-
       <Cart />
     </>
   )

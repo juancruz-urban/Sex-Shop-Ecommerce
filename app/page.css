@@ -1,6 +1,39 @@
+/* page.css */
+
+/* Variables globales del sitio */
+:root {
+  --main-background: #FFF0F5 !important;
+  --main-foreground: #1B1717;
+  --accent-color: #E40044;
+  --button-background: #1B1717;
+  --button-foreground: #FFFFFF;
+  --header-background: #1B1717;
+  --header-foreground: #FFFFFF;
+  --header-desktop-nav-background: #1B1717;
+  --header-desktop-nav-foreground: #FFFFFF;
+  --footer-background: #1B1717;
+  --footer-foreground: #FFFFFF;
+  --border-radius: 8px;
+  --spacing-base: 16px;
+  --body-font: "Rubik", sans-serif;
+  --heading-font: "Chakra Petch", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--body-font);
+  background: var(--main-background);
+  color: var(--main-foreground);
+}
+
 .products-section {
   padding: 3rem 1.5rem 4rem;
-  background-color: #f8f5f2;
+  background: var(--main-background);
   min-height: 100vh;
 }
 
@@ -21,12 +54,13 @@
 .products-title {
   font-size: 1.75rem;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--main-foreground);
   letter-spacing: -0.02em;
+  font-family: var(--heading-font);
 }
 
 .products-count {
-  color: #666;
+  color: rgba(27, 23, 23, 0.6);
   font-size: 0.95rem;
 }
 

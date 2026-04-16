@@ -1,8 +1,8 @@
 "use client"
 
-import { Filter, ChevronDown, Star, X } from "lucide-react"
-import { categories, priceRanges } from "@/data/products"
-import { useState } from "react"
+import { Filter, ChevronDown, ChevronRight, X } from "lucide-react"
+import { priceRanges, cleanPrice, formatPrice } from "../data/products-sex.js"
+import { useState, useMemo } from "react"
 import "./Filters.css"
 
 export default function Filters({
@@ -14,8 +14,105 @@ export default function Filters({
   setSortBy,
   showInStockOnly,
   setShowInStockOnly,
+  products
 }) {
   const [isOpen, setIsOpen] = useState(false)
+  const [openCategories, setOpenCategories] = useState({})
+  const [openSections, setOpenSections] = useState({
+    categorias: true,
+    precio: true,
+    disponibilidad: true,
+    ordenar: true
+  })
+
+  // Construir estructura de categorías jerárquica
+  const categoryTree = useMemo(() => {
+    const tree = {}
+    
+    products.forEach(item => {
+      const categorias = item.producto?.["Categorías"]
+      if (!categorias) return
+      
+      const parts = categorias.split(' > ')
+      let current = tree
+      
+      parts.forEach((part, index) => {
+        if (!current[part]) {
+          current[part] = { 
+            name: part, 
+            children: {},
+            fullPath: parts.slice(0, index + 1).join(' > '),
+            isLeaf: index === parts.length - 1
+          }
+        }
+        current = current[part].children
+      })
+    })
+    
+    return tree
+  }, [products])
+
+  // Calcular precios mínimo y máximo de los productos para debug
+  const productPrices = useMemo(() => {
+    const prices = products.map(item => cleanPrice(item.producto?.["Precio"]))
+    return {
+      min: Math.min(...prices),
+      max: Math.max(...prices),
+      all: prices
+    }
+  }, [products])
+
+  const toggleSection = (section) => {
+    setOpenSections(prev => ({
+      ...prev,
+      [section]: !prev[section]
+    }))
+  }
+
+  const toggleCategory = (categoryPath) => {
+    setOpenCategories(prev => ({
+      ...prev,
+      [categoryPath]: !prev[categoryPath]
+    }))
+  }
+
+  const renderCategoryTree = (tree, level = 0) => {
+    return Object.values(tree).map(node => {
+      const hasChildren = Object.keys(node.children).length > 0
+      const isOpen = openCategories[node.fullPath]
+      
+      return (
+        <div key={node.fullPath} className="category-item" style={{ paddingLeft: `${level * 20}px` }}>
+          <div className="category-header">
+            {hasChildren && (
+              <button 
+                className="category-toggle"
+                onClick={() => toggleCategory(node.fullPath)}
+              >
+                {isOpen ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
+              </button>
+            )}
+            <label className="category-label">
+              <input
+                type="radio"
+                name="category"
+                checked={selectedCategory === node.fullPath}
+                onChange={() => setSelectedCategory(node.fullPath)}
+              />
+              <span className="category-radio" />
+              <span className="category-name">{node.name}</span>
+            </label>
+          </div>
+          
+          {hasChildren && isOpen && (
+            <div className="category-children">
+              {renderCategoryTree(node.children, level + 1)}
+            </div>
+          )}
+        </div>
+      )
+    })
+  }
 
   const hasActiveFilters = 
     selectedCategory !== "Todos" || 
@@ -26,6 +123,12 @@ export default function Filters({
     setSelectedCategory("Todos")
     setSelectedPriceRange(0)
     setShowInStockOnly(false)
+  }
+
+  // Función para manejar cambio de rango de precio
+  const handlePriceRangeChange = (index) => {
+    console.log("Cambiando rango de precio a:", index, priceRanges[index])
+    setSelectedPriceRange(index)
   }
 
   return (
@@ -59,82 +162,143 @@ export default function Filters({
           </button>
         )}
 
-        <div className="filter-section">
-          <h3 className="filter-section-title">
-            <ChevronDown size={16} />
-            Categorías
-          </h3>
-          <div className="filter-options">
-            {categories.map((category) => (
-              <label key={category} className="filter-option">
-                <input
-                  type="radio"
-                  name="category"
-                  checked={selectedCategory === category}
-                  onChange={() => setSelectedCategory(category)}
-                />
-                <span className="filter-radio" />
-                <span>{category}</span>
-              </label>
-            ))}
+        <div className="filters-scroll">
+          {/* Sección de Categorías */}
+          <div className="filter-section">
+            <button 
+              className="filter-section-header"
+              onClick={() => toggleSection('categorias')}
+            >
+              <span className="section-title">
+                <ChevronDown size={18} className={`section-icon ${openSections.categorias ? 'rotated' : ''}`} />
+                Categorías
+              </span>
+              <span className="section-count">
+                {selectedCategory !== "Todos" ? "1" : ""}
+              </span>
+            </button>
+            
+            {openSections.categorias && (
+              <div className="filter-section-content">
+                <div className="category-tree">
+                  {/* Opción "Todos" */}
+                  <div className="category-item">
+                    <label className="category-label">
+                      <input
+                        type="radio"
+                        name="category"
+                        checked={selectedCategory === "Todos"}
+                        onChange={() => setSelectedCategory("Todos")}
+                      />
+                      <span className="category-radio" />
+                      <span className="category-name">Todos los productos</span>
+                    </label>
+                  </div>
+                  {renderCategoryTree(categoryTree)}
+                </div>
+              </div>
+            )}
           </div>
-        </div>
 
-        <div className="filter-section">
-          <h3 className="filter-section-title">
-            <ChevronDown size={16} />
-            Rango de precio
-          </h3>
-          <div className="filter-options">
-            {priceRanges.map((range, index) => (
-              <label key={index} className="filter-option">
-                <input
-                  type="radio"
-                  name="priceRange"
-                  checked={selectedPriceRange === index}
-                  onChange={() => setSelectedPriceRange(index)}
-                />
-                <span className="filter-radio" />
-                <span>{range.label}</span>
-              </label>
-            ))}
+          {/* Sección de Rango de Precio */}
+          <div className="filter-section">
+            <button 
+              className="filter-section-header"
+              onClick={() => toggleSection('precio')}
+            >
+              <span className="section-title">
+                <ChevronDown size={18} className={`section-icon ${openSections.precio ? 'rotated' : ''}`} />
+                Rango de precio
+              </span>
+              <span className="section-count">
+                {selectedPriceRange !== 0 ? "1" : ""}
+              </span>
+            </button>
+            
+            {openSections.precio && (
+              <div className="filter-section-content">
+                <div className="filter-options">
+                  {priceRanges.map((range, index) => (
+                    <label key={index} className="filter-option">
+                      <input
+                        type="radio"
+                        name="priceRange"
+                        checked={selectedPriceRange === index}
+                        onChange={() => handlePriceRangeChange(index)}
+                      />
+                      <span className="filter-radio" />
+                      <span>{range.label}</span>
+                    </label>
+                  ))}
+                </div>
+                {/* Información de debug (opcional, quitar en producción) */}
+                <div className="price-debug">
+                  <small>Precios disponibles: {formatPrice(productPrices.min)} - {formatPrice(productPrices.max)}</small>
+                </div>
+              </div>
+            )}
           </div>
-        </div>
 
-        <div className="filter-section">
-          <h3 className="filter-section-title">
-            <ChevronDown size={16} />
-            Disponibilidad
-          </h3>
-          <div className="filter-options">
-            <label className="filter-option">
-              <input
-                type="checkbox"
-                checked={showInStockOnly}
-                onChange={(e) => setShowInStockOnly(e.target.checked)}
-              />
-              <span className="filter-checkbox" />
-              <span>Solo disponibles</span>
-            </label>
+          {/* Sección de Disponibilidad */}
+          <div className="filter-section">
+            <button 
+              className="filter-section-header"
+              onClick={() => toggleSection('disponibilidad')}
+            >
+              <span className="section-title">
+                <ChevronDown size={18} className={`section-icon ${openSections.disponibilidad ? 'rotated' : ''}`} />
+                Disponibilidad
+              </span>
+              <span className="section-count">
+                {showInStockOnly ? "1" : ""}
+              </span>
+            </button>
+            
+            {openSections.disponibilidad && (
+              <div className="filter-section-content">
+                <div className="filter-options">
+                  <label className="filter-option">
+                    <input
+                      type="checkbox"
+                      checked={showInStockOnly}
+                      onChange={(e) => setShowInStockOnly(e.target.checked)}
+                    />
+                    <span className="filter-checkbox" />
+                    <span>Solo productos disponibles</span>
+                  </label>
+                </div>
+              </div>
+            )}
           </div>
-        </div>
 
-        <div className="filter-section">
-          <h3 className="filter-section-title">
-            <ChevronDown size={16} />
-            Ordenar por
-          </h3>
-          <select 
-            className="sort-select"
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value)}
-          >
-            <option value="featured">Destacados</option>
-            <option value="price-asc">Precio: Menor a mayor</option>
-            <option value="price-desc">Precio: Mayor a menor</option>
-            <option value="rating">Mejor valorados</option>
-            <option value="newest">Más nuevos</option>
-          </select>
+          {/* Sección de Ordenar por */}
+          <div className="filter-section">
+            <button 
+              className="filter-section-header"
+              onClick={() => toggleSection('ordenar')}
+            >
+              <span className="section-title">
+                <ChevronDown size={18} className={`section-icon ${openSections.ordenar ? 'rotated' : ''}`} />
+                Ordenar por
+              </span>
+            </button>
+            
+            {openSections.ordenar && (
+              <div className="filter-section-content">
+                <select 
+                  className="sort-select"
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                >
+                  <option value="featured">Destacados</option>
+                  <option value="price-asc">Precio: Menor a mayor</option>
+                  <option value="price-desc">Precio: Mayor a menor</option>
+                  <option value="rating">Mejor valorados</option>
+                  <option value="newest">Más nuevos</option>
+                </select>
+              </div>
+            )}
+          </div>
         </div>
       </aside>
 

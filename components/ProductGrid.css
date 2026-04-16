@@ -1,3 +1,9 @@
+/* ProductGrid.css */
+
+:root {
+  --main-foreground: #1B1717;
+}
+
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -25,7 +31,7 @@
 .no-products h3 {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--main-foreground);
   margin-bottom: 0.5rem;
 }
 
