@@ -3,8 +3,9 @@
 import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { 
-  ShoppingCart, Heart, Share2, Star, Truck, Shield, RotateCcw, 
-  MapPin, Calendar, Package, Wallet, ChevronDown, ChevronUp 
+  ShoppingCart, Heart, Star, Truck, Shield, RotateCcw, 
+  MapPin, Calendar, Package, ChevronDown, ChevronUp, Check,
+  Ruler, Weight, Maximize, Layers
 } from "lucide-react";
 import { CartProvider, useCart } from "@/context/CartContext";
 import { products, cleanPrice, formatPrice } from "@/data/products-sex";
@@ -16,9 +17,7 @@ import "./page.css";
 function QuantitySelector({ quantity, setQuantity }) {
   return (
     <div className="quantity-selector">
-      <button onClick={() => setQuantity(Math.max(1, quantity - 1))}>
-        -
-      </button>
+      <button onClick={() => setQuantity(Math.max(1, quantity - 1))}>-</button>
       <span>{quantity}</span>
       <button onClick={() => setQuantity(quantity + 1)}>+</button>
     </div>
@@ -32,17 +31,13 @@ function ShippingOptions({ cp, setCp, shippingOptions, selectedShipping, setSele
 
   const handleCpChange = () => {
     setCp(cpInput);
-    // Aquí se llamaría a la API de Andreani para calcular envíos
   };
 
   return (
     <div className="shipping-section">
       <div className="shipping-header">
         <h3>Envíos</h3>
-        <button 
-          className="collapse-btn"
-          onClick={() => setShowOptions(!showOptions)}
-        >
+        <button className="collapse-btn" onClick={() => setShowOptions(!showOptions)}>
           {showOptions ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
         </button>
       </div>
@@ -59,24 +54,14 @@ function ShippingOptions({ cp, setCp, shippingOptions, selectedShipping, setSele
                 placeholder="Ingresa tu código postal"
                 maxLength="4"
               />
-              <button onClick={handleCpChange} className="change-cp-btn">
-                Cambiar CP
-              </button>
+              <button onClick={handleCpChange} className="change-cp-btn">Cambiar CP</button>
             </div>
           </div>
 
           <div className="shipping-options">
             {shippingOptions.map((option, index) => (
-              <label 
-                key={index}
-                className={`shipping-option ${selectedShipping === index ? "selected" : ""}`}
-              >
-                <input
-                  type="radio"
-                  name="shipping"
-                  checked={selectedShipping === index}
-                  onChange={() => setSelectedShipping(index)}
-                />
+              <label key={index} className={`shipping-option ${selectedShipping === index ? "selected" : ""}`}>
+                <input type="radio" name="shipping" checked={selectedShipping === index} onChange={() => setSelectedShipping(index)} />
                 <div className="shipping-option-content">
                   <div className="shipping-method">
                     <Package size={18} />
@@ -112,19 +97,14 @@ function ShippingOptions({ cp, setCp, shippingOptions, selectedShipping, setSele
 // Componente de cambios y devoluciones
 function ReturnsSection() {
   const [showReturns, setShowReturns] = useState(true);
-
   return (
     <div className="returns-section">
       <div className="returns-header">
         <h3>Cambios y devoluciones</h3>
-        <button 
-          className="collapse-btn"
-          onClick={() => setShowReturns(!showReturns)}
-        >
+        <button className="collapse-btn" onClick={() => setShowReturns(!showReturns)}>
           {showReturns ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
         </button>
       </div>
-
       {showReturns && (
         <div className="returns-content">
           <p>Si no te gusta, podés cambiarlo por otro o devolverlo.</p>
@@ -159,7 +139,7 @@ function AddOnsSection() {
 function ProductDetailContent() {
   const params = useParams();
   const router = useRouter();
-  const { addToCart } = useCart();
+  const { addToCart, items, setIsCartOpen } = useCart();
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [isAdding, setIsAdding] = useState(false);
@@ -170,18 +150,8 @@ function ProductDetailContent() {
   const [activeTab, setActiveTab] = useState("description");
 
   const shippingOptions = [
-    {
-      method: "Andreani Estándar",
-      type: "Envío a domicilio",
-      date: "lunes 27/04",
-      price: 13961
-    },
-    {
-      method: "Punto de retiro",
-      type: "Retiras en sucursal",
-      date: "lunes 27/04",
-      price: 10583
-    }
+    { method: "Andreani Estándar", type: "Envío a domicilio", date: "lunes 27/04", price: 13961 },
+    { method: "Punto de retiro", type: "Retiras en sucursal", date: "lunes 27/04", price: 10583 }
   ];
 
   useEffect(() => {
@@ -198,9 +168,7 @@ function ProductDetailContent() {
     return (
       <>
         <Header searchQuery="" setSearchQuery={() => {}} selectedCategory="Todos" setSelectedCategory={() => {}} />
-        <div className="loading">
-          <p>Cargando producto...</p>
-        </div>
+        <div className="loading"><p>Cargando producto...</p></div>
       </>
     );
   }
@@ -211,7 +179,6 @@ function ProductDetailContent() {
         <Header searchQuery="" setSearchQuery={() => {}} selectedCategory="Todos" setSelectedCategory={() => {}} />
         <div className="not-found">
           <h2>Producto no encontrado</h2>
-          <p>El producto que buscas no existe o fue removido.</p>
           <button onClick={() => router.push("/")}>Volver al inicio</button>
         </div>
       </>
@@ -221,14 +188,60 @@ function ProductDetailContent() {
   const productData = product.producto;
   const imageData = product.imagen;
   const price = cleanPrice(productData["Precio"]);
-  const originalPrice = productData["PrecioOriginal"] ? cleanPrice(productData["PrecioOriginal"]) : null;
+  const originalPrice = productData["Precio promocional"] ? cleanPrice(productData["Precio promocional"]) : null;
   const discount = originalPrice ? Math.round(((originalPrice - price) / originalPrice) * 100) : 0;
   const categories = productData["Categorías"]?.split(" > ") || [];
 
+  // ID consistente - MISMO CRITERIO que en ProductCard
+  const productId = imageData?.id || productData["Identificador de URL"];
+  
+  // Debug: verificar IDs
+  console.log("=== DEBUG CARRITO ===");
+  console.log("Product ID actual:", productId);
+  console.log("Items en carrito:", items.map(i => ({ id: i.id, name: i.name })));
+  
+  // Verificar si el producto ya está en el carrito
+  const isInCart = items.some(item => String(item.id) === String(productId));
+  const cartItem = items.find(item => String(item.id) === String(productId));
+  const cartItemQuantity = cartItem ? cartItem.quantity : 0;
+
+  // Extraer datos técnicos del producto
+  const technicalSpecs = [
+    { label: "Peso", value: productData["Peso (kg)"], icon: Weight, unit: "kg" },
+    { label: "Alto", value: productData["Alto (cm)"], icon: Ruler, unit: "cm" },
+    { label: "Ancho", value: productData["Ancho (cm)"], icon: Maximize, unit: "cm" },
+    { label: "Profundidad", value: productData["Profundidad (cm)"], icon: Layers, unit: "cm" },
+  ].filter(spec => spec.value && spec.value !== "" && spec.value !== "ND");
+
+  // Descripción real o generada
+  const getDescription = () => {
+    if (productData["Descripción"] && productData["Descripción"].trim() !== "") {
+      return productData["Descripción"];
+    }
+    let generatedDesc = `<p>Descubrí el <strong>${productData["Nombre"]}</strong>, ideal para explorar nuevas sensaciones.</p>`;
+    
+    if (productData["Alto (cm)"] || productData["Ancho (cm)"]) {
+      generatedDesc += `<p><strong>Dimensiones:</strong> ${productData["Alto (cm)"] || "?"} x ${productData["Ancho (cm)"] || "?"} x ${productData["Profundidad (cm)"] || "?"} cm.</p>`;
+    }
+    
+    if (productData["Peso (kg)"]) {
+      generatedDesc += `<p><strong>Peso:</strong> ${productData["Peso (kg)"]} kg.</p>`;
+    }
+    
+    generatedDesc += `<p>Materiales de alta calidad que aseguran comodidad y seguridad en cada uso. ¡Transformá tu intimidad con este producto imprescindible!</p>`;
+    
+    return generatedDesc;
+  };
+
   const handleAddToCart = () => {
+    if (isInCart) {
+      console.log("Producto ya en carrito, no se agrega");
+      return;
+    }
+    
     setIsAdding(true);
     const cartProduct = {
-      id: imageData?.id || productData["Identificador de URL"],
+      id: productId,
       name: productData["Nombre"],
       price: price,
       image: imageData?.url,
@@ -236,8 +249,13 @@ function ProductDetailContent() {
       inStock: true,
       quantity: quantity
     };
+    console.log("Agregando producto:", cartProduct);
     addToCart(cartProduct);
     setTimeout(() => setIsAdding(false), 500);
+  };
+
+  const handleViewCart = () => {
+    setIsCartOpen(true);
   };
 
   const installments = Math.floor(price / 3);
@@ -245,12 +263,7 @@ function ProductDetailContent() {
 
   return (
     <>
-      <Header 
-        searchQuery="" 
-        setSearchQuery={() => {}} 
-        selectedCategory="Todos" 
-        setSelectedCategory={() => {}} 
-      />
+      <Header searchQuery="" setSearchQuery={() => {}} selectedCategory="Todos" setSelectedCategory={() => {}} />
       <main className="product-detail">
         <div className="product-detail-container">
           {/* Breadcrumb */}
@@ -258,7 +271,7 @@ function ProductDetailContent() {
             <button onClick={() => router.push("/")}>Inicio</button>
             <span className="separator">›</span>
             <button onClick={() => router.push("/")}>Productos</button>
-            {categories.slice(0, -1).map((cat, idx) => (
+            {categories.map((cat, idx) => (
               <span key={idx}>
                 <span className="separator">›</span>
                 <span>{cat}</span>
@@ -275,9 +288,7 @@ function ProductDetailContent() {
                 <img 
                   src={imageData?.url || "https://via.placeholder.com/600x600?text=Producto"} 
                   alt={productData["Nombre"]}
-                  onError={(e) => {
-                    e.target.src = "https://via.placeholder.com/600x600?text=Producto";
-                  }}
+                  onError={(e) => { e.target.src = "https://via.placeholder.com/600x600?text=Producto"; }}
                 />
               </div>
             </div>
@@ -301,9 +312,7 @@ function ProductDetailContent() {
                   {originalPrice && (
                     <span className="original-price">{formatPrice(originalPrice)}</span>
                   )}
-                  {discount > 0 && (
-                    <span className="discount-badge">-{discount}%</span>
-                  )}
+                  {discount > 0 && <span className="discount-badge">-{discount}%</span>}
                 </div>
                 <p className="installments">
                   <span className="debit-badge">DÉBITO</span>
@@ -314,21 +323,45 @@ function ProductDetailContent() {
                 </p>
               </div>
 
-              {/* Cantidad */}
-              <div className="quantity-section">
-                <label>Cantidad</label>
-                <QuantitySelector quantity={quantity} setQuantity={setQuantity} />
-              </div>
+              {/* Cantidad - solo mostrar si el producto NO está en el carrito */}
+              {!isInCart && (
+                <div className="quantity-section">
+                  <label>Cantidad</label>
+                  <QuantitySelector quantity={quantity} setQuantity={setQuantity} />
+                </div>
+              )}
+
+              {/* Indicador de producto en carrito */}
+              {isInCart && (
+                <div className="in-cart-indicator">
+                  <Check size={18} />
+                  <span>Producto ya agregado al carrito ({cartItemQuantity} unidades)</span>
+                </div>
+              )}
 
               {/* Botones de acción */}
               <div className="action-buttons">
-                <button 
-                  className={`add-to-cart-btn ${isAdding ? "adding" : ""}`}
-                  onClick={handleAddToCart}
-                >
-                  <ShoppingCart size={18} />
-                  <span>Agregar al carrito</span>
-                </button>
+                {isInCart ? (
+                  <>
+                    <button className="in-cart-btn" disabled>
+                      <Check size={18} />
+                      <span>Producto en carrito</span>
+                    </button>
+                    <button className="view-cart-btn" onClick={handleViewCart}>
+                      <ShoppingCart size={18} />
+                      <span>Ver carrito</span>
+                    </button>
+                  </>
+                ) : (
+                  <button 
+                    className={`add-to-cart-btn ${isAdding ? "adding" : ""}`}
+                    onClick={handleAddToCart}
+                    disabled={isAdding}
+                  >
+                    <ShoppingCart size={18} />
+                    <span>Agregar al carrito</span>
+                  </button>
+                )}
                 <button 
                   className={`wishlist-btn ${isWishlisted ? "active" : ""}`}
                   onClick={() => setIsWishlisted(!isWishlisted)}
@@ -339,64 +372,49 @@ function ProductDetailContent() {
 
               {/* Beneficios */}
               <div className="benefits">
-                <div className="benefit">
-                  <Truck size={16} />
-                  <span>Envío gratis superando los $200.000</span>
-                </div>
-                <div className="benefit">
-                  <Shield size={16} />
-                  <span>Compra protegida</span>
-                </div>
-                <div className="benefit">
-                  <RotateCcw size={16} />
-                  <span>Devolución hasta 30 días</span>
-                </div>
+                <div className="benefit"><Truck size={16} /><span>Envío gratis superando los $200.000</span></div>
+                <div className="benefit"><Shield size={16} /><span>Compra protegida</span></div>
+                <div className="benefit"><RotateCcw size={16} /><span>Devolución hasta 30 días</span></div>
               </div>
             </div>
           </div>
 
-          {/* Tabs de descripción y detalles */}
+          {/* Tabs de descripción y detalles técnicos */}
           <div className="product-tabs">
             <div className="tabs-header">
-              <button 
-                className={`tab-btn ${activeTab === "description" ? "active" : ""}`}
-                onClick={() => setActiveTab("description")}
-              >
+              <button className={`tab-btn ${activeTab === "description" ? "active" : ""}`} onClick={() => setActiveTab("description")}>
                 Descripción
               </button>
-              <button 
-                className={`tab-btn ${activeTab === "details" ? "active" : ""}`}
-                onClick={() => setActiveTab("details")}
-              >
-                Detalles del producto
+              <button className={`tab-btn ${activeTab === "specs" ? "active" : ""}`} onClick={() => setActiveTab("specs")}>
+                Especificaciones
               </button>
             </div>
 
             <div className="tabs-content">
               {activeTab === "description" && (
                 <div className="description-content">
-                  <div 
-                    dangerouslySetInnerHTML={{ 
-                      __html: productData["Descripción"] || `
-                        <p>Descubrí el <strong>${productData["Nombre"]}</strong>, la combinación perfecta para explorar nuevas sensaciones en pareja.</p>
-                        <p>Diseñado con materiales de alta calidad que aseguran comodidad y seguridad en cada uso.</p>
-                        <p>Ideal para quienes buscan innovación y placer en sus momentos íntimos.</p>
-                        <p>¡Transformá tu intimidad con este producto imprescindible!</p>
-                      `
-                    }} 
-                  />
+                  <div dangerouslySetInnerHTML={{ __html: getDescription() }} />
                 </div>
               )}
-              {activeTab === "details" && (
-                <div className="details-content">
-                  <h4>Especificaciones técnicas:</h4>
-                  <ul>
-                    <li><strong>Material:</strong> Silicona de grado médico</li>
-                    <li><strong>Dimensiones:</strong> 18 x 5 cm</li>
-                    <li><strong>Batería:</strong> Recargable USB</li>
-                    <li><strong>Impermeable:</strong> Sí</li>
-                    <li><strong>Modos:</strong> 10 velocidades</li>
-                  </ul>
+              {activeTab === "specs" && (
+                <div className="specs-content">
+                  {technicalSpecs.length > 0 ? (
+                    <div className="specs-grid">
+                      {technicalSpecs.map((spec, idx) => (
+                        <div key={idx} className="spec-item">
+                          <div className="spec-icon">
+                            <spec.icon size={20} />
+                          </div>
+                          <div className="spec-info">
+                            <span className="spec-label">{spec.label}</span>
+                            <strong className="spec-value">{spec.value} {spec.unit}</strong>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <p>No hay especificaciones técnicas disponibles para este producto.</p>
+                  )}
                 </div>
               )}
             </div>
@@ -404,11 +422,11 @@ function ProductDetailContent() {
 
           {/* Sección de envíos */}
           <ShippingOptions 
-            cp={cp}
-            setCp={setCp}
-            shippingOptions={shippingOptions}
-            selectedShipping={selectedShipping}
-            setSelectedShipping={setSelectedShipping}
+            cp={cp} 
+            setCp={setCp} 
+            shippingOptions={shippingOptions} 
+            selectedShipping={selectedShipping} 
+            setSelectedShipping={setSelectedShipping} 
           />
 
           {/* Sección de cambios y devoluciones */}

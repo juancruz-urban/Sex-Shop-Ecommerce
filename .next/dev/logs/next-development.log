@@ -1,35 +1,135 @@
-[00:00:02.032] Server  LOG     ✓ Ready in 1394ms
-[00:00:12.076] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:12.500] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:12.500] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:00:12.500] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776973495442} /_vercel/insights/view
-[00:00:49.544] Browser LOG     Cambiando rango de precio a: 2 {"label":"$10,000 - $20,000","max":20000,"min":10000}
-[00:00:50.699] Browser LOG     Cambiando rango de precio a: 3 {"label":"$20,000 - $50,000","max":50000,"min":20000}
-[00:01:05.269] Browser LOG     Cambiando rango de precio a: 2 {"label":"$10,000 - $20,000","max":20000,"min":10000}
-[00:01:06.298] Browser LOG     Cambiando rango de precio a: 3 {"label":"$20,000 - $50,000","max":50000,"min":20000}
-[00:01:21.247] Browser LOG     Cambiando rango de precio a: 1 {"label":"Hasta $10,000","max":10000,"min":0}
-[00:03:58.450] Server  LOG     ✓ Compiled in 163ms
-[00:04:07.090] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:04:07.409] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:04:07.409] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:04:07.409] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776973730346} /_vercel/insights/view
-[00:04:16.062] Browser LOG     Cambiando rango de precio a: 1 {"label":"Hasta $10,000","max":10000,"min":0}
-[00:06:16.049] Server  LOG     ✓ Compiled in 129ms
-[00:06:22.034] Browser LOG     Cambiando rango de precio a: 2 {"label":"$10,000 - $20,000","max":20000,"min":10000}
-[00:06:47.107] Browser LOG     Cambiando rango de precio a: 1 {"label":"Hasta $10,000","max":10000,"min":0}
-[00:07:16.036] Browser LOG     Cambiando rango de precio a: 2 {"label":"$10,000 - $20,000","max":20000,"min":10000}
-[00:07:17.987] Browser LOG     Cambiando rango de precio a: 3 {"label":"$20,000 - $50,000","max":50000,"min":20000}
-[00:07:19.870] Browser LOG     Cambiando rango de precio a: 5 {"label":"Más de $100,000","max":null,"min":100000}
-[00:07:21.319] Browser LOG     Cambiando rango de precio a: 4 {"label":"$50,000 - $100,000","max":100000,"min":50000}
-[00:07:26.157] Browser LOG     Cambiando rango de precio a: 2 {"label":"$10,000 - $20,000","max":20000,"min":10000}
-[00:07:32.601] Browser LOG     Cambiando rango de precio a: 1 {"label":"Hasta $10,000","max":10000,"min":0}
-[00:07:42.895] Browser LOG     Cambiando rango de precio a: 4 {"label":"$50,000 - $100,000","max":100000,"min":50000}
-[00:08:00.030] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:08:00.273] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:08:00.273] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:08:00.273] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776973963217} /_vercel/insights/view
-[00:08:05.107] Browser LOG     Cambiando rango de precio a: 1 {"label":"Hasta $10,000","max":10000,"min":0}
-[00:09:16.131] Server  LOG     ✓ Compiled in 181ms
-[00:09:39.459] Browser LOG     Cambiando rango de precio a: 4 {"label":"$50,000 - $100,000","max":100000,"min":50000}
-[00:09:39.977] Browser LOG     Cambiando rango de precio a: 3 {"label":"$20,000 - $50,000","max":50000,"min":20000}
-[00:09:41.412] Browser LOG     Cambiando rango de precio a: 2 {"label":"$10,000 - $20,000","max":20000,"min":10000}
+[00:00:02.115] Server  LOG     ✓ Ready in 1446ms
+[00:00:11.962] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:12.360] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:12.360] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/producto/colas-de-zorro","route":"/producto/[slug]"}
+[00:00:12.360] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/producto/colas-de-zorro color: rgb(120, 120, 120) color: inherit {"dp":"/producto/[slug]","o":"http://localhost:3000/producto/colas-de-zorro","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776974444017} /_vercel/insights/view
+[00:00:16.369] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:00:16.370] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776974447886} /_vercel/insights/view
+[00:00:29.632] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/producto/lubricante-masculina-retardante-con-paprika-19nme color: rgb(120, 120, 120) color: inherit {"dp":"/producto/[slug]","o":"http://localhost:3000/producto/lubricante-masculina-retardante-con-paprika-19nme","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776974461265} /_vercel/insights/view
+[00:02:43.734] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776974595226} /_vercel/insights/view
+[00:02:44.644] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/producto/juego-de-cartas-extreme-games-74r3f color: rgb(120, 120, 120) color: inherit {"dp":"/producto/[slug]","o":"http://localhost:3000/producto/juego-de-cartas-extreme-games-74r3f","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776974596278} /_vercel/insights/view
+[00:06:47.633] Server  LOG     ✓ Compiled in 564ms
+[00:07:15.365] Server  LOG     ✓ Compiled in 143ms
+[00:08:09.596] Server  LOG     ✓ Compiled in 139ms
+[00:08:15.599] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:08:15.849] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:08:15.849] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/producto/juego-de-cartas-extreme-games-74r3f","route":"/producto/[slug]"}
+[00:08:15.849] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/producto/juego-de-cartas-extreme-games-74r3f color: rgb(120, 120, 120) color: inherit {"dp":"/producto/[slug]","o":"http://localhost:3000/producto/juego-de-cartas-extreme-games-74r3f","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776974927566} /_vercel/insights/view
+[00:10:17.830] Server  LOG     ✓ Compiled in 140ms
+[00:10:42.184] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:10:42.388] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:10:42.388] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/producto/juego-de-cartas-extreme-games-74r3f","route":"/producto/[slug]"}
+[00:10:42.388] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/producto/juego-de-cartas-extreme-games-74r3f color: rgb(120, 120, 120) color: inherit {"dp":"/producto/[slug]","o":"http://localhost:3000/producto/juego-de-cartas-extreme-games-74r3f","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776975074104} /_vercel/insights/view
+[00:11:19.811] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776975111306} /_vercel/insights/view
+[00:11:20.945] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:11:20.945] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/producto/lubricante-masculina-retardante-con-paprika-19nme color: rgb(120, 120, 120) color: inherit {"dp":"/producto/[slug]","o":"http://localhost:3000/producto/lubricante-masculina-retardante-con-paprika-19nme","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776975112575} /_vercel/insights/view
+[00:11:28.020] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776975119500} /_vercel/insights/view
+[00:11:28.787] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/producto/juego-de-cartas-fantasy-pleasure-36dtc color: rgb(120, 120, 120) color: inherit {"dp":"/producto/[slug]","o":"http://localhost:3000/producto/juego-de-cartas-fantasy-pleasure-36dtc","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776975120431} /_vercel/insights/view
+[00:11:29.930] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776975121636} /_vercel/insights/view
+[00:11:31.398] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/producto/juego-verdadero-o-desafio-atrevido-dfjw8 color: rgb(120, 120, 120) color: inherit {"dp":"/producto/[slug]","o":"http://localhost:3000/producto/juego-verdadero-o-desafio-atrevido-dfjw8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776975123027} /_vercel/insights/view
+[00:11:32.928] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776975124643} /_vercel/insights/view
+[00:11:34.265] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/producto/juego-de-dados-eroticos-les-amants-1f3yl color: rgb(120, 120, 120) color: inherit {"dp":"/producto/[slug]","o":"http://localhost:3000/producto/juego-de-dados-eroticos-les-amants-1f3yl","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776975125896} /_vercel/insights/view
+[00:11:36.308] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776975127796} /_vercel/insights/view
+[00:11:37.449] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/producto/combo-san-valentin-rose-v024k color: rgb(120, 120, 120) color: inherit {"dp":"/producto/[slug]","o":"http://localhost:3000/producto/combo-san-valentin-rose-v024k","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776975129071} /_vercel/insights/view
+[00:11:39.198] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776975130692} /_vercel/insights/view
+[00:11:41.118] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/producto/combo-san-valentin-rose-v024k color: rgb(120, 120, 120) color: inherit {"dp":"/producto/[slug]","o":"http://localhost:3000/producto/combo-san-valentin-rose-v024k","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776975132757} /_vercel/insights/view
+[00:11:45.427] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776975136914} /_vercel/insights/view
+[00:11:50.849] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/producto/juego-verdadero-o-desafio-atrevido-dfjw8 color: rgb(120, 120, 120) color: inherit {"dp":"/producto/[slug]","o":"http://localhost:3000/producto/juego-verdadero-o-desafio-atrevido-dfjw8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776975142482} /_vercel/insights/view
+[00:30:29.572] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:30:29.892] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:30:29.892] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:30:29.892] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776976260433} /_vercel/insights/view
+[00:30:36.162] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:30:36.162] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/producto/lubricante-masculina-retardante-con-paprika-19nme color: rgb(120, 120, 120) color: inherit {"dp":"/producto/[slug]","o":"http://localhost:3000/producto/lubricante-masculina-retardante-con-paprika-19nme","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776976266698} /_vercel/insights/view
+[00:30:44.863] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776976275158} /_vercel/insights/view
+[00:30:45.950] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/producto/juego-de-cartas-extreme-games-74r3f color: rgb(120, 120, 120) color: inherit {"dp":"/producto/[slug]","o":"http://localhost:3000/producto/juego-de-cartas-extreme-games-74r3f","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776976276401} /_vercel/insights/view
+[00:30:47.480] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776976278017} /_vercel/insights/view
+[00:30:48.426] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/producto/juego-de-cartas-fantasy-pleasure-36dtc color: rgb(120, 120, 120) color: inherit {"dp":"/producto/[slug]","o":"http://localhost:3000/producto/juego-de-cartas-fantasy-pleasure-36dtc","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776976278896} /_vercel/insights/view
+[00:36:33.933] Server  LOG     ✓ Compiled in 164ms
+[00:36:42.902] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:36:43.218] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:36:43.219] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/producto/juego-de-cartas-fantasy-pleasure-36dtc","route":"/producto/[slug]"}
+[00:36:43.219] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/producto/juego-de-cartas-fantasy-pleasure-36dtc color: rgb(120, 120, 120) color: inherit {"dp":"/producto/[slug]","o":"http://localhost:3000/producto/juego-de-cartas-fantasy-pleasure-36dtc","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776976633752} /_vercel/insights/view
+[00:36:46.635] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:36:46.635] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776976636943} /_vercel/insights/view
+[00:36:52.122] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/producto/juego-verdadero-o-desafio-atrevido-dfjw8 color: rgb(120, 120, 120) color: inherit {"dp":"/producto/[slug]","o":"http://localhost:3000/producto/juego-verdadero-o-desafio-atrevido-dfjw8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776976642657} /_vercel/insights/view
+[00:36:54.315] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776976644604} /_vercel/insights/view
+[00:36:56.201] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/producto/juego-verdadero-o-desafio-atrevido-dfjw8 color: rgb(120, 120, 120) color: inherit {"dp":"/producto/[slug]","o":"http://localhost:3000/producto/juego-verdadero-o-desafio-atrevido-dfjw8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776976646657} /_vercel/insights/view
+[00:44:58.312] Server  ERROR   ⨯ ReferenceError: isInCart is not defined
+[00:44:58.809] Server  ERROR   ⨯ ReferenceError: isInCart is not defined
+[00:44:58.824] Server  ERROR   ⨯ Failed to generate static paths for /producto/[slug]:
+[00:44:58.858] Server  ERROR   ReferenceError: isInCart is not defined
+[00:44:59.964] Server  ERROR   ⨯ ReferenceError: isInCart is not defined
+[00:44:59.977] Server  ERROR   ⨯ ReferenceError: isInCart is not defined
+[00:45:00.429] Browser ERROR   uncaughtError: ReferenceError: isInCart is not defined
+[00:47:35.137] Server  LOG     ✓ Compiled in 158ms
+[00:48:02.827] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:48:03.132] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:48:03.132] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/producto/juego-verdadero-o-desafio-atrevido-dfjw8","route":"/producto/[slug]"}
+[00:48:03.132] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/producto/juego-verdadero-o-desafio-atrevido-dfjw8 color: rgb(120, 120, 120) color: inherit {"dp":"/producto/[slug]","o":"http://localhost:3000/producto/juego-verdadero-o-desafio-atrevido-dfjw8","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776977313663} /_vercel/insights/view
+[01:01:46.241] Server  LOG     ✓ Compiled in 183ms
+[01:01:46.427] Browser LOG     === DEBUG CARRITO ===
+[01:01:46.427] Browser LOG     Product ID actual: ju
+[01:01:46.427] Browser LOG     Items en carrito: [{"id":"ju","name":"Juego Verdadero o Desafío Atrevido"}]
+[01:01:46.427] Browser LOG     === DEBUG CARRITO ===
+[01:01:46.427] Browser LOG     Product ID actual: ju
+[01:01:46.427] Browser LOG     Items en carrito: [{"id":"ju","name":"Juego Verdadero o Desafío Atrevido"}]
+[01:02:03.723] Server  LOG     ✓ Compiled in 182ms
+[01:02:14.705] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:02:14.705] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776978165032} /_vercel/insights/view
+[01:02:30.126] Browser LOG     === DEBUG CARRITO ===
+[01:02:30.126] Browser LOG     Product ID actual: lu
+[01:02:30.126] Browser LOG     Items en carrito: []
+[01:02:30.126] Browser LOG     === DEBUG CARRITO ===
+[01:02:30.126] Browser LOG     Product ID actual: lu
+[01:02:30.126] Browser LOG     Items en carrito: []
+[01:02:30.126] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/producto/lubricante-masculina-retardante-con-paprika-19nme color: rgb(120, 120, 120) color: inherit {"dp":"/producto/[slug]","o":"http://localhost:3000/producto/lubricante-masculina-retardante-con-paprika-19nme","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776978180588} /_vercel/insights/view
+[01:02:31.717] Browser LOG     === DEBUG CARRITO ===
+[01:02:31.717] Browser LOG     Product ID actual: lu
+[01:02:31.717] Browser LOG     Items en carrito: []
+[01:02:31.717] Browser LOG     === DEBUG CARRITO ===
+[01:02:31.717] Browser LOG     Product ID actual: lu
+[01:02:31.717] Browser LOG     Items en carrito: []
+[01:02:32.372] Browser LOG     === DEBUG CARRITO ===
+[01:02:32.372] Browser LOG     Product ID actual: lu
+[01:02:32.372] Browser LOG     Items en carrito: []
+[01:02:32.372] Browser LOG     === DEBUG CARRITO ===
+[01:02:32.372] Browser LOG     Product ID actual: lu
+[01:02:32.372] Browser LOG     Items en carrito: []
+[01:02:34.011] Browser LOG     === DEBUG CARRITO ===
+[01:02:34.011] Browser LOG     Product ID actual: lu
+[01:02:34.011] Browser LOG     Items en carrito: []
+[01:02:34.011] Browser LOG     === DEBUG CARRITO ===
+[01:02:34.011] Browser LOG     Product ID actual: lu
+[01:02:34.011] Browser LOG     Items en carrito: []
+[01:02:35.141] Browser LOG     === DEBUG CARRITO ===
+[01:02:35.141] Browser LOG     Product ID actual: lu
+[01:02:35.141] Browser LOG     Items en carrito: []
+[01:02:35.141] Browser LOG     === DEBUG CARRITO ===
+[01:02:35.141] Browser LOG     Product ID actual: lu
+[01:02:35.141] Browser LOG     Items en carrito: []
+[01:02:35.900] Browser LOG     Agregando producto: {"category":"Geles y cosmética","id":"lu","image":"https://res.cloudinary.com/de6zecci0/image/upload/v1776698510/lubricante-masculina-retardante-con-paprika-19nme_suuwht.webp","inStock":true,"name":"Lubricante Masculina Retardante con Paprika","price":22000,"quantity":3}
+[01:02:35.900] Browser LOG     === DEBUG CARRITO ===
+[01:02:35.900] Browser LOG     Product ID actual: lu
+[01:02:35.900] Browser LOG     Items en carrito: [{"id":"lu","name":"Lubricante Masculina Retardante con Paprika"}]
+[01:02:35.900] Browser LOG     === DEBUG CARRITO ===
+[01:02:35.900] Browser LOG     Product ID actual: lu
+[01:02:35.900] Browser LOG     Items en carrito: [{"id":"lu","name":"Lubricante Masculina Retardante con Paprika"}]
+[01:02:36.400] Browser LOG     === DEBUG CARRITO ===
+[01:02:36.400] Browser LOG     Product ID actual: lu
+[01:02:36.400] Browser LOG     Items en carrito: [{"id":"lu","name":"Lubricante Masculina Retardante con Paprika"}]
+[01:02:36.400] Browser LOG     === DEBUG CARRITO ===
+[01:02:36.400] Browser LOG     Product ID actual: lu
+[01:02:36.400] Browser LOG     Items en carrito: [{"id":"lu","name":"Lubricante Masculina Retardante con Paprika"}]
+[01:02:36.989] Browser LOG     === DEBUG CARRITO ===
+[01:02:36.989] Browser LOG     Product ID actual: lu
+[01:02:36.989] Browser LOG     Items en carrito: [{"id":"lu","name":"Lubricante Masculina Retardante con Paprika"}]
+[01:02:36.989] Browser LOG     === DEBUG CARRITO ===
+[01:02:36.989] Browser LOG     Product ID actual: lu
+[01:02:36.989] Browser LOG     Items en carrito: [{"id":"lu","name":"Lubricante Masculina Retardante con Paprika"}]
+[01:02:41.155] Browser LOG     === DEBUG CARRITO ===
+[01:02:41.155] Browser LOG     Product ID actual: lu
+[01:02:41.155] Browser LOG     Items en carrito: [{"id":"lu","name":"Lubricante Masculina Retardante con Paprika"}]
+[01:02:41.155] Browser LOG     === DEBUG CARRITO ===
+[01:02:41.155] Browser LOG     Product ID actual: lu
+[01:02:41.155] Browser LOG     Items en carrito: [{"id":"lu","name":"Lubricante Masculina Retardante con Paprika"}]

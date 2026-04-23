@@ -233,3 +233,59 @@
     font-size: 0.7rem;
   }
 }
+
+
+/* Agregar estos estilos */
+
+.add-to-cart-btn.in-cart {
+  background: #22c55e;
+  cursor: default;
+}
+
+.add-to-cart-btn.in-cart:hover {
+  background: #22c55e;
+  transform: none;
+}
+
+/* Estilos para la página de detalle */
+.in-cart-btn,
+.view-cart-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.in-cart-btn {
+  background: #22c55e;
+  color: white;
+}
+
+.view-cart-btn {
+  background: #1B1717;
+  color: white;
+}
+
+.view-cart-btn:hover {
+  background: #333;
+  transform: translateY(-1px);
+}
+
+/* Agregar al final de ProductCard.css */
+
+.add-to-cart-btn.in-cart {
+  background: #22c55e;
+  cursor: default;
+}
+
+.add-to-cart-btn.in-cart:hover {
+  background: #22c55e;
+  transform: none;
+}

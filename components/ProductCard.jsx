@@ -1,64 +1,69 @@
-"use client"
+"use client";
 
-import { Star, ShoppingCart, Heart } from "lucide-react"
-import { useCart } from "@/context/CartContext"
-import { useState } from "react"
-import { useRouter } from "next/navigation"
-import { cleanPrice, formatPrice } from "../data/products-sex.js"
-import "./ProductCard.css"
+import { Star, ShoppingCart, Heart, Check } from "lucide-react";
+import { useCart } from "@/context/CartContext";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { cleanPrice, formatPrice } from "../data/products-sex.js";
+import "./ProductCard.css";
 
 export default function ProductCard({ product }) {
   const router = useRouter();
-  const { addToCart } = useCart()
-  const [isWishlisted, setIsWishlisted] = useState(false)
-  const [isAdding, setIsAdding] = useState(false)
+  const { addToCart, items } = useCart();
+  const [isWishlisted, setIsWishlisted] = useState(false);
+  const [isAdding, setIsAdding] = useState(false);
 
-  // Extraer datos de la estructura anidada
-  const productData = product.producto
-  const imageData = product.imagen
-  const slug = productData["Identificador de URL"]
+  const productData = product.producto;
+  const imageData = product.imagen;
   
-  const name = productData["Nombre"] || ""
-  const price = cleanPrice(productData["Precio"])
-  const category = productData["Categorías"]?.split(' > ')[0] || "Sin categoría"
+  // IMPORTANTE: Usar el mismo criterio que en la página de detalle
+  const slug = productData["Identificador de URL"];
+  // El ID debe ser consistente: usar el id de la imagen o el slug
+  const productId = imageData?.id || slug;
   
-  // Manejar diferentes formatos de imagen
-  let imageUrl = "https://via.placeholder.com/300x300?text=Producto"
+  const isInCart = items.some(item => String(item.id) === String(productId));
+  
+  const name = productData["Nombre"] || "";
+  const price = cleanPrice(productData["Precio"]);
+  const category = productData["Categorías"]?.split(' > ')[0] || "Sin categoría";
+  
+  let imageUrl = "https://via.placeholder.com/300x300?text=Producto";
   if (imageData) {
     if (typeof imageData === 'object') {
-      imageUrl = imageData.url || imageData[0]?.url || "https://via.placeholder.com/300x300?text=Producto"
+      imageUrl = imageData.url || imageData[0]?.url || "https://via.placeholder.com/300x300?text=Producto";
     } else if (typeof imageData === 'string') {
-      imageUrl = imageData
+      imageUrl = imageData;
     }
   }
 
   const handleCardClick = () => {
-    // Navegar a la página de detalle del producto
     if (slug) {
-      router.push(`/producto/${slug}`)
+      router.push(`/producto/${slug}`);
     }
-  }
+  };
 
   const handleAddToCart = (e) => {
-    e.stopPropagation(); // Evita que el clic se propague al card
-    setIsAdding(true)
+    e.stopPropagation();
+    if (isInCart) return;
+    
+    setIsAdding(true);
     const cartProduct = {
-      id: imageData?.id || slug,
+      id: productId,
       name: name,
       price: price,
       image: imageUrl,
       category: category,
       inStock: true,
       quantity: 1
-    }
-    addToCart(cartProduct)
-    setTimeout(() => setIsAdding(false), 500)
-  }
+    };
+    addToCart(cartProduct);
+    setTimeout(() => setIsAdding(false), 500);
+  };
 
   const handleWishlistClick = (e) => {
-    e.stopPropagation(); // Evita que el clic se propague al card
-    setIsWishlisted(!isWishlisted)
-  }
+    e.stopPropagation();
+    setIsWishlisted(!isWishlisted);
+  };
 
   return (
     <article className="product-card" onClick={handleCardClick}>
@@ -76,7 +81,7 @@ export default function ProductCard({ product }) {
           className="product-image"
           loading="lazy"
           onError={(e) => {
-            e.target.src = "https://via.placeholder.com/300x300?text=Producto"
+            e.target.src = "https://via.placeholder.com/300x300?text=Producto";
           }}
         />
       </div>
@@ -90,13 +95,23 @@ export default function ProductCard({ product }) {
         </div>
 
         <button
-          className={`add-to-cart-btn ${isAdding ? "adding" : ""}`}
+          className={`add-to-cart-btn ${isInCart ? "in-cart" : ""} ${isAdding ? "adding" : ""}`}
           onClick={handleAddToCart}
+          disabled={isInCart || isAdding}
         >
-          <ShoppingCart size={18} />
-          <span>Agregar al carrito</span>
+          {isInCart ? (
+            <>
+              <Check size={18} />
+              <span>Ya está en tu carrito</span>
+            </>
+          ) : (
+            <>
+              <ShoppingCart size={18} />
+              <span>Agregar al carrito</span>
+            </>
+          )}
         </button>
       </div>
     </article>
-  )
+  );
 }

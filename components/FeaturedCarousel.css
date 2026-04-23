@@ -41,7 +41,7 @@
   border-radius: 2px;
 }
 
-/* Contenedor del carrusel con posición relativa para las flechas */
+/* Contenedor del carrusel */
 .featured-carousel-wrapper {
   position: relative;
   display: flex;
@@ -69,10 +69,15 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.carousel-btn:hover {
+.carousel-btn:hover:not(:disabled) {
   background: #ff4da6;
   color: white;
   border-color: #ff4da6;
+}
+
+.carousel-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .carousel-btn.prev {
@@ -83,14 +88,16 @@
   right: -20px;
 }
 
+/* Grid del carrusel - CON ALTURA FIJA */
 .featured-carousel {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
 }
 
+/* Cards con altura consistente */
 .featured-card {
   background: white;
   border-radius: 12px;
@@ -98,6 +105,10 @@
   text-decoration: none;
   transition: all 0.3s ease;
   border: 1px solid rgba(27, 23, 23, 0.08);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 380px;
 }
 
 .featured-card:hover {
@@ -105,11 +116,13 @@
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
 }
 
+/* Imagen - tamaño fijo */
 .featured-image {
   position: relative;
   aspect-ratio: 1;
   overflow: hidden;
   background: #f5f5f5;
+  flex-shrink: 0;
 }
 
 .featured-img {
@@ -123,20 +136,12 @@
   transform: scale(1.05);
 }
 
-.featured-discount {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  background: #E40044;
-  color: white;
-  padding: 0.25rem 0.6rem;
-  border-radius: 4px;
-  font-size: 0.7rem;
-  font-weight: 600;
-}
-
+/* Contenido de la card - altura flexible pero consistente */
 .featured-info {
   padding: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .featured-name {
@@ -149,6 +154,7 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  min-height: 2.34rem;
 }
 
 .featured-category {
@@ -156,6 +162,7 @@
   color: #999;
   text-transform: uppercase;
   margin-bottom: 0.5rem;
+  min-height: 1rem;
 }
 
 .featured-price {
@@ -164,6 +171,7 @@
   gap: 0.5rem;
   margin-bottom: 0.75rem;
   flex-wrap: wrap;
+  min-height: 2rem;
 }
 
 .current-price {
@@ -185,6 +193,8 @@
   border-radius: 20px;
   text-align: center;
   transition: all 0.2s ease;
+  margin-top: auto;
+  align-self: flex-start;
 }
 
 .cta-text {
@@ -196,6 +206,31 @@
 .featured-card:hover .featured-cta {
   background: #e43d96;
   transform: scale(1.02);
+}
+
+/* Animación de entrada para las cards */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.featured-card {
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+/* Efecto de transición al cambiar de página */
+.featured-carousel-wrapper {
+  position: relative;
+}
+
+.featured-carousel {
+  transition: all 0.3s ease;
 }
 
 /* Indicadores */
@@ -216,6 +251,10 @@
   transition: all 0.2s ease;
 }
 
+.dot:hover {
+  background: #ff4da6;
+}
+
 .dot.active {
   width: 24px;
   border-radius: 4px;
@@ -226,6 +265,9 @@
 @media (max-width: 1200px) {
   .featured-carousel {
     grid-template-columns: repeat(3, 1fr);
+  }
+  .featured-card {
+    min-height: 360px;
   }
 }
 
@@ -240,6 +282,10 @@
   
   .carousel-btn.next {
     right: -10px;
+  }
+  
+  .featured-card {
+    min-height: 340px;
   }
 }
 
@@ -263,5 +309,9 @@
   
   .carousel-btn.next {
     right: -8px;
+  }
+  
+  .featured-card {
+    min-height: 320px;
   }
 }

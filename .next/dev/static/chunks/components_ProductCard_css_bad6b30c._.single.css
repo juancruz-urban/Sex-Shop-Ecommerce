@@ -235,4 +235,43 @@
   }
 }
 
+.in-cart-btn, .view-cart-btn {
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+  padding: 1rem;
+  font-weight: 600;
+  transition: all .2s;
+  display: flex;
+}
+
+.in-cart-btn {
+  color: #fff;
+  background: #22c55e;
+}
+
+.view-cart-btn {
+  color: #fff;
+  background: #1b1717;
+}
+
+.view-cart-btn:hover {
+  background: #333;
+  transform: translateY(-1px);
+}
+
+.add-to-cart-btn.in-cart {
+  cursor: default;
+  background: #22c55e;
+}
+
+.add-to-cart-btn.in-cart:hover {
+  background: #22c55e;
+  transform: none;
+}
+
 /*# sourceMappingURL=components_ProductCard_css_bad6b30c._.single.css.map*/
