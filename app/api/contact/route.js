@@ -1,7 +1,7 @@
 // app/api/contact/route.js
-import { Resend } from 'resend';
+/*import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY);
 
 export async function POST(req) {
   try {
@@ -25,4 +25,4 @@ export async function POST(req) {
   } catch (error) {
     return Response.json({ error: error.message }, { status: 500 });
   }
-}
+}*/
