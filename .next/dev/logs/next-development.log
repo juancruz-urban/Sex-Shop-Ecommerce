@@ -1,13 +1,35 @@
-[00:00:02.116] Server  LOG     ✓ Ready in 1468ms
-[00:01:19.357] Server  LOG     {}
-[00:01:19.660] Server  LOG     {}
-[00:01:21.252] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:21.554] Browser LOG     {"imagen":{"folder":"lubricante-masculina-retardante-con-paprika-19nme_suuwht","id":"lu","public_id":"lubricante-masculina-retardante-con-paprika-19nme_suuwht","url":"https://res.cloudinary.com/de6zecci0/image/upload/v1776698510/lubricante-masculina-retardante-con-paprika-19nme_suuwht.webp"},"producto":{"Alto (cm)":20,"Ancho (cm)":20,"Categorías":"Geles y cosmética > Lubricantes","Costo":"0.00","Código de barras":"","Descripción":"¿Buscás prolongar el momento con un toque de picante y frescura? El Lubricante Masculina Retardante con Paprika y Mentol es tu aliado perfecto. Gracias a su fórmula única con paprika que estimula y mentol que refresca, te ayuda a mantener una erección más duradera. Ideal para combinar con anillos retardantes y vivir experiencias inolvidables. ¡Dale un gusto diferente a tus encuentros y sorprendé!","Descripción para SEO":"","Envío sin cargo":"NO","Identificador de URL":"lubricante-masculina-retardante-con-paprika-19nme","MPN (Número de pieza del fabricante)":"","Marca":"Sexitive","Mostrar en tienda":"SI","Nombre":"Lubricante Masculina Retardante con Paprika","Peso (kg)":0.2,"Precio":22000,"Precio promocional":"","Producto Físico":"SI","Profundidad (cm)":20,"Rango de edad":"","SKU":"Ana114","Sexo":"","Stock (Club A Sexshop)":"","Stock (Club A Villa Allende)":"ND","Tags":"Retardante","Título para SEO":""}}
-[00:01:21.554] Browser LOG     {"imagen":{"folder":"lubricante-masculina-retardante-con-paprika-19nme_suuwht","id":"lu","public_id":"lubricante-masculina-retardante-con-paprika-19nme_suuwht","url":"https://res.cloudinary.com/de6zecci0/image/upload/v1776698510/lubricante-masculina-retardante-con-paprika-19nme_suuwht.webp"},"producto":{"Alto (cm)":20,"Ancho (cm)":20,"Categorías":"Geles y cosmética > Lubricantes","Costo":"0.00","Código de barras":"","Descripción":"¿Buscás prolongar el momento con un toque de picante y frescura? El Lubricante Masculina Retardante con Paprika y Mentol es tu aliado perfecto. Gracias a su fórmula única con paprika que estimula y mentol que refresca, te ayuda a mantener una erección más duradera. Ideal para combinar con anillos retardantes y vivir experiencias inolvidables. ¡Dale un gusto diferente a tus encuentros y sorprendé!","Descripción para SEO":"","Envío sin cargo":"NO","Identificador de URL":"lubricante-masculina-retardante-con-paprika-19nme","MPN (Número de pieza del fabricante)":"","Marca":"Sexitive","Mostrar en tienda":"SI","Nombre":"Lubricante Masculina Retardante con Paprika","Peso (kg)":0.2,"Precio":22000,"Precio promocional":"","Producto Físico":"SI","Profundidad (cm)":20,"Rango de edad":"","SKU":"Ana114","Sexo":"","Stock (Club A Sexshop)":"","Stock (Club A Villa Allende)":"ND","Tags":"Retardante","Título para SEO":""}}
-[00:01:21.952] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:01:21.952] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:01:21.952] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776973151927} /_vercel/insights/view
-[00:01:50.018] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:50.174] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:01:50.174] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/contacto","route":"/contacto"}
-[00:01:50.174] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/contacto color: rgb(120, 120, 120) color: inherit {"dp":"/contacto","o":"http://localhost:3000/contacto","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776973180148} /_vercel/insights/view
+[00:00:02.032] Server  LOG     ✓ Ready in 1394ms
+[00:00:12.076] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:12.500] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:12.500] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:12.500] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776973495442} /_vercel/insights/view
+[00:00:49.544] Browser LOG     Cambiando rango de precio a: 2 {"label":"$10,000 - $20,000","max":20000,"min":10000}
+[00:00:50.699] Browser LOG     Cambiando rango de precio a: 3 {"label":"$20,000 - $50,000","max":50000,"min":20000}
+[00:01:05.269] Browser LOG     Cambiando rango de precio a: 2 {"label":"$10,000 - $20,000","max":20000,"min":10000}
+[00:01:06.298] Browser LOG     Cambiando rango de precio a: 3 {"label":"$20,000 - $50,000","max":50000,"min":20000}
+[00:01:21.247] Browser LOG     Cambiando rango de precio a: 1 {"label":"Hasta $10,000","max":10000,"min":0}
+[00:03:58.450] Server  LOG     ✓ Compiled in 163ms
+[00:04:07.090] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:04:07.409] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:04:07.409] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:04:07.409] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776973730346} /_vercel/insights/view
+[00:04:16.062] Browser LOG     Cambiando rango de precio a: 1 {"label":"Hasta $10,000","max":10000,"min":0}
+[00:06:16.049] Server  LOG     ✓ Compiled in 129ms
+[00:06:22.034] Browser LOG     Cambiando rango de precio a: 2 {"label":"$10,000 - $20,000","max":20000,"min":10000}
+[00:06:47.107] Browser LOG     Cambiando rango de precio a: 1 {"label":"Hasta $10,000","max":10000,"min":0}
+[00:07:16.036] Browser LOG     Cambiando rango de precio a: 2 {"label":"$10,000 - $20,000","max":20000,"min":10000}
+[00:07:17.987] Browser LOG     Cambiando rango de precio a: 3 {"label":"$20,000 - $50,000","max":50000,"min":20000}
+[00:07:19.870] Browser LOG     Cambiando rango de precio a: 5 {"label":"Más de $100,000","max":null,"min":100000}
+[00:07:21.319] Browser LOG     Cambiando rango de precio a: 4 {"label":"$50,000 - $100,000","max":100000,"min":50000}
+[00:07:26.157] Browser LOG     Cambiando rango de precio a: 2 {"label":"$10,000 - $20,000","max":20000,"min":10000}
+[00:07:32.601] Browser LOG     Cambiando rango de precio a: 1 {"label":"Hasta $10,000","max":10000,"min":0}
+[00:07:42.895] Browser LOG     Cambiando rango de precio a: 4 {"label":"$50,000 - $100,000","max":100000,"min":50000}
+[00:08:00.030] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:08:00.273] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:08:00.273] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:08:00.273] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1776973963217} /_vercel/insights/view
+[00:08:05.107] Browser LOG     Cambiando rango de precio a: 1 {"label":"Hasta $10,000","max":10000,"min":0}
+[00:09:16.131] Server  LOG     ✓ Compiled in 181ms
+[00:09:39.459] Browser LOG     Cambiando rango de precio a: 4 {"label":"$50,000 - $100,000","max":100000,"min":50000}
+[00:09:39.977] Browser LOG     Cambiando rango de precio a: 3 {"label":"$20,000 - $50,000","max":50000,"min":20000}
+[00:09:41.412] Browser LOG     Cambiando rango de precio a: 2 {"label":"$10,000 - $20,000","max":20000,"min":10000}

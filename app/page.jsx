@@ -96,7 +96,7 @@ function Shop() {
         setSelectedCategory={setSelectedCategory}
       />
       <main>
-        <FeaturedCarousel products={filteredProducts} />
+        <FeaturedCarousel products={products} />
         <section id="productos" className="products-section">
           <div className="products-container">
             <div className="products-header">

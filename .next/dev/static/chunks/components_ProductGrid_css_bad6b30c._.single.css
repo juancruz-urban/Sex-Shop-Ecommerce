@@ -10,6 +10,107 @@
   display: grid;
 }
 
+@media (max-width: 640px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.product-grid-container {
+  flex: 1;
+}
+
+.product-grid {
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  display: grid;
+}
+
+.pagination {
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0 1rem;
+  display: flex;
+}
+
+.pagination-btn {
+  color: #1b1717;
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid #1b171726;
+  border-radius: 8px;
+  align-items: center;
+  gap: .5rem;
+  padding: .6rem 1.2rem;
+  font-size: .85rem;
+  font-weight: 500;
+  transition: all .2s;
+  display: flex;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  color: #fff;
+  background: #ff4da6;
+  border-color: #ff4da6;
+}
+
+.pagination-btn:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.pagination-pages {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem;
+  display: flex;
+}
+
+.pagination-number {
+  color: #1b1717;
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid #1b171726;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 .5rem;
+  font-size: .85rem;
+  font-weight: 500;
+  transition: all .2s;
+  display: flex;
+}
+
+.pagination-number:hover, .pagination-number.active {
+  color: #fff;
+  background: #ff4da6;
+  border-color: #ff4da6;
+}
+
+.pagination-dots {
+  color: #999;
+  padding: 0 .25rem;
+}
+
+.pagination-info {
+  text-align: center;
+  color: #888;
+  margin-top: .5rem;
+  font-size: .75rem;
+}
+
 .no-products {
   text-align: center;
   background: #fff;
@@ -28,7 +129,7 @@
 }
 
 .no-products h3 {
-  color: var(--main-foreground);
+  color: #1a1a1a;
   margin-bottom: .5rem;
   font-size: 1.25rem;
   font-weight: 600;
@@ -44,11 +145,30 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
+
+  .pagination-btn {
+    padding: .4rem .8rem;
+    font-size: .75rem;
+  }
+
+  .pagination-number {
+    min-width: 30px;
+    height: 30px;
+    font-size: .75rem;
+  }
 }
 
 @media (max-width: 400px) {
   .product-grid {
     grid-template-columns: 1fr;
+  }
+
+  .pagination-pages {
+    order: 1;
+  }
+
+  .pagination {
+    flex-direction: column;
   }
 }
 
