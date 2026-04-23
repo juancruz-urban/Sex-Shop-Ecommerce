@@ -13,7 +13,7 @@ export default function ProductCard({ product }) {
 
   // Extraer datos de la estructura anidada
   const productData = product.producto
-  const imageData = product.imagen || product.imagenes[0]
+  const imageData = product.imagen || ""
   console.log(imageData)
   const name = productData["Nombre"] || ""
   const price = cleanPrice(productData["Precio"])

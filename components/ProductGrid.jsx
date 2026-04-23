@@ -6,12 +6,13 @@ import "./ProductGrid.css"
 export default function ProductGrid({ products }) {
   const generateStableKey = (product, index) => {
     const urlId = product.producto?.["Identificador de URL"] || ""
-    const imageId = product.imagen?.id || product.imagenes[0]?.id
+    const imageId = product.imagen?.id ||  ""
     const name = product.producto?.["Nombre"] || ""
     const price = product.producto?.["Precio"] || ""
     const keyBase = `${urlId}-${imageId}-${name}-${price}-${index}`
     return keyBase.replace(/\s/g, '-')
   }
+  console.log(products[0])
 
   if (!products || products.length === 0) {
     return (

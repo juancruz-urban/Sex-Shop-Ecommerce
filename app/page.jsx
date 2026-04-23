@@ -3,12 +3,13 @@
 import { useMemo, useState } from "react"
 import { CartProvider, useCart } from "@/context/CartContext"
 import Header from "@/components/Header"
-
+import FeaturedCarousel from "../components/FeaturedCarousel.jsx"
 import Filters from "@/components/Filters"
 import ProductGrid from "@/components/ProductGrid"
 import Cart from "@/components/Cart"
 import { products, priceRanges, cleanPrice } from "../data/products-sex.js"
 import "./page.css"
+import Footer from "../components/Footer.jsx"
 
 function Shop() {
   const [searchQuery, setSearchQuery] = useState("")
@@ -22,7 +23,7 @@ function Shop() {
 
     // Filtro por búsqueda
     if (searchQuery) {
-      const query = searchQuery.toLowerCase()
+      const query = searchQuery.toLowerCase().trim()
       result = result.filter((item) => {
         const product = item.producto
         return (
@@ -52,6 +53,13 @@ function Shop() {
       })
     }
 
+    // Filtro solo productos en stock
+    if (showInStockOnly) {
+      result = result.filter((item) => {
+        return true // Temporal, hasta que agregues stock
+      })
+    }
+
     // Ordenamiento
     switch (sortBy) {
       case "price-asc":
@@ -74,6 +82,11 @@ function Shop() {
     return result
   }, [searchQuery, selectedCategory, selectedPriceRange, sortBy, showInStockOnly])
 
+  // Función para manejar clic en categorías desde el Footer
+  const handleFooterCategoryClick = (category) => {
+    setSelectedCategory(category);
+  };
+
   return (
     <>
       <Header 
@@ -83,7 +96,7 @@ function Shop() {
         setSelectedCategory={setSelectedCategory}
       />
       <main>
-       
+        <FeaturedCarousel products={filteredProducts} />
         <section id="productos" className="products-section">
           <div className="products-container">
             <div className="products-header">
@@ -108,6 +121,7 @@ function Shop() {
             </div>
           </div>
         </section>
+        <Footer onCategoryClick={handleFooterCategoryClick} />
       </main>
       <Cart />
     </>

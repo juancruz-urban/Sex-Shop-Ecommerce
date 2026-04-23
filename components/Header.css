@@ -5,7 +5,7 @@
   --header-background: #1B1717;
   --header-foreground: #FFFFFF;
   --accent-color: #E40044;
-  --main-background: #FFF0F5;
+  --categories-bg: #ff4da6;
 }
 
 /* --- Header Principal --- */
@@ -16,8 +16,8 @@
   z-index: 1000;
 }
 
-/* --- Header Main --- */
-.header-main {
+/* --- Fila superior --- */
+.header-top {
   background: var(--header-background);
   padding: 0.75rem 0;
 }
@@ -26,43 +26,15 @@
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 1.5rem;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
+  gap: 1rem;
 }
 
-/* --- Botón menú móvil --- */
-.mobile-menu-btn {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  color: var(--header-foreground);
-}
-
-/* --- Logo --- */
-.logo-container {
-  flex-shrink: 0;
-}
-
-.logo-img {
-  height: 45px;
-  width: auto;
-  cursor: pointer;
-  transition: opacity 0.2s;
-  display: block;
-}
-
-.logo-img:hover {
-  opacity: 0.8;
-}
-
-/* --- Búsqueda Desktop --- */
-.search-container-desktop {
-  flex: 1;
-  max-width: 400px;
+/* --- Buscador (izquierda) --- */
+.search-container {
+  max-width: 280px;
   display: flex;
   align-items: center;
   background: rgba(255, 255, 255, 0.1);
@@ -72,12 +44,12 @@
   gap: 0.5rem;
 }
 
-.search-icon-top {
+.search-icon {
   color: rgba(255, 255, 255, 0.6);
   flex-shrink: 0;
 }
 
-.search-input-top {
+.search-input {
   flex: 1;
   border: none;
   outline: none;
@@ -86,16 +58,43 @@
   color: var(--header-foreground);
 }
 
-.search-input-top::placeholder {
+.search-input::placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
 
-/* --- Acciones del header --- */
+/* --- Logo centrado con imagen --- */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 0;
+}
+
+.logo:hover {
+  opacity: 0.8;
+}
+
+.logo-img {
+  height: 50px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* --- Acciones (carrito) derecha --- */
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  flex-shrink: 0;
+  justify-content: flex-end;
+  gap: 0.5rem;
 }
 
 .cart-btn {
@@ -131,41 +130,19 @@
   justify-content: center;
 }
 
-/* --- Búsqueda Móvil --- */
-.mobile-search-container {
+.mobile-menu-btn {
   display: none;
-  padding: 0.75rem 1rem;
-  background: var(--header-background);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.mobile-search-icon {
-  color: rgba(255, 255, 255, 0.6);
-  flex-shrink: 0;
-}
-
-.mobile-search-container input {
-  flex: 1;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 30px;
-  padding: 0.6rem 1rem;
-  font-size: 0.85rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
   color: var(--header-foreground);
-  outline: none;
 }
 
-.mobile-search-container input::placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-/* --- Barra de Navegación --- */
+/* --- Barra de Categorías (fondo transparente, SOLO BOTONES ROSA) --- */
 .nav-bar {
   background: var(--header-background);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 0;
 }
 
 .nav-container {
@@ -175,43 +152,63 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
-  height: 48px;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
-.nav-item {
-  position: relative;
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.nav-link {
-  color: var(--header-foreground);
-  text-decoration: none;
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  transition: color 0.2s;
-  background: none;
+/* --- CADA BOTÓN DE CATEGORÍA CON FONDO ROSA --- */
+.nav-item,
+.nav-link:not(.dropdown-trigger) {
+  background: #ff4da6;
   border: none;
+  border-radius: 30px;
+  padding: 0.5rem 1.25rem;
+  transition: all 0.2s ease;
+}
+
+.nav-item:hover,
+.nav-link:not(.dropdown-trigger):hover {
+  background: #ff6bb5;
+  transform: scale(1.02);
+}
+
+/* Estilo específico para el botón CATEGORÍAS con dropdown */
+.nav-item.dropdown {
+  background: #ff4da6;
+  border-radius: 30px;
+  padding: 0;
+}
+
+.dropdown-trigger {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  padding: 0 0.5rem;
-  height: 100%;
+  padding: 0.5rem 1.25rem;
+  border-radius: 30px;
 }
 
-.nav-link:hover {
-  color: #ff4da6 !important;
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: transparent;
+  border: none;
 }
 
-/* Dropdown */
-.dropdown-trigger {
-  font-family: inherit;
-}
-
+/* Dropdown menu - se mantiene igual */
 .dropdown-menu {
   position: absolute;
   top: 100%;
@@ -223,6 +220,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   z-index: 100;
   padding: 0.5rem 0;
+  margin-top: 0.5rem;
 }
 
 .dropdown-menu a {
@@ -236,7 +234,7 @@
 }
 
 .dropdown-menu a:hover {
-  background: rgba(255, 77, 166, 0.1);
+  background: rgba(255, 77, 166, 0.2);
   color: #ff4da6 !important;
   padding-left: 1.25rem;
 }
@@ -311,33 +309,41 @@
 
 /* --- Responsive --- */
 @media (max-width: 768px) {
-  .mobile-menu-btn {
-    display: block;
-  }
-
-  .search-container-desktop {
-    display: none;
-  }
-
-  .mobile-search-container {
-    display: flex;
-  }
-
-  .nav-bar {
-    display: none;
-  }
-
   .header-container {
+    grid-template-columns: auto 1fr auto;
+    gap: 0.75rem;
     padding: 0 1rem;
-    gap: 1rem;
+  }
+
+  .search-container {
+    max-width: 180px;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .search-input {
+    font-size: 0.75rem;
   }
 
   .logo-img {
     height: 35px;
   }
 
-  .header-actions {
-    gap: 0.5rem;
+  .nav-bar {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-container {
+    max-width: 130px;
+  }
+
+  .logo-img {
+    height: 30px;
   }
 }
 
@@ -364,7 +370,6 @@
   animation: fadeIn 0.2s ease;
 }
 
-/* Scroll suave */
 html {
   scroll-behavior: smooth;
 }

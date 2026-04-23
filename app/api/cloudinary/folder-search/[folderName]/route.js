@@ -10,27 +10,32 @@ cloudinary.config({
 
 export async function GET(request, { params }) {
   try {
-    const { folderName } = params;
+    const { folderName } = await params;
     
-    // Usar EXACTAMENTE la misma lógica que tu endpoint test
-    const result = await cloudinary.api.resources({
-      type: 'upload',
-      prefix: folderName, // Filtra por carpeta
-      max_results: 100,
-      resource_type: 'image',
-    });
+    // Limpiar el nombre de la carpeta
+    const cleanFolder = folderName.replace(/^\/+|\/+$/g, '');
+    
+    // Usar Search API en lugar de resources
+    const result = await cloudinary.search
+      .expression(`folder="${cleanFolder}"`)  // 👈 Sintaxis correcta para carpetas
+      .with_field('context')
+      .with_field('tags')
+      .max_results(100)
+      .execute();
 
-    // Mismo formato que tu test
+    // Mapear resultados (misma estructura que antes)
     const images = result.resources.map(r => ({
       public_id: r.public_id,
-      folder: r.public_id.includes('/') ? r.public_id.split('/')[0] : 'raíz',
+      folder: r.public_id.split('/')[0] || 'raíz',
       url: r.secure_url,
-      id: r.public_id.slice(0, 2)
+      id: r.public_id.slice(0, 2),
+      context: r.context || null,
+      tags: r.tags || []
     }));
 
     return NextResponse.json({
       success: true,
-      carpeta_solicitada: folderName,
+      carpeta_solicitada: cleanFolder,
       total_encontradas: images.length,
       imagenes: images
     });

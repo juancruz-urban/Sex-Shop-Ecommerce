@@ -1,0 +1,647 @@
+/* app/producto/[slug]/page.css */
+
+.product-detail {
+  background: #FFF0F5;
+  min-height: calc(100vh - 200px);
+  padding: 2rem 1.5rem;
+}
+
+.product-detail-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-bottom: 2rem;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.breadcrumb button {
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.breadcrumb button:hover {
+  color: #ff4da6;
+}
+
+.breadcrumb .separator {
+  margin: 0 0.25rem;
+  color: #ccc;
+}
+
+.breadcrumb .current {
+  color: #1B1717;
+  font-weight: 500;
+}
+
+/* Grid principal */
+.product-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+/* Galería */
+.product-gallery {
+  position: sticky;
+  top: 100px;
+}
+
+.main-image {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 1;
+}
+
+.main-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Información del producto */
+.product-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1B1717;
+  margin-bottom: 1rem;
+  font-family: "Chakra Petch", sans-serif;
+}
+
+.product-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+}
+
+.rating-count {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+/* Precios */
+.product-price-section {
+  margin-bottom: 1.5rem;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(27, 23, 23, 0.08);
+  border-bottom: 1px solid rgba(27, 23, 23, 0.08);
+}
+
+.price-container {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.current-price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1B1717;
+}
+
+.original-price {
+  font-size: 1rem;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.discount-badge {
+  background: #E40044;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.installments {
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.debit-badge {
+  background: #E40044;
+  color: white;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.transfer-price {
+  font-size: 0.85rem;
+  color: #2e7d32;
+  font-weight: 500;
+}
+
+/* Cantidad */
+.quantity-section {
+  margin-bottom: 1.5rem;
+}
+
+.quantity-section label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #666;
+}
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid rgba(27, 23, 23, 0.15);
+  border-radius: 8px;
+  width: fit-content;
+}
+
+.quantity-selector button {
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background 0.2s;
+}
+
+.quantity-selector button:hover:not(:disabled) {
+  background: #f0f0f0;
+}
+
+.quantity-selector button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.quantity-selector span {
+  min-width: 40px;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Botones de acción */
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.add-to-cart-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: #1B1717;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.add-to-cart-btn:hover {
+  background: #333;
+  transform: translateY(-1px);
+}
+
+.add-to-cart-btn.adding {
+  background: #22c55e;
+}
+
+.wishlist-btn {
+  width: 48px;
+  height: 48px;
+  background: white;
+  border: 1px solid rgba(27, 23, 23, 0.15);
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  color: #666;
+}
+
+.wishlist-btn:hover {
+  border-color: #ff4da6;
+  color: #ff4da6;
+}
+
+.wishlist-btn.active {
+  color: #E40044;
+  border-color: #E40044;
+}
+
+/* Beneficios */
+.benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(255, 77, 166, 0.05);
+  border-radius: 12px;
+}
+
+.benefit {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+/* Tabs */
+.product-tabs {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.tabs-header {
+  display: flex;
+  border-bottom: 1px solid rgba(27, 23, 23, 0.08);
+  background: white;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 1rem;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.tab-btn:hover {
+  color: #ff4da6;
+}
+
+.tab-btn.active {
+  color: #ff4da6;
+}
+
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #ff4da6;
+}
+
+.tabs-content {
+  padding: 1.5rem;
+}
+
+.description-content {
+  color: #555;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+.description-content p {
+  margin-bottom: 1rem;
+}
+
+.details-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.details-content li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(27, 23, 23, 0.05);
+  color: #555;
+}
+
+.details-content li strong {
+  color: #1B1717;
+  min-width: 120px;
+  display: inline-block;
+}
+
+/* Sección de envíos */
+.shipping-section,
+.returns-section,
+.addons-section {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.shipping-header,
+.returns-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.shipping-header h3,
+.returns-header h3,
+.addons-section h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1B1717;
+  margin: 0;
+}
+
+.collapse-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  padding: 0.25rem;
+  transition: color 0.2s;
+}
+
+.collapse-btn:hover {
+  color: #ff4da6;
+}
+
+.cp-input-group {
+  margin-bottom: 1rem;
+}
+
+.cp-input-group label {
+  font-size: 0.8rem;
+  color: #666;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.cp-input-wrapper {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.cp-input-wrapper input {
+  flex: 1;
+  max-width: 120px;
+  padding: 0.6rem;
+  border: 1px solid rgba(27, 23, 23, 0.15);
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.change-cp-btn {
+  padding: 0.6rem 1rem;
+  background: none;
+  border: 1px solid #ff4da6;
+  color: #ff4da6;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+}
+
+.change-cp-btn:hover {
+  background: #ff4da6;
+  color: white;
+}
+
+.shipping-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.shipping-option {
+  display: block;
+  border: 2px solid rgba(27, 23, 23, 0.1);
+  border-radius: 12px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.shipping-option:hover {
+  border-color: #ff4da6;
+}
+
+.shipping-option.selected {
+  border-color: #ff4da6;
+  background: rgba(255, 77, 166, 0.05);
+}
+
+.shipping-option input {
+  display: none;
+}
+
+.shipping-option-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.shipping-method {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.shipping-method strong {
+  font-size: 0.9rem;
+  color: #1B1717;
+}
+
+.shipping-type {
+  font-size: 0.7rem;
+  color: #666;
+  margin-top: 2px;
+}
+
+.shipping-details {
+  text-align: right;
+}
+
+.shipping-date {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.7rem;
+  color: #2e7d32;
+  margin-bottom: 0.25rem;
+}
+
+.shipping-price {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #1B1717;
+}
+
+.view-addresses-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: #f5f5f5;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: #666;
+  transition: all 0.2s;
+}
+
+.view-addresses-btn:hover {
+  background: #e5e5e5;
+  color: #ff4da6;
+}
+
+/* Sección de cambios y devoluciones */
+.returns-content p {
+  color: #555;
+  font-size: 0.9rem;
+}
+
+/* Sección de add-ons */
+.addons-section p {
+  color: #666;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+
+.addon-products {
+  margin-top: 1rem;
+}
+
+.addon-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: #f9f9f9;
+  border-radius: 12px;
+}
+
+.addon-card img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.addon-info {
+  flex: 1;
+}
+
+.addon-info h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+}
+
+.addon-info p {
+  font-size: 0.7rem;
+  color: #666;
+  margin: 0;
+}
+
+.addon-price {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #1B1717;
+}
+
+.addon-add-btn {
+  padding: 0.4rem 0.8rem;
+  background: #ff4da6;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.7rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.addon-add-btn:hover {
+  background: #e43d96;
+}
+
+/* Loading y not found */
+.loading,
+.not-found {
+  text-align: center;
+  padding: 4rem;
+}
+
+.not-found button {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: #ff4da6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .product-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .product-title {
+    font-size: 1.4rem;
+  }
+
+  .current-price {
+    font-size: 1.5rem;
+  }
+
+  .shipping-option-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .shipping-details {
+    text-align: left;
+  }
+}
