@@ -1,7 +1,7 @@
 "use client";
 
 import { 
-  MapPin, Phone, Mail, Instagram, Facebook, 
+  MapPin, Phone, Mail, Instagram, Facebook,
   Shield, Heart, ExternalLink
 } from "lucide-react";
 import "./Footer.css";
@@ -41,7 +41,8 @@ export default function Footer({ onCategoryClick }) {
       icon: Facebook, 
       url: "https://www.facebook.com/people/Sexshop-CLUB-A/100063952034223/", 
       color: "#1877F2" 
-    }
+    },
+   
   ];
 
   const paymentMethods = [
@@ -130,30 +131,35 @@ export default function Footer({ onCategoryClick }) {
             </ul>
           </div>
 
-          {/* Columna Seguinos */}
-          <div className="footer-column">
-            <h4>Seguinos</h4>
-            <div className="social-links">
-              {socialLinks.map((social) => (
-                <a 
-                  key={social.name}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-link"
-                  style={{ '--social-color': social.color }}
-                >
-                  <social.icon size={20} />
-                  <span>{social.name}</span>
-                </a>
-              ))}
-            </div>
-          </div>
+          
+         
 
           {/* Columna Sucursales */}
           <div className="footer-column">
-            <h4>Sucursales</h4>
+            <h4>Seguinos</h4>
             <ul>
+                 <li>
+                <a 
+                  href="https://www.facebook.com/people/Sexshop-CLUB-A/100063952034223/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="external-link"
+                >
+                  Facebook
+                  <ExternalLink size={12} className="external-icon" />
+                </a>
+              </li>
+                 <li>
+                <a 
+                  href="https://www.instagram.com/sexshop.cordoba.cluba"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="external-link"
+                >
+                  Instagram
+                  <ExternalLink size={12} className="external-icon" />
+                </a>
+              </li>
               <li>
                 <a 
                   href="https://www.instagram.com/sexshop.cordoba.cluba"
@@ -184,6 +190,17 @@ export default function Footer({ onCategoryClick }) {
                   className="external-link"
                 >
                   Web Amiga
+                  <ExternalLink size={12} className="external-icon" />
+                </a>
+              </li>
+               <li>
+                <a 
+                  href="https://www.tiktok.com/@clubasexshop"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="external-link"
+                >
+                  TikTok
                   <ExternalLink size={12} className="external-icon" />
                 </a>
               </li>

@@ -3,18 +3,21 @@
 import { Star, ShoppingCart, Heart } from "lucide-react"
 import { useCart } from "@/context/CartContext"
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { cleanPrice, formatPrice } from "../data/products-sex.js"
 import "./ProductCard.css"
 
 export default function ProductCard({ product }) {
+  const router = useRouter();
   const { addToCart } = useCart()
   const [isWishlisted, setIsWishlisted] = useState(false)
   const [isAdding, setIsAdding] = useState(false)
 
   // Extraer datos de la estructura anidada
   const productData = product.producto
-  const imageData = product.imagen || ""
-  console.log(imageData)
+  const imageData = product.imagen
+  const slug = productData["Identificador de URL"]
+  
   const name = productData["Nombre"] || ""
   const price = cleanPrice(productData["Precio"])
   const category = productData["Categorías"]?.split(' > ')[0] || "Sin categoría"
@@ -29,13 +32,21 @@ export default function ProductCard({ product }) {
     }
   }
 
-  const handleAddToCart = () => {
+  const handleCardClick = () => {
+    // Navegar a la página de detalle del producto
+    if (slug) {
+      router.push(`/producto/${slug}`)
+    }
+  }
+
+  const handleAddToCart = (e) => {
+    e.stopPropagation(); // Evita que el clic se propague al card
     setIsAdding(true)
     const cartProduct = {
-      id: imageData?.id || productData["Identificador de URL"],
+      id: imageData?.id || slug,
       name: name,
       price: price,
-      image: imageUrl || product.imagenes[0]?.url,
+      image: imageUrl,
       category: category,
       inStock: true,
       quantity: 1
@@ -44,15 +55,20 @@ export default function ProductCard({ product }) {
     setTimeout(() => setIsAdding(false), 500)
   }
 
+  const handleWishlistClick = (e) => {
+    e.stopPropagation(); // Evita que el clic se propague al card
+    setIsWishlisted(!isWishlisted)
+  }
+
   return (
-    <article className="product-card">
+    <article className="product-card" onClick={handleCardClick}>
       <div className="product-image-container">
         <button 
           className={`wishlist-btn ${isWishlisted ? "wishlisted" : ""}`}
-          onClick={() => setIsWishlisted(!isWishlisted)}
+          onClick={handleWishlistClick}
           aria-label="Agregar a favoritos"
         >
-          <Heart size={18} fill={isWishlisted ? "#c44d3b" : "none"} />
+          <Heart size={18} fill={isWishlisted ? "#ff4da6" : "none"} />
         </button>
         <img
           src={imageUrl}

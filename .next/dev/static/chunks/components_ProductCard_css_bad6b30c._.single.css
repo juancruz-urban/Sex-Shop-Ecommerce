@@ -8,6 +8,7 @@
 }
 
 .product-card {
+  cursor: pointer;
   background: #fff;
   border: 1px solid #1b171714;
   border-radius: 12px;

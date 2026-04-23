@@ -3621,19 +3621,55 @@ export const getCategories = () => {
 
 // data/products-sex.js
 
+// Versión alternativa MÁS ROBUSTA
 export const cleanPrice = (price) => {
-  // Si ya es número, devolverlo directamente
-  if (typeof price === 'number') return price;
-  
-  // Si es string, limpiarlo
-  if (typeof price === 'string') {
-    let cleaned = price.replace(/\./g, '').replace(',', '.');
-    cleaned = cleaned.replace(/[^\d.-]/g, '');
-    const parsed = parseFloat(cleaned);
-    return isNaN(parsed) ? 0 : parsed;
+  // Si ya es número
+  if (typeof price === 'number') {
+    return price;
   }
   
-  return 0;
+  // Si es null o undefined
+  if (price === null || price === undefined) {
+    return 0;
+  }
+  
+  // Convertir a string
+  let priceStr = String(price);
+  
+  // Eliminar espacios
+  priceStr = priceStr.trim();
+  
+  // Si está vacío
+  if (priceStr === "") {
+    return 0;
+  }
+  
+  // Detectar si usa coma como decimal (formato argentino/europeo)
+  // Ejemplo: "28.471,20" o "28471,20"
+  if (priceStr.includes(',') && !priceStr.includes('.', priceStr.indexOf(','))) {
+    // Reemplazar coma decimal por punto
+    priceStr = priceStr.replace(',', '.');
+    // Eliminar puntos de miles
+    priceStr = priceStr.replace(/\./g, '');
+  } 
+  // Detectar si usa punto como decimal y coma como miles (formato inverso)
+  // Ejemplo: "28,471.20"
+  else if (priceStr.includes(',') && priceStr.includes('.')) {
+    // Eliminar comas (separadores de miles)
+    priceStr = priceStr.replace(/,/g, '');
+  }
+  // Si solo tiene comas y es todo numérico (ej: "28471,20")
+  else if (priceStr.includes(',') && !priceStr.includes('.')) {
+    priceStr = priceStr.replace(',', '.');
+  }
+  
+  // Eliminar cualquier caracter que no sea número o punto (excepto guión para negativos)
+  priceStr = priceStr.replace(/[^\d.-]/g, '');
+  
+  // Convertir a número
+  const parsed = parseFloat(priceStr);
+  
+  return isNaN(parsed) ? 0 : parsed;
 };
 
 export const formatPrice = (price) => {
