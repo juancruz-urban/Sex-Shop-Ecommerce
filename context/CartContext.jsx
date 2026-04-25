@@ -11,14 +11,20 @@ export function CartProvider({ children }) {
   const addToCart = useCallback((product) => {
     setItems((prevItems) => {
       const existingItem = prevItems.find((item) => item.id === product.id)
+      
+      // Usar la cantidad del producto o 1 por defecto
+      const quantityToAdd = product.quantity || 1
+      
       if (existingItem) {
+        // Si ya existe, sumar la cantidad
         return prevItems.map((item) =>
           item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
+            ? { ...item, quantity: item.quantity + quantityToAdd }
             : item
         )
       }
-      return [...prevItems, { ...product, quantity: 1 }]
+      // Si no existe, agregar con la cantidad especificada
+      return [...prevItems, { ...product, quantity: quantityToAdd }]
     })
   }, [])
 
@@ -43,9 +49,9 @@ export function CartProvider({ children }) {
   }, [])
 
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0)
- const totalPrice = items.reduce((acc, item) => {
-  return acc + (Number(item.price) * Number(item.quantity))
-}, 0)
+  const totalPrice = items.reduce((acc, item) => {
+    return acc + (Number(item.price) * Number(item.quantity))
+  }, 0)
 
   return (
     <CartContext.Provider

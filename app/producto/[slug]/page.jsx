@@ -192,13 +192,8 @@ function ProductDetailContent() {
   const discount = originalPrice ? Math.round(((originalPrice - price) / originalPrice) * 100) : 0;
   const categories = productData["Categorías"]?.split(" > ") || [];
 
-  // ID consistente - MISMO CRITERIO que en ProductCard
+  // ID consistente
   const productId = imageData?.id || productData["Identificador de URL"];
-  
-  // Debug: verificar IDs
-  console.log("=== DEBUG CARRITO ===");
-  console.log("Product ID actual:", productId);
-  console.log("Items en carrito:", items.map(i => ({ id: i.id, name: i.name })));
   
   // Verificar si el producto ya está en el carrito
   const isInCart = items.some(item => String(item.id) === String(productId));
@@ -234,10 +229,7 @@ function ProductDetailContent() {
   };
 
   const handleAddToCart = () => {
-    if (isInCart) {
-      console.log("Producto ya en carrito, no se agrega");
-      return;
-    }
+    if (isInCart) return;
     
     setIsAdding(true);
     const cartProduct = {
@@ -247,9 +239,8 @@ function ProductDetailContent() {
       image: imageData?.url,
       category: categories[0] || "Sin categoría",
       inStock: true,
-      quantity: quantity
+      quantity: quantity // Cantidad seleccionada por el usuario
     };
-    console.log("Agregando producto:", cartProduct);
     addToCart(cartProduct);
     setTimeout(() => setIsAdding(false), 500);
   };

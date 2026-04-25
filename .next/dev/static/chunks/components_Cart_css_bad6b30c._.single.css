@@ -213,4 +213,36 @@
   }
 }
 
+.cart-item-quantity {
+  align-items: center;
+  gap: .5rem;
+  margin-top: .5rem;
+  display: flex;
+}
+
+.qty-btn {
+  cursor: pointer;
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all .2s;
+  display: flex;
+}
+
+.qty-btn:hover {
+  background: #e0e0e0;
+}
+
+.qty-value {
+  text-align: center;
+  min-width: 30px;
+  font-weight: 500;
+}
+
 /*# sourceMappingURL=components_Cart_css_bad6b30c._.single.css.map*/

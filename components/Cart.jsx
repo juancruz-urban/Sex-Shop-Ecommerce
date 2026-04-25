@@ -7,7 +7,7 @@ import CardCheckout from "./CardCheckout"
 import "./Cart.css"
 
 export default function Cart() {
-  const { items, removeFromCart, totalPrice, isCartOpen, setIsCartOpen } = useCart()
+  const { items, removeFromCart, updateQuantity, totalPrice, isCartOpen, setIsCartOpen } = useCart()
   const [step, setStep] = useState("cart")
   const [shippingData, setShippingData] = useState(null)
   const [shippingQuote, setShippingQuote] = useState(null)
@@ -77,6 +77,23 @@ export default function Cart() {
                         <p className="item-total">
                           Subtotal: ${(item.price * item.quantity).toFixed(2)}
                         </p>
+                        
+                        {/* Controles de cantidad */}
+                        <div className="cart-item-quantity">
+                          <button 
+                            onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                            className="qty-btn"
+                          >
+                            -
+                          </button>
+                          <span className="qty-value">{item.quantity}</span>
+                          <button 
+                            onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                            className="qty-btn"
+                          >
+                            +
+                          </button>
+                        </div>
                       </div>
                       <button
                         onClick={() => removeFromCart(item.id)}
@@ -123,7 +140,7 @@ export default function Cart() {
           {/* STEP 3: PAYMENT */}
           {step === "payment" && shippingData && (
             <CardCheckout
-              key="card-checkout" // Añadir key para evitar re-renderizados
+              key="card-checkout"
               shippingData={shippingData}
               shippingQuote={shippingQuote}
               onBack={() => setStep("shipping")}
